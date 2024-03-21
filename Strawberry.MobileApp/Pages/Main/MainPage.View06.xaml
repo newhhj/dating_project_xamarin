@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+              xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+              xmlns:main="clr-namespace:Strawberry.MobileApp.Pages.Main"
+              x:Class="Strawberry.MobileApp.Pages.Main.MainPage_View06">
+	<!-- 컨텐츠를 담을 StackLayout -->
+	<StackLayout Spacing="0" Padding="0,0,0,20">
+		<!-- Label 요소에 대한 스타일 정의 -->
+		<StackLayout.Resources>
+			<Style TargetType="Label">
+				<Setter Property="TextColor" Value="#FFFFFF"/>
+			</Style>
+		</StackLayout.Resources>
+		<!-- 가로 스크롤이 가능한 ScrollView -->
+		<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+			<!-- 가로 방향으로 항목을 담을 StackLayout -->
+			<StackLayout Padding="10,0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding}" Spacing="20">
+				<!-- BindableLayout의 항목 템플릿 정의 -->
+				<BindableLayout.ItemTemplate>
+					<DataTemplate x:DataType="main:MainPage_View06_Data">
+						<!-- 각 항목을 담을 Grid -->
+						<Grid WidthRequest="150">
+							<!-- 색상이 적용된 배경을 표시하는 BoxView -->
+							<BoxView Margin="0,0,0,15" WidthRequest="{Binding Height, Source={RelativeSource Mode=Self}}" CornerRadius="15" Color="#4D4D4D"/>
+							<!-- 항목 내용을 담을 StackLayout -->
+							<StackLayout Spacing="0">
+								<!-- 프로필 이미지를 표시하는 CachedImage -->
+								<forms:CachedImage HorizontalOptions="Center" VerticalOptions="Center" Margin="0,15,0,5" WidthRequest="60" HeightRequest="60" Source="{Binding ProfileImage}" Aspect="AspectFill">
+									<forms:CachedImage.Transformations>
+										<!-- 이미지를 원형으로 만들기 위한 CircleTransformation 적용 -->
+										<transformations:CircleTransformation/>
+									</forms:CachedImage.Transformations>
+								</forms:CachedImage>
+								<!-- 닉네임을 표시하는 Label -->
+								<Label HorizontalOptions="Center" Text="{Binding Nickname}" FontSize="16" FontAttributes="Bold"/>
+								<!-- 나이를 표시하는 Label -->
+								<Label HorizontalOptions="Center" Text="{Binding Age}"/>
+								<!-- "View Profile" 버튼을 표시하는 Grid -->
+								<Grid Margin="20,10,20,0">
+									<Grid.GestureRecognizers>
+										<!-- 버튼 클릭 이벤트를 처리하기 위한 TapGestureRecognizer 추가 -->
+										<TapGestureRecognizer Tapped="ViewProfile_Clicked"/>
+									</Grid.GestureRecognizers>
+									<!-- 버튼 배경색을 표시하는 BoxView -->
+									<BoxView Color="#4A9CFF" CornerRadius="10"/>
+									<!-- 버튼 위에 삼각형 모양을 표시하는 BoxView -->
+									<BoxView WidthRequest="10" HeightRequest="10" HorizontalOptions="Center" VerticalOptions="Start" Rotation="45" TranslationY="-3" Color="#4A9CF1"/>
+									<!-- 버튼 텍스트를 표시하는 Label -->
+									<Label HorizontalOptions="Center" VerticalOptions="Center" Text="+more"/>
+								</Grid>
+							</StackLayout>
+						</Grid>
+					</DataTemplate>
+				</BindableLayout.ItemTemplate>
+			</StackLayout>
+		</ScrollView>
+	</StackLayout>
+</DataTemplate>

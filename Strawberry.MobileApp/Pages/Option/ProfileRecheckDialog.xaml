@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rg:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+              xmlns:rg="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+              xmlns:fft="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+              xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit" 
+              x:Class="Strawberry.MobileApp.Pages.Option.ProfileRecheckDialog"
+              x:DataType="option:ProfileRecheckDialogData">
+
+    <rg:PopupPage.BindingContext>
+        <option:ProfileRecheckDialogData/>
+    </rg:PopupPage.BindingContext>
+    
+    <Frame VerticalOptions="Center" Margin="30" Padding="10" CornerRadius="20" IsClippedToBounds="True">
+        <StackLayout VerticalOptions="Center" Orientation="Vertical" Spacing="0">
+            <ff:CachedImage HorizontalOptions="Center" Margin="0,20,0,10" WidthRequest="80" HeightRequest="80" Source="{Binding ProfileImage}" Aspect="AspectFill">
+                <ff:CachedImage.Transformations>
+                    <fft:CircleTransformation/>
+                </ff:CachedImage.Transformations>
+            </ff:CachedImage>
+
+            <Label HorizontalOptions="Center" Text="새로 측정하시겠어요?" TextColor="#333333" FontSize="16" FontAttributes="Bold"/>
+            <Label HorizontalOptions="Center" Text="더 높은 점수에 도전해보세요" TextColor="#7A7A7A"/>
+
+            <Frame Margin="0,30,0,0" BackgroundColor="#4A9CFF" CornerRadius="5"
+                   toolkit:TouchEffect.AnimationDuration="30"
+                   toolkit:TouchEffect.PressedTranslationY="1">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Recheck_Clicked"/>
+                </Frame.GestureRecognizers>
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal" HeightRequest="46">
+                    <StackLayout.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="VerticalOptions" Value="Center"/>
+                            <Setter Property="TextColor" Value="#FFFFFF"/>
+                        </Style>
+                    </StackLayout.Resources>
+                    <Label Text="측정하기"/>
+                    <Image WidthRequest="11" Source="icon_strawberry" Aspect="AspectFit"/>
+                    <Label Text="10"/>
+                </StackLayout>
+            </Frame>
+            <Frame Margin="0,5,0,0" BackgroundColor="#FFFFFF" CornerRadius="5" BorderColor="#AFAFAF"
+                   toolkit:TouchEffect.AnimationDuration="30"
+                   toolkit:TouchEffect.PressedTranslationY="1">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Close_Clicked"/>
+                </Frame.GestureRecognizers>
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal" HeightRequest="46">
+                    <StackLayout.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="VerticalOptions" Value="Center"/>
+                            <Setter Property="TextColor" Value="#333333"/>
+                        </Style>
+                    </StackLayout.Resources>
+                    <Label Text="돌아가기"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </Frame>
+</rg:PopupPage>

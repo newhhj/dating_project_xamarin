@@ -1,0 +1,13 @@
+D:\1.SourceXamarin\Strawberry\Strawberry.MobileApp\Strawberry.MobileApp.iOS\obj\iPhoneSimulator\Debug\actool\_PartialAppManifest.items
+D:\1.SourceXamarin\Strawberry\Strawberry.MobileApp\Strawberry.MobileApp.iOS\obj\iPhoneSimulator\Debug\actool\_BundleResourceWithLogicalName.items
+D:\1.SourceXamarin\Strawberry\Strawberry.MobileApp\Strawberry.MobileApp.iOS\obj\iPhoneSimulator\Debug\actool\_ProcessedImageAssetsPath.items
+D:\1.SourceXamarin\Strawberry\Strawberry.MobileApp\Strawberry.MobileApp.iOS\obj\iPhoneSimulator\Debug\ibtool\_BundleResourceWithLogicalName.items
+D:\1.SourceXamarin\Strawberry\Strawberry.MobileApp\Strawberry.MobileApp.iOS\obj\iPhoneSimulator\Debug\ibtool\_ProcessedInterfaceDefinitionsPath.items
+D:\1.SourceXamarin\Strawberry\Strawberry.MobileApp\Strawberry.MobileApp.iOS\obj\iPhoneSimulator\Debug\coremlc\_PartialAppManifest.items
+D:\1.SourceXamarin\Strawberry\Strawberry.MobileApp\Strawberry.MobileApp.iOS\obj\iPhoneSimulator\Debug\coremlc\_BundleResourceWithLogicalName.items
+D:\1.SourceXamarin\Strawberry\Strawberry.MobileApp\Strawberry.MobileApp.iOS\obj\iPhoneSimulator\Debug\coremlc\_ProcessedCoreMLModelsPath.items
+D:\1.SourceXamarin\Strawberry\Strawberry.MobileApp\Strawberry.MobileApp.iOS\obj\iPhoneSimulator\Debug\_ProcessedBundleResourcesPath.items
+D:\1.SourceXamarin\Strawberry\Strawberry.MobileApp\Strawberry.MobileApp.iOS\obj\iPhoneSimulator\Debug\_ProcessedContentPath.items
+D:\1.SourceXamarin\Strawberry\Strawberry.MobileApp\Strawberry.MobileApp.iOS\obj\iPhoneSimulator\Debug\optimized\
+D:\1.SourceXamarin\Strawberry\Strawberry.MobileApp\Strawberry.MobileApp.iOS\obj\iPhoneSimulator\Debug\Strawberry.MobileApp.iOS.csproj.AssemblyReference.cache
+D:\1.SourceXamarin\Strawberry\Strawberry.MobileApp\Strawberry.MobileApp.iOS\obj\iPhoneSimulator\Debug\Strawberry.MobileApp.iOS.csproj.CoreCompileInputs.cache

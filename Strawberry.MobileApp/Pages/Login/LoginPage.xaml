@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares" 
+    xmlns:login="clr-namespace:Strawberry.MobileApp.Pages.Login"
+    x:Class="Strawberry.MobileApp.Pages.Login.LoginPage"
+    x:DataType="login:LoginPageData">
+    <ContentPage.BindingContext>
+        <login:LoginPageData x:Name="pageData"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClosePage_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <!--<BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>-->
+                    <!--<BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>-->
+					<BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#FFFFFF" Rotation="45" TranslationY="4"/>
+					<BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#FFFFFF" Rotation="-45" TranslationY="-4"/>
+				</Grid>
+                <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="이메일 로그인" FontSize="16" FontAttributes="Bold"/>
+            </StackLayout>
+
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" Spacing="0" Padding="20">
+                    <Label Text="이메일" FontAttributes="Bold"/>
+                    <Entry Placeholder="이메일을 입력하세요" Keyboard="Email" Text="{Binding Email}"/>
+                    <Label Margin="0,20,0,0" Text="비밀번호" FontAttributes="Bold"/>
+                    <Entry Placeholder="비밀번호를 입력하세요" Keyboard="Text" IsPassword="True" Text="{Binding Password}"/>
+					<Button Margin="0,20,0,0" VerticalOptions="EndAndExpand" Text="로그인" TextColor="#FFFFFF" BackgroundColor="#4A9CFF" Clicked="Login_Clicked"/>
+				</StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</shares:BasePage>

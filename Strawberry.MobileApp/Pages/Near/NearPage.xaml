@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:near="clr-namespace:Strawberry.MobileApp.Pages.Near"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:svg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    x:Class="Strawberry.MobileApp.Pages.Near.NearPage"
+    x:DataType="near:NearPageData">
+    <Grid>
+        <Grid Margin="0,50,0,0">
+            <Image Source="img_near_bg" Aspect="AspectFill" BackgroundColor="#F6F6F6"/>
+
+            <StackLayout Margin="0,20,0,0" Spacing="0">
+                <Label HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Nickname, Source={StaticResource Member}}" FontSize="18" FontAttributes="Bold"/>
+                            <Span Text=" 님의 성향과"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label HorizontalOptions="Center" Text="일치하는 근처의 회원을 소개합니다."/>
+                <Button Margin="50,20,50,0" Text="근처 회원 다시찾기" BackgroundColor="#4A9CFF" FontSize="16" FontAttributes="Bold" TextColor="#FFFFFF" Clicked="Refresh_Clicked"/>
+
+                <Grid VerticalOptions="FillAndExpand" Margin="0,0,0,0">
+                    <Grid Padding="-1000" IsClippedToBounds="False">
+                        <BoxView x:Name="roundView02" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="50" HeightRequest="50" CornerRadius="25" Opacity="0">
+                            <BoxView.Background>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="#00000000" Offset="0"/>
+                                    <GradientStop Color="#00000000" Offset="49"/>
+                                    <GradientStop Color="#404A9CFF" Offset="50"/>
+                                    <GradientStop Color="#804A9CFF" Offset="200"/>
+                                </RadialGradientBrush>
+                            </BoxView.Background>
+                        </BoxView>
+                        <BoxView x:Name="roundView01" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="50" HeightRequest="50" CornerRadius="25" Opacity="0">
+                            <BoxView.Background>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="#00000000" Offset="0"/>
+                                    <GradientStop Color="#00000000" Offset="49"/>
+                                    <GradientStop Color="#404A9CFF" Offset="50"/>
+                                    <GradientStop Color="#804A9CFF" Offset="200"/>
+                                </RadialGradientBrush>
+                            </BoxView.Background>
+                        </BoxView>
+                    </Grid>
+                    
+                    <RelativeLayout x:Name="relativeLayout01" Margin="10,100,10,60"/>
+                    
+                    <Grid VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="60" HeightRequest="60">
+                        <Frame BackgroundColor="#FFFFFF" CornerRadius="30">
+                            <Frame BackgroundColor="#AAAAAA" Margin="2" CornerRadius="28">
+                                <Image Source="{Binding ProfileImages[0].ProfileImageSource, Source={StaticResource Member}}" Aspect="AspectFill"/>
+                            </Frame>
+                        </Frame>
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" Padding="10,3" BackgroundColor="#FFFFFF" CornerRadius="5" TranslationY="36">
+                            <Label Text="ME" TextColor="#4A9CFF"/>
+                        </Frame>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </Grid>
+        
+        
+        <StackLayout VerticalOptions="Start" HeightRequest="50" Orientation="Horizontal">
+            <Grid VerticalOptions="Center" WidthRequest="40" HeightRequest="40">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackButton_Clicked"/>
+                </Grid.GestureRecognizers>
+                <svg:SvgCachedImage VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="20" HeightRequest="20" Source="resource://Strawberry.MobileApp.Images.icon_back01.svg" Aspect="AspectFit"/>
+            </Grid>
+            <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="근처" FontSize="16"/>
+        </StackLayout>
+    </Grid>
+    
+</shares:BasePage>

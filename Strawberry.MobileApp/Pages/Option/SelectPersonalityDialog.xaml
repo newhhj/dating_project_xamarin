@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rg:PopupPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:rg="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+    x:Class="Strawberry.MobileApp.Pages.Option.SelectPersonalityDialog"
+    x:DataType="option:SelectPersonalityDialogData">
+    <ContentPage.Content>
+        <Frame VerticalOptions="Center" HorizontalOptions="Center" Margin="30" WidthRequest="300" CornerRadius="10" BackgroundColor="#FFFFFF">
+            <StackLayout Padding="0,10" Orientation="Vertical" Spacing="0">
+                <Label HorizontalOptions="Center" Margin="0,10" Text="성격" FontSize="16" FontAttributes="Bold"/>
+                <Label HorizontalOptions="Center" Text="최대 3개까지 선택이 가능합니다." TextColor="#7A7A7A"/>
+                <BoxView Margin="0,10" HeightRequest="1" Color="#20000000"/>
+                <StackLayout Orientation="Vertical" Padding="20,0">
+                    <StackLayout.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="VerticalOptions" Value="Center"/>
+                            <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                        </Style>
+                        <Style TargetType="Image">
+                            <Setter Property="VerticalOptions" Value="Center"/>
+                            <Setter Property="HorizontalOptions" Value="End"/>
+                            <Setter Property="WidthRequest"  Value="24"/>
+                            <Setter Property="HeightRequest" Value="24"/>
+                            <Setter Property="Aspect" Value="AspectFit"/>
+                        </Style>
+                    </StackLayout.Resources>
+                    <StackLayout Orientation="Horizontal" HeightRequest="40">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item01_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="활발한"/>
+                        <Grid VerticalOptions="Center">
+                            <Image  Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image  Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsSelectedItem01}"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HeightRequest="40">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item02_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="친절한"/>
+                        <Grid VerticalOptions="Center">
+                            <Image  Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image  Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsSelectedItem02}"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HeightRequest="40">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item03_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="도발적인"/>
+                        <Grid VerticalOptions="Center">
+                            <Image  Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image  Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsSelectedItem03}"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HeightRequest="40">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item04_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="감성적인"/>
+                        <Grid VerticalOptions="Center">
+                            <Image  Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image  Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsSelectedItem04}"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HeightRequest="40">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item05_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="애교있는"/>
+                        <Grid VerticalOptions="Center">
+                            <Image  Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image  Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsSelectedItem05}"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HeightRequest="40">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item06_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="주도적인"/>
+                        <Grid VerticalOptions="Center">
+                            <Image  Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image  Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsSelectedItem06}"/>
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+                <BoxView Margin="0,10" HeightRequest="1" Color="#20000000"/>
+                <Button Margin="10,0" Text="확인" TextColor="#FFFFFF" BackgroundColor="#4A9CFF" Clicked="Accept_Clicked"/>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</rg:PopupPage>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- MainPage_Dialog_SendSmartChoice 팝업 페이지 -->
+<pages:PopupPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+    xmlns:skiasharp="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    x:Class="Strawberry.MobileApp.Pages.Main.MainPage_Dialog_SendSmartChoice"
+    x:Name="page"
+    CloseWhenBackgroundIsClicked="True"
+    HasSystemPadding="True">
+	<!-- 팝업 페이지 애니메이션 설정 -->
+	<pages:PopupPage.Animation>
+		<animations:MoveAnimation PositionIn="Bottom" PositionOut="Bottom" HasBackgroundAnimation="True"/>
+	</pages:PopupPage.Animation>
+	<!-- 팝업 페이지 컨텐츠 -->
+	<ContentPage.Content>
+		<!-- 팝업 페이지 내용을 담을 그리드 -->
+		<Grid VerticalOptions="End" Padding="0,0,0,-10">
+			<!-- 박스 뷰로 배경을 표시 -->
+			<BoxView Color="#FFFFFF" CornerRadius="10"/>
+			<!-- 수직 스택 레이아웃 -->
+			<StackLayout Padding="10,30,10,20">
+				<!-- 이미지 표시 -->
+				<forms:CachedImage HeightRequest="80" Source="img_logo_sendsmartchoice" Aspect="AspectFit"/>
+				<!-- 제목 라벨 -->
+				<Label HorizontalOptions="Center" Margin="0,20,0,0" Text="상대방에게 스윗한 한마디로 매력어필해보세요" FontAttributes="Bold" FontSize="16"/>
+				<!-- 수평 스택 레이아웃 -->
+				<StackLayout Margin="0,20,0,0" Orientation="Horizontal" HeightRequest="40" Spacing="10">
+					<!-- 썸네일 이미지 표시 -->
+					<forms:CachedImage VerticalOptions="Center" WidthRequest="40" HeightRequest="40" Source="{Binding Thumbnail, Source={Reference page}}" Aspect="AspectFit">
+						<forms:CachedImage.Transformations>
+							<transformations:CircleTransformation/>
+						</forms:CachedImage.Transformations>
+					</forms:CachedImage>
+					<!-- 그리드 내부에 SKCanvasView와 Entry를 포함한 레이아웃 -->
+					<Grid HorizontalOptions="FillAndExpand">
+						<skiasharp:SKCanvasView PaintSurface="SKCanvasView_PaintSurface"/>
+						<Entry VerticalTextAlignment="Center" Margin="10,0" Text="{Binding Message, Source={Reference page}}" Placeholder="{Binding Nickname, Source={Reference page}, StringFormat='{0}님에게 보낼 메세지 입력'}" Focused="Entry_Focused" Unfocused="Entry_Unfocused"/>
+					</Grid>
+				</StackLayout>
+				<!-- 그리드 내부에 버튼을 담을 레이아웃 -->
+				<Grid Margin="0,10,0,0" HeightRequest="44">
+					<Grid.GestureRecognizers>
+						<TapGestureRecognizer Tapped="Send_Clicked"/>
+					</Grid.GestureRecognizers>
+					<!-- 버튼 배경을 표시하는 박스 뷰 -->
+					<BoxView CornerRadius="5" Color="#4A9CFF"/>
+					<!-- 버튼 내용을 담은 수평 스택 레이아웃 -->
+					<StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+						<Label Text="보내기" VerticalOptions="Center" TextColor="#FFFFFF"/>
+						<forms:CachedImage WidthRequest="12" VerticalOptions="Center" Source="icon_strawberry" Aspect="AspectFit"/>
+						<Label Text="10" VerticalOptions="Center" TextColor="#FFFFFF"/>
+					</StackLayout>
+				</Grid>
+			</StackLayout>
+		</Grid>
+	</ContentPage.Content>
+</pages:PopupPage>

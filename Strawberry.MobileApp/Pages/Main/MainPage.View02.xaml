@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+              xmlns:main="clr-namespace:Strawberry.MobileApp.Pages.Main"
+              x:Class="Strawberry.MobileApp.Pages.Main.MainPage_View02"
+              x:DataType="main:MainPage_View02_Data">
+	<Grid FlexLayout.Basis="50%" HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}, Converter={StaticResource RatioToHeightConverter}, ConverterParameter='1.2'}">
+		<!-- ProfileImage -->
+		<forms:CachedImage Margin="2" Source="{Binding ProfileImage}" Aspect="AspectFill"/>
+
+		<!-- IsNowJoin -->
+		<Frame VerticalOptions="End" HorizontalOptions="End" WidthRequest="40" HeightRequest="40" CornerRadius="20" BackgroundColor="#C4FFFFFF" TranslationX="-10" TranslationY="-60" IsVisible="{Binding IsNowJoin}">
+			<Label VerticalOptions="Center" HorizontalOptions="Center" Text="오늘" TextColor="#4A9CFF" FontSize="12"/>
+		</Frame>
+
+		<StackLayout VerticalOptions="End" Padding="10" Orientation="Vertical" Spacing="0">
+			<StackLayout.Resources>
+				<Style TargetType="Label">
+					<Setter Property="TextColor" Value="#FFFFFF"/>
+				</Style>
+			</StackLayout.Resources>
+
+			<!-- Background -->
+			<StackLayout.Background>
+				<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+					<GradientStop Color="#00000000" Offset="0"/>
+					<GradientStop Color="#55000000" Offset="0.3"/>
+					<GradientStop Color="#55000000" Offset="1"/>
+				</LinearGradientBrush>
+			</StackLayout.Background>
+
+			<!-- Nickname and Age -->
+			<StackLayout Orientation="Horizontal" Spacing="5">
+				<Label Text="{Binding Nickname}" FontSize="16"/>
+				<Label VerticalOptions="End" Text="{Binding Age}" FontSize="12"/>
+				<forms:CachedImage VerticalOptions="End" HeightRequest="16" Source="icon_vip" Aspect="AspectFit" IsVisible="{Binding IsVIP}"/>
+			</StackLayout>
+
+			<!-- Job and Range -->
+			<StackLayout Orientation="Horizontal" Spacing="5">
+				<Label VerticalOptions="Center" Text="{Binding Job, StringFormat='{0}, '}" FontSize="12"/>
+				<Label VerticalOptions="Center" Text="{Binding Range, StringFormat='{0}km'}" FontSize="12"/>
+				<forms:CachedImage HeightRequest="16" Source="icon_mic" Aspect="AspectFit" IsVisible="{Binding HasVoice}"/>
+			</StackLayout>
+
+			<!-- ShowProfileCommand -->
+			<Grid Margin="0,10,0,0">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Command="{Binding ShowProfileCommand}"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="10" BackgroundColor="#4A9CFF"/>
+				<StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+					<forms:CachedImage VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Source="icon_show" Aspect="AspectFit"/>
+					<Label Text="보기" VerticalOptions="Center" TextColor="#FFFFFF" FontSize="16"/>
+					<forms:CachedImage VerticalOptions="Center" WidthRequest="16" HeightRequest="16" Source="icon_strawberry" Aspect="AspectFit"/>
+					<Label VerticalOptions="Center" Text="5" TextColor="#FFFFFF"/>
+				</StackLayout>
+			</Grid>
+		</StackLayout>
+	</Grid>
+</DataTemplate>

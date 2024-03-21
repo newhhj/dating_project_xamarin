@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+              xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+              xmlns:pancardview="clr-namespace:PanCardView;assembly=PanCardView"
+              xmlns:svg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+              xmlns:appeal="clr-namespace:Strawberry.MobileApp.Pages.Appeal"
+              x:Class="Strawberry.MobileApp.Pages.Appeal.AppealPage_Menu04_Template"
+              x:DataType="appeal:AppealPage_Menu04_Data">
+    <Grid FlexLayout.Basis="33.33%" Padding="2" BackgroundColor="#FFFFFF" HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}}">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Item_Clicked"/>
+        </Grid.GestureRecognizers>
+        <Grid BackgroundColor="#F9F9F9">
+            <StackLayout VerticalOptions="Center" Orientation="Vertical">
+                <Frame HorizontalOptions="Center" WidthRequest="50" HeightRequest="50" CornerRadius="25">
+                    <Image Source="{Binding ProfileImageSource}" Aspect="AspectFill"/>
+                </Frame>
+                <Label HorizontalOptions="Center" Margin="10,0" Text="{Binding Content}" MaxLines="1" LineBreakMode="TailTruncation"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</DataTemplate>

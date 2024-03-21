@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares" 
+                 xmlns:recommandpartner="clr-namespace:Strawberry.MobileApp.Pages.RecommandPartner"
+                 xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                 xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                 x:Class="Strawberry.MobileApp.Pages.RecommandPartner.RecommendPartnersPage"
+                 x:DataType="recommandpartner:RecommendPartnersPage_Data">
+    <shares:BasePage.Resources>
+        <ResourceDictionary>
+            <recommandpartner:RecommendPartnersPage_DataConverter x:Key="converter"/>
+        </ResourceDictionary>
+    </shares:BasePage.Resources>
+    <Grid>
+        <ScrollView Margin="0,50,0,0" Scrolled="ScrollView_Scrolled">
+            <StackLayout Padding="7.5" BindableLayout.ItemsSource="{Binding Items}">
+                <BindableLayout.EmptyViewTemplate>
+                    <DataTemplate>
+                        <Grid VerticalOptions="FillAndExpand">
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="조건에 맞는 추천 대상이 없어요"/>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.EmptyViewTemplate>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="recommandpartner:RecommendPartnersPage_Data_Item">
+                        <Grid Margin="7.5" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <ffimageloading:CachedImage VerticalOptions="Start" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}}" Source="{Binding ProfileImage}" Aspect="AspectFill">
+                                <ffimageloading:CachedImage.Transformations>
+                                    <transformations:CircleTransformation/>
+                                </ffimageloading:CachedImage.Transformations>
+                                <ffimageloading:CachedImage.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Profile_Clicked"/>
+                                </ffimageloading:CachedImage.GestureRecognizers>
+                            </ffimageloading:CachedImage>
+
+                            <StackLayout Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Profile_Clicked"/>
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="{Binding Nickname}" FontSize="16" FontAttributes="Bold"/>
+                                <Label Text="{Binding Age}" VerticalOptions="End" TextColor="Gray"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Profile_Clicked"/>
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="{Binding Job}" TextColor="Gray"/>
+                                <Label Text="{Binding Range, StringFormat='{0}km'}" TextColor="Gray"/>
+                            </StackLayout>
+                            <StackLayout VerticalOptions="Start" Grid.Column="1" Grid.Row="2" Margin="0,10,0,0" Orientation="Horizontal">
+                                <Frame BackgroundColor="#4A9CFF" Padding="15,0" HeightRequest="34" CornerRadius="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Choice_Clicked"/>
+                                    </Frame.GestureRecognizers>
+                                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+                                        <ffimageloading:CachedImage VerticalOptions="Center" WidthRequest="16" HeightRequest="16" Source="icon_profile_choice" Aspect="AspectFit"/>
+                                        <Label VerticalOptions="Center" Text="좋아요" TextColor="#FFFFFF"/>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame BackgroundColor="#4A9CFF" Padding="10,0" HeightRequest="34" CornerRadius="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="SmartChoice_Clicked"/>
+                                    </Frame.GestureRecognizers>
+                                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+                                        <ffimageloading:CachedImage VerticalOptions="Center" WidthRequest="16" HeightRequest="16" Source="icon_profile_smartchoice" Aspect="AspectFit"/>
+                                        <Label VerticalOptions="Center" Text="스마트 딸기" TextColor="#FFFFFF"/>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+
+        <StackLayout VerticalOptions="Start" HeightRequest="50" Orientation="Horizontal">
+            <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="24" HeightRequest="24" Margin="5,0,0,0" Padding="6">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackButton_Clicked"/>
+                </Grid.GestureRecognizers>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="12" HeightRequest="2" Color="#000000" Rotation="45" TranslationY="4"/>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="12" HeightRequest="2" Color="#000000" Rotation="-45" TranslationY="-4"/>
+            </Grid>
+            <Label VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="100" Text="{Binding DataType, Converter={StaticResource converter}, ConverterParameter='Title'}" FontSize="18" FontAttributes="Bold"/>
+        </StackLayout>
+    </Grid>
+    
+</shares:BasePage>

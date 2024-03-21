@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:main="clr-namespace:Strawberry.MobileApp.Pages.Main"
+              x:Class="Strawberry.MobileApp.Pages.Main.MainPage_ViewLabel"
+              x:DataType="main:MainPage_ViewLabel_Data">
+	<!--
+        이 데이터 템플릿은 MainPage에서 사용되는 라벨을 정의합니다.
+        바인딩을 통해 MainPage_ViewLabel_Data 클래스의 속성과 연결됩니다.
+
+        주요 속성:
+        - FlexLayout.Basis: 100%로 설정하여 가로 크기를 꽉 채우도록 합니다.
+        - Margin: 여백을 10으로 설정합니다.
+        - Text: MainPage_ViewLabel_Data의 Title 속성과 바인딩하여 라벨의 텍스트를 설정합니다.
+        - TextColor: MainPage_ViewLabel_Data의 TextColor 속성과 바인딩하여 라벨의 텍스트 색상을 설정합니다.
+        - FontAttributes: 굵은 글꼴로 설정합니다.
+        - FontSize: 글꼴 크기를 16으로 설정합니다.
+    -->
+	<Label FlexLayout.Basis="100%" Margin="10" Text="{Binding Title}" TextColor="{Binding TextColor}" FontAttributes="Bold" FontSize="16"/>
+</DataTemplate>

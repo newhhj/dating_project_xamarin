@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:main="clr-namespace:Strawberry.MobileApp.Pages.Main"
+              x:Class="Strawberry.MobileApp.Pages.Main.MainPage_View09"
+              x:DataType="main:MainPage_View09_Data">
+
+	<!-- 회원 정보를 표시하는 데이터 템플릿 -->
+
+	<StackLayout FlexLayout.Basis="100%" Orientation="Horizontal" Padding="10,10">
+		<StackLayout.GestureRecognizers>
+			<!-- 프로필 클릭 이벤트 처리 -->
+			<TapGestureRecognizer Tapped="Profile_Clicked"/>
+		</StackLayout.GestureRecognizers>
+		<Frame HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="80" HeightRequest="80" CornerRadius="40">
+			<!-- 프로필 이미지 표시 -->
+			<Image Source="{Binding ProfileImage}" Aspect="AspectFill"/>
+		</Frame>
+		<StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
+			<StackLayout Orientation="Horizontal">
+				<!-- 닉네임 표시 -->
+				<Label Text="{Binding Nickname}" FontSize="16" FontAttributes="Bold"/>
+				<!-- 나이 표시 -->
+				<Label Text="{Binding Age}" VerticalOptions="End" TextColor="#555555"/>
+			</StackLayout>
+			<!-- 메시지 표시 -->
+			<Label Text="회원님을 높게 평가했어요." TextColor="#333333"/>
+			<StackLayout Margin="0,10,0,0" HeightRequest="40" Orientation="Horizontal">
+				<!-- 좋아요 버튼 -->
+				<Button Text="좋아요" BackgroundColor="#4A9CFF" TextColor="#FFFFFF" Clicked="Choice_Clicked" />
+				<!-- 패스 버튼 -->
+				<Button Text="패스" BackgroundColor="#FFFFFF" BorderColor="#AFAFAF" BorderWidth="1" Clicked="Pass_Clicked"/>
+			</StackLayout>
+		</StackLayout>
+	</StackLayout>
+</DataTemplate>

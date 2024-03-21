@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares" 
+                 xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+                 xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+                 x:Class="Strawberry.MobileApp.Pages.Option.RoyalCenterRequestPage"
+                 x:DataType="option:RoyalCenterRequestPageData">
+
+    <shares:BasePage.BindingContext>
+        <option:RoyalCenterRequestPageData x:Name="PageData"/>
+    </shares:BasePage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Back_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+                </Grid>
+                <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="로얄인증센터" FontSize="16" FontAttributes="Bold"/>
+            </StackLayout>
+
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="Fill" Padding="20" Orientation="Vertical" Spacing="10">
+                    <Label Margin="0,0,0,10" Text="로얄 인증 신청" FontSize="16" FontAttributes="Bold"/>
+
+                    <StackLayout HeightRequest="40" Orientation="Horizontal">
+                        <Label WidthRequest="50" MinimumWidthRequest="50" VerticalTextAlignment="Center" Text="이름" FontAttributes="Bold"/>
+                        <Entry HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Placeholder="이름 입력" Text="{Binding Name}" Keyboard="Text"/>
+                    </StackLayout>
+                    <StackLayout HeightRequest="40" Orientation="Horizontal">
+                        <Label WidthRequest="50" MinimumWidthRequest="50" VerticalTextAlignment="Center" Text="닉네임" FontAttributes="Bold"/>
+                        <Entry HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Placeholder="닉네임 입력" Text="{Binding Nickname}" Keyboard="Text"/>
+                    </StackLayout>
+                    <StackLayout HeightRequest="40" Orientation="Horizontal">
+                        <Label WidthRequest="50" MinimumWidthRequest="50" VerticalTextAlignment="Center" Text="연락처" FontAttributes="Bold"/>
+                        <Entry HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Placeholder="연락가능한 전화번호 입력" Text="{Binding PhoneNumber}" Keyboard="Telephone"/>
+                    </StackLayout>
+                    <StackLayout HeightRequest="40" Orientation="Horizontal">
+                        <Label WidthRequest="50" MinimumWidthRequest="50" VerticalTextAlignment="Center" Text="이메일" FontAttributes="Bold"/>
+                        <Entry HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Placeholder="증명서류 발송용 이메일 입력" Text="{Binding Email}" Keyboard="Email"/>
+                    </StackLayout>
+
+                    <Label TextColor="#7A7A7A">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="위 개인정보 사항 입력 후, "/>
+                                <Span Text="{Binding ManagerEmail, TargetNullValue='strawberryroyalinc@gmail.com'}" TextColor="#4A9CFF" TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="EmailAddress_Clicked"/>
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span Text="으로 본인을 증명할 서류를 보내주시면 개별 연락드려 자세한 안내를 드리도록 하겠습니다."/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Button Margin="0,20,0,0" VerticalOptions="EndAndExpand" Text="신청하기" TextColor="#FFFFFF" BackgroundColor="#4A9CFF" Clicked="Request_Clicked"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</shares:BasePage>

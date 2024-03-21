@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    x:Class="Strawberry.MobileApp.Pages.Profile.ProfilePage_DetailImage"
+    BackgroundColor="Black">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClosePage_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+                </Grid>
+            </StackLayout>
+
+            <WebView x:Name="webView" VerticalOptions="FillAndExpand" BackgroundColor="Black"
+                     android:WebView.EnableZoomControls="True"
+                     android:WebView.DisplayZoomControls="False"/>
+        </StackLayout>
+    </ContentPage.Content>
+</shares:BasePage>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares" 
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:join="clr-namespace:Strawberry.MobileApp.Pages.Join"
+    x:Class="Strawberry.MobileApp.Pages.Join.Page_Join_Email">
+    <ContentPage.BindingContext>
+        <join:Data_Join_Email x:Name="PageData"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BindingContext="{StaticResource Member}">
+            <ScrollView Margin="0,54,0,0">
+                <StackLayout Orientation="Vertical" Padding="10" Spacing="20">
+                    <StackLayout Spacing="0">
+                        <Label Text="가입을 시작해요." FontSize="16"/>
+                        <Label Text="새 계정을 위한 이메일을 입력해주세요."/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Frame BorderColor="{Binding Email, Converter={Reference PageData}, ConverterParameter='EntryBorderColor'}" CornerRadius="5" Padding="10,0" HeightRequest="46">
+                            <Entry Keyboard="Email" ReturnType="Done" Text="{Binding Email, Source={StaticResource Member}}" ClearButtonVisibility="WhileEditing"/>
+                        </Frame>
+                        <Label Margin="10,0,0,0" Text="이메일 형식이 아닙니다." TextColor="Red" IsVisible="{Binding Email, Converter={Reference PageData}, ConverterParameter='IsVisibleErrorMessage'}"/>
+                    </StackLayout>
+                    <Button VerticalOptions="EndAndExpand" Text="다음" FontSize="16" TextColor="#FFFFFF" BackgroundColor="{Binding Email, Converter={Reference PageData}, ConverterParameter='NextButtonColor'}" Clicked="NextButton_Clicked"/>
+                </StackLayout>
+            </ScrollView>
+
+            <Grid VerticalOptions="Start" HeightRequest="54">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40">
+                    <ffimage:CachedImage VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="16" HeightRequest="16" Source="icon_close" Aspect="AspectFit"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</shares:BasePage>

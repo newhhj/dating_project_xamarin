@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    x:Class="Strawberry.MobileApp.Pages.Main.MainPage_Dialog_RemovePartner">
+
+	<Grid VerticalOptions="Center" Margin="40" IsClippedToBounds="True">
+		<BoxView Color="#FFFFFF" CornerRadius="10"/>
+		<StackLayout Orientation="Vertical">
+			<!-- 제목 라벨 -->
+			<Label HorizontalOptions="Center" Margin="10,20,10,0" Text="상대를 삭제하시겠어요?" FontSize="18" FontAttributes="Bold"/>
+			<!-- 설명 라벨 -->
+			<Label HorizontalOptions="Center" Margin="10,0,10,20" Text="이 상대는 더 이상 표시되지 않습니다" TextColor="Gray"/>
+			<!-- 버튼 레이아웃 -->
+			<FlexLayout JustifyContent="Start" AlignContent="Start" AlignItems="Start" Wrap="Wrap">
+				<!-- 구분선 -->
+				<BoxView FlexLayout.Basis="100%" HeightRequest="1" Color="LightGray"/>
+				<!-- "아니요" 버튼 -->
+				<Label FlexLayout.Grow="1" HeightRequest="50" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="아니요" TextColor="#4A9CFF">
+					<Label.GestureRecognizers>
+						<TapGestureRecognizer Tapped="Deny_Clicked"/>
+					</Label.GestureRecognizers>
+				</Label>
+				<!-- 구분선 -->
+				<BoxView FlexLayout.Basis="1" HeightRequest="50" Color="LightGray"/>
+				<!-- "예" 버튼 -->
+				<Label FlexLayout.Grow="1" HeightRequest="50" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="예" TextColor="#4A9CFF">
+					<Label.GestureRecognizers>
+						<TapGestureRecognizer Tapped="Allow_Clicked"/>
+					</Label.GestureRecognizers>
+				</Label>
+			</FlexLayout>
+		</StackLayout>
+	</Grid>
+
+</popup:PopupPage>

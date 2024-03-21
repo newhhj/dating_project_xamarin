@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    x:Class="Strawberry.MobileApp.Pages.Main.MainPage_Dialog_Payment"
+    x:Name="RootView">
+
+	<Grid VerticalOptions="Center" Margin="30" IsClippedToBounds="True">
+		<BoxView Color="#FFFFFF" CornerRadius="10"/>
+		<StackLayout Orientation="Vertical" Spacing="0">
+			<!-- 사용자의 썸네일 이미지를 보여주는 CachedImage -->
+			<forms:CachedImage HorizontalOptions="Center" Margin="0,20,0,10" WidthRequest="80" HeightRequest="80" Source="{Binding Thumbnail, Source={Reference RootView}}" Aspect="AspectFill">
+				<forms:CachedImage.Transformations>
+					<transformations:CircleTransformation/>
+				</forms:CachedImage.Transformations>
+			</forms:CachedImage>
+			<!-- 사용자의 닉네임을 보여주는 Label -->
+			<Label HorizontalOptions="Center" Margin="0,0,0,10" Text="{Binding Nickname, Source={Reference RootView}, StringFormat='{0}님을 놓치지 마세요'}" FontSize="16" FontAttributes="Bold"/>
+			<!-- 결제까지 남은 시간을 보여주는 Label -->
+			<Label HorizontalOptions="Center" Text="{Binding TimeText, Source={Reference RootView}, StringFormat='좋아요 충전까지 {0}'}" TextColor="Gray"/>
+			<Label HorizontalOptions="Center" Margin="0,0,0,20" Text="딸기를 구매해 즉시 좋아요를 보내보세요." TextColor="Gray"/>
+			<!-- 구매 옵션을 선택할 수 있는 Grid -->
+			<Grid BackgroundColor="#F9F9F9" ColumnSpacing="0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="33.33*"/>
+					<ColumnDefinition Width="33.33*"/>
+					<ColumnDefinition Width="33.33*"/>
+				</Grid.ColumnDefinitions>
+
+				<!-- 구매 옵션 1 -->
+				<StackLayout Grid.Column="0" Padding="0,20" Orientation="Vertical" Spacing="0" BackgroundColor="{Binding SelectedItemId, Source={Reference RootView}, Converter={Reference RootView}, ConverterParameter='Item01ToBackgroundColor'}">
+					<StackLayout.GestureRecognizers>
+						<TapGestureRecognizer Tapped="Item01_Clicked"/>
+					</StackLayout.GestureRecognizers>
+					<forms:CachedImage HeightRequest="20" Source="icon_payment_hot" Aspect="AspectFit" Opacity="0"/>
+					<StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+						<forms:CachedImage HeightRequest="16" Source="icon_payment_strawberry" Aspect="AspectFit"/>
+						<Label>
+							<Label.FormattedText>
+								<FormattedString>
+									<Span Text="15" FontSize="20"/>
+									<Span Text="개" TextColor="Gray"/>
+								</FormattedString>
+							</Label.FormattedText>
+						</Label>
+					</StackLayout>
+					<Label Margin="0,10,0,0" HorizontalOptions="Center" Text="5,990원"/>
+				</StackLayout>
+
+				<!-- 구매 옵션 2 -->
+				<StackLayout Grid.Column="1" Padding="0,20" Orientation="Vertical" Spacing="0" BackgroundColor="{Binding SelectedItemId, Source={Reference RootView}, Converter={Reference RootView}, ConverterParameter='Item02ToBackgroundColor'}">
+					<StackLayout.GestureRecognizers>
+						<TapGestureRecognizer Tapped="Item02_Clicked"/>
+					</StackLayout.GestureRecognizers>
+					<forms:CachedImage HeightRequest="20" Source="icon_payment_hot" Aspect="AspectFit"/>
+					<StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+						<forms:CachedImage HeightRequest="16" Source="icon_payment_strawberry" Aspect="AspectFit"/>
+						<Label>
+							<Label.FormattedText>
+								<FormattedString>
+									<Span Text="50" FontSize="20"/>
+									<Span Text="개" TextColor="Gray"/>
+								</FormattedString>
+							</Label.FormattedText>
+						</Label>
+					</StackLayout>
+					<Label Margin="0,10,0,0" HorizontalOptions="Center" Text="15,900원"/>
+				</StackLayout>
+
+				<!-- 구매 옵션 3 -->
+				<StackLayout Grid.Column="2" Padding="0,20" Orientation="Vertical" Spacing="0" BackgroundColor="{Binding SelectedItemId, Source={Reference RootView}, Converter={Reference RootView}, ConverterParameter='Item03ToBackgroundColor'}">
+					<StackLayout.GestureRecognizers>
+						<TapGestureRecognizer Tapped="Item03_Clicked"/>
+					</StackLayout.GestureRecognizers>
+					<forms:CachedImage HeightRequest="20" Source="icon_payment_hot" Aspect="AspectFit" Opacity="0"/>
+					<StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+						<forms:CachedImage HeightRequest="16" Source="icon_payment_strawberry" Aspect="AspectFit"/>
+						<Label>
+							<Label.FormattedText>
+								<FormattedString>
+									<Span Text="150" FontSize="20"/>
+									<Span Text="개" TextColor="Gray"/>
+								</FormattedString>
+							</Label.FormattedText>
+						</Label>
+					</StackLayout>
+					<Label Margin="0,10,0,0" HorizontalOptions="Center" Text="39,900원"/>
+				</StackLayout>
+			</Grid>
+			<!-- 즉시 구매하기 버튼 -->
+			<Button Margin="10,20,10,0" Text="즉시 구매하기" BackgroundColor="#4A9CFF" TextColor="#FFFFFF" Clicked="Payment_Clicked"/>
+			<!-- 기다리기 버튼 -->
+			<Button Margin="10" Text="기다리기" BackgroundColor="#FFFFFF" BorderColor="#AFAFAF" BorderWidth="1" TextColor="#333333" Clicked="Close_Clicked"/>
+		</StackLayout>
+	</Grid>
+</pages:PopupPage>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                 xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:popup2="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                 x:Class="Strawberry.MobileApp.Pages.Appeal.AppealDetailAlertCommentDialog">
+
+    <popup:PopupPage.Animation>
+        <popup2:MoveAnimation PositionIn="Bottom" PositionOut="Bottom"/>
+    </popup:PopupPage.Animation>
+
+    <Grid VerticalOptions="End" Padding="0,0,0,-10">
+        <Frame BackgroundColor="#FFFFFF" CornerRadius="10" Padding="0,0,0,10">
+            <StackLayout Padding="15,20" Spacing="15">
+                <Label HorizontalOptions="Start" Text="신고사유를 선택해주세요." TextColor="#7A7A7A"/>
+
+                <Label HeightRequest="30" VerticalTextAlignment="Center" Text="광고성 콘텐츠" FontSize="18" FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Menu01_Clicked"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label HeightRequest="30" VerticalTextAlignment="Center" Text="동일 게시물 반복 게시" FontSize="18" FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Menu02_Clicked"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label HeightRequest="30" VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Menu03_Clicked"/>
+                    </Label.GestureRecognizers>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="부적절한 내용" FontSize="18" FontAttributes="Bold"/>
+                            <Span Text=" (욕설, 비방, 외설적인 내용 등)"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </Frame>
+    </Grid>
+
+</popup:PopupPage>

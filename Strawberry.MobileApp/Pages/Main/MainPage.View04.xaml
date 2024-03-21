@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+              xmlns:pancardview="clr-namespace:PanCardView;assembly=PanCardView" 
+              xmlns:main="clr-namespace:Strawberry.MobileApp.Pages.Main"
+              xmlns:dataconverters="clr-namespace:Strawberry.MobileApp.DataConverters"
+              x:Class="Strawberry.MobileApp.Pages.Main.MainPage_View04"
+              x:DataType="main:MainPage_View04_Data">
+	<StackLayout FlexLayout.Basis="100%" Spacing="0" Margin="0,0,0,30">
+		<StackLayout.Resources>
+			<!-- 리소스 딕셔너리 -->
+			<ResourceDictionary>
+				<!-- 데이터 컨버터 -->
+				<dataconverters:CountToBlurredConverter x:Key="countToBlurredConverter"/>
+				<main:MainPage_View04_Converter x:Key="viewConverter"/>
+			</ResourceDictionary>
+			<!-- 레이블 스타일 -->
+			<Style TargetType="Label">
+				<Setter Property="TextColor" Value="#FFFFFF"/>
+			</Style>
+		</StackLayout.Resources>
+		<Grid>
+			<!-- 프로필 이미지 슬라이드 -->
+			<pancardview:CarouselView x:Name="carouselView01" IsOnlyForwardDirection="True" IsUserInteractionEnabled="False" HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}, Converter={StaticResource RatioToHeightConverter}, ConverterParameter='1.2'}" ItemsSource="{Binding ProfileImages}" SelectedIndex="{Binding SelectedIndex}">
+				<pancardview:CarouselView.ItemTemplate>
+					<DataTemplate x:DataType="x:String">
+						<Grid>
+							<!-- 이미지 표시 -->
+							<forms:CachedImage Source="{Binding}" Aspect="AspectFill" Transformations="{Binding ., Converter={StaticResource countToBlurredConverter}, ConverterParameter={Reference carouselView01}}" />
+							<Grid>
+								<!-- 이전, 다음 슬라이드로 이동하기 위한 버튼 -->
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width=".5*"/>
+									<ColumnDefinition Width=".5*"/>
+								</Grid.ColumnDefinitions>
+								<BoxView Grid.Column="0">
+									<BoxView.GestureRecognizers>
+										<TapGestureRecognizer Tapped="PrevSlide_Clicked"/>
+									</BoxView.GestureRecognizers>
+								</BoxView>
+								<BoxView Grid.Column="1">
+									<BoxView.GestureRecognizers>
+										<TapGestureRecognizer Tapped="NextSlide_Clicked"/>
+									</BoxView.GestureRecognizers>
+								</BoxView>
+							</Grid>
+							<StackLayout VerticalOptions="Center" Margin="80,0" Spacing="15">
+								<StackLayout.IsVisible>
+									<!-- 선택된 이미지에 따라 안내 메시지를 표시 -->
+									<MultiBinding Converter="{StaticResource countToBlurredConverter}" ConverterParameter="ToVisible">
+										<Binding Source="{Reference carouselView01}" Path="SelectedIndex"/>
+										<Binding Source="{StaticResource Member}" Path="ProfileImages.Count"/>
+									</MultiBinding>
+								</StackLayout.IsVisible>
+								<Label HorizontalOptions="Center" Text="내 프로필 사진 수 만큼 볼 수 있어요" FontSize="15" FontAttributes="Bold"/>
+								<Frame Padding="10" CornerRadius="5">
+									<Frame.GestureRecognizers>
+										<TapGestureRecognizer Tapped="MoveProfile_Clicked"/>
+									</Frame.GestureRecognizers>
+									<Label VerticalOptions="Center" HorizontalOptions="Center" Text="사진 추가하기" TextColor="#333333"/>
+								</Frame>
+							</StackLayout>
+						</Grid>
+					</DataTemplate>
+				</pancardview:CarouselView.ItemTemplate>
+			</pancardview:CarouselView>
+			<!-- 이미지 인디케이터 -->
+			<StackLayout VerticalOptions="Start" HorizontalOptions="Center" Margin="0,15,0,0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding ProfileImages}">
+				<BindableLayout.ItemTemplate>
+					<DataTemplate x:DataType="x:String">
+						<Frame HeightRequest="10" BackgroundColor="#FFFFFF" CornerRadius="5">
+							<Frame.WidthRequest>
+								<MultiBinding Converter="{StaticResource viewConverter}" ConverterParameter="IndicatorWidth">
+									<Binding/>
+									<Binding Source="{Reference carouselView01}" Path="SelectedItem"/>
+								</MultiBinding>
+							</Frame.WidthRequest>
+						</Frame>
+					</DataTemplate>
+				</BindableLayout.ItemTemplate>
+			</StackLayout>
+
+			<!-- 라이브 표시 -->
+			<StackLayout VerticalOptions="Start" HorizontalOptions="End" Margin="10">
+				<StackLayout HorizontalOptions="End" Orientation="Horizontal" IsVisible="{Binding IsLive}">
+					<BoxView VerticalOptions="Center" WidthRequest="8" HeightRequest="8" CornerRadius="4" Color="#4A9CFF"/>
+					<Label VerticalOptions="Center" Text="LIVE" TextColor="#9B4A9CFF"/>
+				</StackLayout>
+			</StackLayout>
+
+			<!-- 오늘 가입 표시 -->
+			<Frame VerticalOptions="End" HorizontalOptions="End" WidthRequest="40" HeightRequest="40" CornerRadius="20" BackgroundColor="#C4FFFFFF" TranslationX="-10" TranslationY="-60" IsVisible="{Binding IsNowJoin}">
+				<Label VerticalOptions="Center" HorizontalOptions="Center" Text="Today" TextColor="#4A9CFF" FontSize="12"/>
+			</Frame>
+
+			<!-- 프로필 정보 표시 -->
+			<StackLayout VerticalOptions="End" Orientation="Vertical" Padding="10,24,10,10">
+				<StackLayout.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Info_Clicked"/>
+				</StackLayout.GestureRecognizers>
+				<StackLayout.Background>
+					<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+						<GradientStop Color="#00000000" Offset="0"/>
+						<GradientStop Color="#55000000" Offset="0.3"/>
+						<GradientStop Color="#55000000" Offset="1"/>
+					</LinearGradientBrush>
+				</StackLayout.Background>
+
+				<StackLayout Orientation="Horizontal">
+					<forms:CachedImage VerticalOptions="End" WidthRequest="30" HeightRequest="21" Source="icon_royal" Aspect="AspectFit" IsVisible="{Binding IsRoyal}"/>
+					<Label VerticalOptions="End" Text="{Binding Nickname}" FontSize="20" FontAttributes="Bold"/>
+					<Label VerticalOptions="End" Text="{Binding Age}" FontSize="16"/>
+					<forms:CachedImage VerticalOptions="End" WidthRequest="30" HeightRequest="15" Source="icon_vip" Aspect="AspectFit" IsVisible="{Binding IsVIP}"/>
+					<forms:CachedImage VerticalOptions="End" WidthRequest="18" HeightRequest="18" Source="icon_star_10" Aspect="AspectFit" IsVisible="{Binding HasStarBadge}"/>
+				</StackLayout>
+				<StackLayout Orientation="Horizontal">
+					<Label VerticalOptions="End" Text="{Binding Job}"/>
+					<Label VerticalOptions="End" Text="{Binding Range, StringFormat='{0}km'}"/>
+					<forms:CachedImage VerticalOptions="End" WidthRequest="13" HeightRequest="18" Source="icon_mic" Aspect="AspectFit" IsVisible="{Binding HasVoice}"/>
+				</StackLayout>
+
+				<Label Text="{Binding SecondMessage}" MaxLines="1" LineBreakMode="TailTruncation" IsVisible="{Binding IsVisibleView0}"/>
+
+				<!-- 매력 포인트 표시 -->
+				<StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding CharmingPoints}" IsVisible="{Binding IsVisibleView1}">
+					<BindableLayout.ItemTemplate>
+						<DataTemplate x:DataType="x:String">
+							<Frame Padding="10,7" BackgroundColor="#50000000" CornerRadius="5">
+								<Label Text="{Binding}"/>
+							</Frame>
+						</DataTemplate>
+					</BindableLayout.ItemTemplate>
+				</StackLayout>
+
+				<!-- 관심사 표시 -->
+				<StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Interests}" IsVisible="{Binding IsVisibleView2}">
+					<BindableLayout.ItemTemplate>
+						<DataTemplate x:DataType="x:String">
+							<Frame Padding="10,7" BackgroundColor="#50000000" CornerRadius="5">
+								<Label Text="{Binding}"/>
+							</Frame>
+						</DataTemplate>
+					</BindableLayout.ItemTemplate>
+				</StackLayout>
+
+				<Label Text="{Binding FirstMessage}" MaxLines="2" LineBreakMode="TailTruncation" IsVisible="{Binding IsVisibleView3}"/>
+
+				<Grid Margin="0,10,0,10">
+					<StackLayout HorizontalOptions="Center" HeightRequest="40" Orientation="Horizontal">
+						<!-- 별점 아이콘 -->
+						<StackLayout.Resources>
+							<Style TargetType="Image">
+								<Setter Property="Aspect" Value="AspectFit"/>
+								<Setter Property="WidthRequest" Value="34"/>
+								<Setter Property="HeightRequest" Value="34"/>
+								<Setter Property="VerticalOptions" Value="Center"/>
+								<Setter Property="HorizontalOptions" Value="Center"/>
+							</Style>
+						</StackLayout.Resources>
+						<Image Source="{Binding StarPoint02_Icon}" Aspect="AspectFit">
+							<Image.GestureRecognizers>
+								<TapGestureRecognizer Tapped="StarPoint01_Clicked"/>
+							</Image.GestureRecognizers>
+						</Image>
+						<Image Source="{Binding StarPoint04_Icon}" Aspect="AspectFit">
+							<Image.GestureRecognizers>
+								<TapGestureRecognizer Tapped="StarPoint02_Clicked"/>
+							</Image.GestureRecognizers>
+						</Image>
+						<Image Source="{Binding StarPoint06_Icon}" Aspect="AspectFit">
+							<Image.GestureRecognizers>
+								<TapGestureRecognizer Tapped="StarPoint03_Clicked"/>
+							</Image.GestureRecognizers>
+						</Image>
+						<Image Source="{Binding StarPoint08_Icon}" Aspect="AspectFit">
+							<Image.GestureRecognizers>
+								<TapGestureRecognizer Tapped="StarPoint04_Clicked"/>
+							</Image.GestureRecognizers>
+						</Image>
+						<Image Source="{Binding StarPoint10_Icon}" Aspect="AspectFit">
+							<Image.GestureRecognizers>
+								<TapGestureRecognizer Tapped="StarPoint05_Clicked"/>
+							</Image.GestureRecognizers>
+						</Image>
+					</StackLayout>
+
+					<Grid HorizontalOptions="Center" HeightRequest="40" TranslationY="-44" IsVisible="false">
+						<BoxView Margin="0,0,0,3" Color="#FFFFFF" CornerRadius="5"/>
+						<BoxView VerticalOptions="End" HorizontalOptions="Start" TranslationX="37" WidthRequest="8" HeightRequest="8" Color="#FFFFFF" CornerRadius="0" Rotation="45"/>
+						<Label Margin="10,0,10,3" HorizontalOptions="Center" VerticalOptions="Center" Text="프로필을 평가할수록 추천이 정교해져요" TextColor="#000000"/>
+					</Grid>
+				</Grid>
+			</StackLayout>
+		</Grid>
+	</StackLayout>
+</DataTemplate>

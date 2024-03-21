@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    x:Class="Strawberry.MobileApp.Pages.Chatting.ChattingAlertDialog">
+
+    <Frame VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="260" CornerRadius="10">
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="CornerRadius" Value="0"/>
+                    <Setter Property="HeightRequest" Value="54"/>
+                    <Setter Property="TextColor" Value="#333333"/>
+                    <Setter Property="BackgroundColor" Value="#FFFFFF"/>
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="FontAttributes" Value="Bold"/>
+                </Style>
+            </Grid.Resources>
+            <StackLayout x:Name="stackLayout01" Spacing="1" BackgroundColor="#F3F3F3">
+                <Button Text="나가기" Clicked="Close_Clicked"/>
+                <Button Text="차단" Clicked="Block_Clicked"/>
+                <Button Text="신고" Clicked="Alert_Clicked"/>
+            </StackLayout>
+            <StackLayout x:Name="stackLayout02" Spacing="1" BackgroundColor="#F3F3F3" IsVisible="False">
+                <Button Text="매너 평가하기" TextColor="#4A9CFF" Clicked="Manner_Clicked"/>
+                <Button Text="비매너 평가하기" Clicked="BadManner_Clicked"/>
+                <Button Text="나가기" Clicked="Close_Clicked"/>
+            </StackLayout>
+        </Grid>
+    </Frame>
+
+</popup:PopupPage>

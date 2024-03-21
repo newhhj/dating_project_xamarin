@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:Strawberry.MobileApp.Views"
+             x:Class="Strawberry.MobileApp.TestPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <views:AutoSizeImageView ImageUrl="http://1.bp.blogspot.com/-Nx0MDS8v2Zw/U32orJu_syI/AAAAAAAAAFs/gofGA5fdwk8/s1600/%EC%9B%80%EC%A7%A410.gif"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

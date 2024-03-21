@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+              x:Class="Strawberry.MobileApp.Pages.Main.MainPage_View05">
+	<StackLayout FlexLayout.Basis="100%" Margin="10" Spacing="20">
+		<!-- 딸기 추천 항목 -->
+		<StackLayout Orientation="Horizontal">
+			<forms:CachedImage VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Source="icon_view05_01" Aspect="AspectFit"/>
+			<Label VerticalOptions="Center" Text="딸기 추천"/>
+			<Grid HorizontalOptions="EndAndExpand" WidthRequest="80" HeightRequest="30">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Item01_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="5" Color="#4A9CFF"/>
+				<Label VerticalOptions="Center" HorizontalOptions="Center" Text="선택"/>
+			</Grid>
+		</StackLayout>
+
+		<!-- 상위 10% 항목 -->
+		<StackLayout Orientation="Horizontal">
+			<forms:CachedImage VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Source="icon_view05_02" Aspect="AspectFit"/>
+			<Label VerticalOptions="Center" Text="상위 10%"/>
+			<Grid HorizontalOptions="EndAndExpand" WidthRequest="80" HeightRequest="30">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Item02_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="5" Color="#4A9CFF"/>
+				<Label VerticalOptions="Center" HorizontalOptions="Center" Text="선택"/>
+			</Grid>
+		</StackLayout>
+
+		<!-- 진지함 항목 -->
+		<StackLayout Orientation="Horizontal">
+			<forms:CachedImage VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Source="icon_view05_03" Aspect="AspectFit"/>
+			<Label VerticalOptions="Center" Text="진지함"/>
+			<Grid HorizontalOptions="EndAndExpand" WidthRequest="80" HeightRequest="30">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Item03_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="5" Color="#4A9CFF"/>
+				<Label VerticalOptions="Center" HorizontalOptions="Center" Text="선택"/>
+			</Grid>
+		</StackLayout>
+
+		<!-- 연락잘되는 항목 -->
+		<StackLayout Orientation="Horizontal">
+			<forms:CachedImage VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Source="icon_view05_04" Aspect="AspectFit"/>
+			<Label VerticalOptions="Center" Text="연락잘되는"/>
+			<Grid HorizontalOptions="EndAndExpand" WidthRequest="80" HeightRequest="30">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Item04_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="5" Color="#4A9CFF"/>
+				<Label VerticalOptions="Center" HorizontalOptions="Center" Text="선택"/>
+			</Grid>
+		</StackLayout>
+
+		<!-- 음주가능 항목 -->
+		<StackLayout Orientation="Horizontal">
+			<forms:CachedImage VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Source="icon_view05_05" Aspect="AspectFit"/>
+			<Label VerticalOptions="Center" Text="음주가능"/>
+			<Grid HorizontalOptions="EndAndExpand" WidthRequest="80" HeightRequest="30">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Item05_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="5" Color="#4A9CFF"/>
+				<Label VerticalOptions="Center" HorizontalOptions="Center" Text="선택"/>
+			</Grid>
+		</StackLayout>
+
+		<!-- 번개만남 항목 -->
+		<StackLayout Orientation="Horizontal">
+			<forms:CachedImage VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Source="icon_view05_06" Aspect="AspectFit"/>
+			<Label VerticalOptions="Center" Text="번개만남"/>
+			<Grid HorizontalOptions="EndAndExpand" WidthRequest="80" HeightRequest="30">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Item06_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="5" Color="#4A9CFF"/>
+				<Label VerticalOptions="Center" HorizontalOptions="Center" Text="선택"/>
+			</Grid>
+		</StackLayout>
+
+		<!-- 맛집홀릭 항목 -->
+		<StackLayout Orientation="Horizontal">
+			<forms:CachedImage VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Source="icon_view05_07" Aspect="AspectFit"/>
+			<Label VerticalOptions="Center" Text="맛집홀릭"/>
+			<Grid HorizontalOptions="EndAndExpand" WidthRequest="80" HeightRequest="30">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Item07_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="5" Color="#4A9CFF"/>
+				<Label VerticalOptions="Center" HorizontalOptions="Center" Text="선택"/>
+			</Grid>
+		</StackLayout>
+
+		<!-- 동네친구 항목 -->
+		<StackLayout Orientation="Horizontal">
+			<forms:CachedImage VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Source="icon_view05_08" Aspect="AspectFit"/>
+			<Label VerticalOptions="Center" Text="동네친구"/>
+			<Grid HorizontalOptions="EndAndExpand" WidthRequest="80" HeightRequest="30">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Item08_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="5" Color="#4A9CFF"/>
+				<Label VerticalOptions="Center" HorizontalOptions="Center" Text="선택"/>
+			</Grid>
+		</StackLayout>
+
+		<!-- 선호 성격 항목 -->
+		<StackLayout Orientation="Horizontal">
+			<forms:CachedImage VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Source="icon_view05_09" Aspect="AspectFit"/>
+			<Label VerticalOptions="Center" Text="선호 성격"/>
+			<Grid HorizontalOptions="EndAndExpand" WidthRequest="80" HeightRequest="30">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Item09_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="5" Color="#4A9CFF"/>
+				<Label VerticalOptions="Center" HorizontalOptions="Center" Text="선택"/>
+			</Grid>
+		</StackLayout>
+
+		<!-- 선호 체형 항목 -->
+		<StackLayout Orientation="Horizontal">
+			<forms:CachedImage VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Source="icon_view05_10" Aspect="AspectFit"/>
+			<Label VerticalOptions="Center" Text="선호 체형"/>
+			<Grid HorizontalOptions="EndAndExpand" WidthRequest="80" HeightRequest="30">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Item10_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="5" Color="#4A9CFF"/>
+				<Label VerticalOptions="Center" HorizontalOptions="Center" Text="선택"/>
+			</Grid>
+		</StackLayout>
+
+		<!-- 선호 키 항목 -->
+		<StackLayout Orientation="Horizontal">
+			<forms:CachedImage VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Source="icon_view05_11" Aspect="AspectFit"/>
+			<Label VerticalOptions="Center" Text="선호 키"/>
+			<Grid HorizontalOptions="EndAndExpand" WidthRequest="80" HeightRequest="30">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Item11_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="5" Color="#4A9CFF"/>
+				<Label VerticalOptions="Center" HorizontalOptions="Center" Text="선택"/>
+			</Grid>
+		</StackLayout>
+
+		<!-- 운동 좋아 항목 -->
+		<StackLayout Orientation="Horizontal">
+			<forms:CachedImage VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Source="icon_view05_12" Aspect="AspectFit"/>
+			<Label VerticalOptions="Center" Text="운동 좋아"/>
+			<Grid HorizontalOptions="EndAndExpand" WidthRequest="80" HeightRequest="30">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Item12_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="5" Color="#4A9CFF"/>
+				<Label VerticalOptions="Center" HorizontalOptions="Center" Text="선택"/>
+			</Grid>
+		</StackLayout>
+	</StackLayout>
+</DataTemplate>

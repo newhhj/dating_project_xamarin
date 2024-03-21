@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="Strawberry.MobileApp.Pages.Option.ServiceCenterPage">
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClosePage_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+                </Grid>
+                <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="고객센터" FontSize="16" FontAttributes="Bold"/>
+            </StackLayout>
+
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" Spacing="20" Padding="0,20">
+                    <StackLayout Padding="20,0" Spacing="20">
+                        <Label HeightRequest="40" VerticalTextAlignment="Center" Text="특허저작권경고" FontSize="16" FontAttributes="Bold"
+                               toolkit:TouchEffect.AnimationDuration="30"
+                               toolkit:TouchEffect.PressedTranslationY="2">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Patent_Clicked"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <!--<StackLayout Orientation="Vertical" Spacing="0"
+                               toolkit:TouchEffect.AnimationDuration="30"
+                               toolkit:TouchEffect.PressedTranslationY="2">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Help_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="도움말" FontSize="16" FontAttributes="Bold"/>
+                            <Label Text="자주 묻는 질문 등 서비스를 안내합니다" TextColor="#7A7A7A"/>
+                        </StackLayout>-->
+                        <StackLayout Orientation="Vertical" Spacing="0"
+                               toolkit:TouchEffect.AnimationDuration="30"
+                               toolkit:TouchEffect.PressedTranslationY="2">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Email_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="문의하기" FontSize="16" FontAttributes="Bold"/>
+                            <Label Text="공휴일 제외 평일 오전 10시부터 오후 7시까지 운영합니다" TextColor="#7A7A7A"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView HeightRequest="1" Color="#F3F3F3"/>
+                    <StackLayout Padding="20,0" Spacing="20">
+                        <Label HeightRequest="40" VerticalTextAlignment="Center" Text="이용약관" FontSize="16" FontAttributes="Bold"
+                               toolkit:TouchEffect.AnimationDuration="30"
+                               toolkit:TouchEffect.PressedTranslationY="2">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="UseTerm_Clicked"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label HeightRequest="40" VerticalTextAlignment="Center" Text="위치기반 서비스 이용약관" FontSize="16" FontAttributes="Bold"
+                               toolkit:TouchEffect.AnimationDuration="30"
+                               toolkit:TouchEffect.PressedTranslationY="2">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="LocationTerm_Clicked"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label HeightRequest="40" VerticalTextAlignment="Center" Text="개인정보 처리방침" FontSize="16" FontAttributes="Bold"
+                               toolkit:TouchEffect.AnimationDuration="30"
+                               toolkit:TouchEffect.PressedTranslationY="2">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PrivacyTerm_Clicked"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label HeightRequest="40" VerticalTextAlignment="Center" Text="사용자 제작 컨텐츠 약관" FontSize="16" FontAttributes="Bold"
+                               toolkit:TouchEffect.AnimationDuration="30"
+                               toolkit:TouchEffect.PressedTranslationY="2">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ContentTerm_Clicked"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</shares:BasePage>

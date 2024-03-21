@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:appeal="clr-namespace:Strawberry.MobileApp.Pages.Appeal"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:ffImage="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    x:Class="Strawberry.MobileApp.Pages.Appeal.AppealDetailPage"
+    x:Name="rootView"
+    x:DataType="appeal:AppealDetailPageData">
+    <Grid>
+        <!--<ScrollView x:Name="scrollView" Margin="0,50,0,96">-->
+        <ScrollView x:Name="scrollView" Margin="{Binding Height, Source={Reference commentView}, Converter={Reference rootView}, ConverterParameter='ScrollViewMargin'}">
+            <StackLayout Padding="0,15">
+                <StackLayout Padding="15,0" Orientation="Horizontal">
+                    <ffimageloading:CachedImage WidthRequest="50" HeightRequest="50" Source="{Binding ProfileImage}" Aspect="AspectFill">
+                        <ffimageloading:CachedImage.Transformations>
+                            <transformations:CircleTransformation/>
+                        </ffimageloading:CachedImage.Transformations>
+                        <ffimageloading:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ProfileImage_Clicked"/>
+                        </ffimageloading:CachedImage.GestureRecognizers>
+                    </ffimageloading:CachedImage>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="StartAndExpand" Spacing="0">
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Nickname}" FontSize="16" FontAttributes="Bold"/>
+                                    <Span Text="{Binding Age, StringFormat=' {0}'}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label TextColor="#333333">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Job}"/>
+                                    <Span Text="{Binding Range, StringFormat=' {0}km'}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    <Image WidthRequest="24" HeightRequest="24" Source="icon_alert02" Aspect="AspectFit">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AppealAlert_Clicked"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                
+                <Label Margin="15,15,15,0" Text="{Binding Content}"/>
+                
+                <StackLayout Margin="15,15,15,0" Orientation="Horizontal" IsVisible="{Binding AreaTimeVisible}">
+                    <Label Text="{Binding Area, StringFormat='#{0}'}" TextColor="#4A9CFF" IsVisible="{Binding AreaVisible}"/>
+                    <Label Text="{Binding Time, StringFormat='#{0}'}" TextColor="#4A9CFF" IsVisible="{Binding TimeVisible}"/>
+                </StackLayout>
+
+                <StackLayout Margin="15,15,15,0" Orientation="Horizontal" Spacing="16">
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ToggleLike_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <ffimageloading:CachedImage VerticalOptions="Center" WidthRequest="16" HeightRequest="16" Source="{Binding LikeIconSource}" Aspect="AspectFit"/>
+                        <Label Text="{Binding Likes}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <ffimageloading:CachedImage VerticalOptions="Center" WidthRequest="16" HeightRequest="16" Source="{Binding CommentIconSource}" Aspect="AspectFit"/>
+                        <Label Text="{Binding Comments.Count}"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Margin="0,10,0,0" BindableLayout.ItemsSource="{Binding Images}" SizeChanged="StackLayout_SizeChanged">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="appeal:AppealDetailPageData+ImageData">
+                            <Image Source="{Binding Source}" HeightRequest="{Binding ViewHeight}"/>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+
+                <StackLayout x:Name="element_Comments" Padding="15,15,15,0" BindableLayout.ItemsSource="{Binding Comments}" Spacing="15" IsVisible="{Binding CommentsVisible}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="appeal:AppealDetailPageData+CommentData">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Frame Grid.Column="0" VerticalOptions="Start" WidthRequest="50" HeightRequest="50" CornerRadius="25" IsClippedToBounds="True">
+                                    <Image Source="{Binding ProfileImage}" Aspect="AspectFill">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="CommentProfileImage_Clicked"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Frame>
+                                <StackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Orientation="Vertical" Spacing="0">
+                                    <Label Text="{Binding ReplyNickname, StringFormat='@{0}'}" TextColor="#4A9CFF" IsVisible="{Binding ReplyNicknameVisible}"/>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Nickname}" FontSize="16" FontAttributes="Bold"/>
+                                                <Span Text="{Binding Comment, StringFormat=' {0}'}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <StackLayout Orientation="Horizontal" Spacing="16" IsVisible="{Binding ReplyCommentUIVisible}">
+                                        <Label Text="{Binding CreateTimeText}" TextColor="#717171"/>
+                                        <Label Text="답글달기" TextColor="#717171">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="CommentReply_Clicked"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Label Text="신고" TextColor="#717171">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="CommentAlert_Clicked"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Spacing="16" IsVisible="{Binding ReplyRemoveUIVisible}">
+                                        <Label Text="{Binding CreateTimeText}" TextColor="#717171"/>
+                                        <Label Text="삭제" TextColor="#717171">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="CommentRemove_Clicked"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+        <Grid x:Name="commentView" VerticalOptions="End" Padding="15,15,15,15" BackgroundColor="#FFFFFF" IsVisible="{Binding UseComment}">
+            <StackLayout Orientation="Vertical">
+                <Label IsVisible="{Binding ReplyNicknameVisible}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding ReplyNickname}" FontAttributes="Bold"/>
+                            <Span Text="님에게 답글 남기는 중"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Frame HeightRequest="46" CornerRadius="10" BorderColor="#B8333333">
+                    <StackLayout Orientation="Horizontal" Spacing="0">
+                        <Entry x:Name="entry_Comment" Margin="10,0,0,0" HorizontalOptions="FillAndExpand" Placeholder="댓글을 입력해주세요." Text="{Binding NewComment}" Completed="NewComment_Clicked"/>
+                        <Label VerticalTextAlignment="Center" Padding="15,0" Text="등록" TextColor="#4A9CFF">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="NewComment_Clicked"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </Grid>
+
+        <StackLayout VerticalOptions="Start" HeightRequest="50" Orientation="Horizontal">
+            <Grid VerticalOptions="Center" WidthRequest="40" HeightRequest="40">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackButton_Clicked"/>
+                </Grid.GestureRecognizers>
+                <ffImage:SvgCachedImage VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="20" HeightRequest="20" Source="{Binding BackButtonImageSource}" Aspect="AspectFit"/>
+            </Grid>
+            <Label VerticalOptions="Center" Text="뿜뿜" FontSize="16"/>
+        </StackLayout>
+    </Grid>
+    
+</shares:BasePage>

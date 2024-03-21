@@ -1,0 +1,207 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\1.SourceXamarin\\Strawberry\\Strawberry.MobileApp\\Strawberry.MobileApp.iOS\\Strawberry.MobileApp.iOS.csproj": {}
+  },
+  "projects": {
+    "D:\\1.SourceXamarin\\Strawberry\\Strawberry.MobileApp\\Strawberry.MobileApp.iOS\\Strawberry.MobileApp.iOS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\1.SourceXamarin\\Strawberry\\Strawberry.MobileApp\\Strawberry.MobileApp.iOS\\Strawberry.MobileApp.iOS.csproj",
+        "projectName": "Strawberry.MobileApp.iOS",
+        "projectPath": "D:\\1.SourceXamarin\\Strawberry\\Strawberry.MobileApp\\Strawberry.MobileApp.iOS\\Strawberry.MobileApp.iOS.csproj",
+        "packagesPath": "C:\\Users\\johohyun\\.nuget\\packages\\",
+        "outputPath": "D:\\1.SourceXamarin\\Strawberry\\Strawberry.MobileApp\\Strawberry.MobileApp.iOS\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "D:\\visualstudio\\visualstudiosdk\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\johohyun\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "xamarinios10"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "xamarinios10": {
+            "projectReferences": {
+              "D:\\1.SourceXamarin\\Strawberry\\Strawberry.MobileApp\\Strawberry.MobileApp\\Strawberry.MobileApp.csproj": {
+                "projectPath": "D:\\1.SourceXamarin\\Strawberry\\Strawberry.MobileApp\\Strawberry.MobileApp\\Strawberry.MobileApp.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "xamarinios10": {
+          "dependencies": {
+            "Xamarin.Essentials": {
+              "target": "Package",
+              "version": "[1.7.0, )"
+            },
+            "Xamarin.Forms": {
+              "target": "Package",
+              "version": "[5.0.0.2012, )"
+            },
+            "Xamarin.Forms.Maps": {
+              "target": "Package",
+              "version": "[5.0.0.2012, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-arm64": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "D:\\1.SourceXamarin\\Strawberry\\Strawberry.MobileApp\\Strawberry.MobileApp\\Strawberry.MobileApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\1.SourceXamarin\\Strawberry\\Strawberry.MobileApp\\Strawberry.MobileApp\\Strawberry.MobileApp.csproj",
+        "projectName": "Strawberry.MobileApp",
+        "projectPath": "D:\\1.SourceXamarin\\Strawberry\\Strawberry.MobileApp\\Strawberry.MobileApp\\Strawberry.MobileApp.csproj",
+        "packagesPath": "C:\\Users\\johohyun\\.nuget\\packages\\",
+        "outputPath": "D:\\1.SourceXamarin\\Strawberry\\Strawberry.MobileApp\\Strawberry.MobileApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\visualstudio\\visualstudiosdk\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\johohyun\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "CardsView": {
+              "target": "Package",
+              "version": "[2.8.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Plugin.AudioRecorder": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Plugin.InAppBilling": {
+              "target": "Package",
+              "version": "[6.7.0, )"
+            },
+            "Plugin.MediaManager": {
+              "target": "Package",
+              "version": "[1.0.9, )"
+            },
+            "Rg.Plugins.Popup": {
+              "target": "Package",
+              "version": "[2.0.0.12, )"
+            },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[2.80.3, )"
+            },
+            "SkiaSharp.Views.Forms": {
+              "target": "Package",
+              "version": "[2.80.3, )"
+            },
+            "Xamarin.Auth": {
+              "target": "Package",
+              "version": "[1.7.0, )"
+            },
+            "Xamarin.CommunityToolkit": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
+            "Xamarin.Essentials": {
+              "target": "Package",
+              "version": "[1.7.0, )"
+            },
+            "Xamarin.FFImageLoading.Forms": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
+            "Xamarin.FFImageLoading.Svg.Forms": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
+            "Xamarin.FFImageLoading.Transformations": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
+            "Xamarin.Forms": {
+              "target": "Package",
+              "version": "[5.0.0.2012, )"
+            },
+            "Xamarin.Forms.Maps": {
+              "target": "Package",
+              "version": "[5.0.0.2012, )"
+            },
+            "sqlite-net-pcl": {
+              "target": "Package",
+              "version": "[1.8.116, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

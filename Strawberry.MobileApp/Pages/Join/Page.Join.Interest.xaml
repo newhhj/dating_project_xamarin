@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares" 
+    xmlns:join="clr-namespace:Strawberry.MobileApp.Pages.Join" 
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="Strawberry.MobileApp.Pages.Join.Page_Join_Interest">
+    <ContentPage.BindingContext>
+        <join:Data_Join_Interest x:Name="PageData"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Margin="0,54,0,0">
+                <ScrollView VerticalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Label Margin="10,0,10,0" Text="회원님의 매력 포인트를 선택해 주세요" FontSize="16"/>
+
+                        <FlexLayout Margin="7" Wrap="Wrap" BindableLayout.ItemsSource="{Binding Items}" JustifyContent="Start" AlignItems="Start" AlignContent="Start">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Margin="3" Padding="15,10" CornerRadius="5"
+                                           BackgroundColor="{Binding IsSelected, Converter={Reference PageData}, ConverterParameter='BackgroundColor'}">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Item_Clicked"/>
+                                        </Frame.GestureRecognizers>
+                                        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Name}"
+                                               TextColor="{Binding IsSelected, Converter={Reference PageData}, ConverterParameter='TextColor'}"/>
+                                    </Frame>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </FlexLayout>
+                    </StackLayout>
+                </ScrollView>
+
+                <Button VerticalOptions="End" Margin="10" Text="다음" FontSize="16" TextColor="#FFFFFF" BackgroundColor="#4A9CFF" Clicked="NextButton_Clicked"/>
+            </StackLayout>
+
+            <Grid VerticalOptions="Start" HeightRequest="54">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseButton_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <ffimage:CachedImage VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="16" HeightRequest="16" Source="icon_close" Aspect="AspectFit"/>
+                </Grid>
+            </Grid>
+
+            <Grid x:Name="indicator" BackgroundColor="#50000000" IsVisible="False">
+                <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Color="#4A9CFF" IsRunning="True"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</shares:BasePage>

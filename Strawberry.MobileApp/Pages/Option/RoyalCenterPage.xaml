@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares" 
+                 xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+                 xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+                 x:Class="Strawberry.MobileApp.Pages.Option.RoyalCenterPage">
+
+    <shares:BasePage.BindingContext>
+        <option:RoyalCenterPageData x:Name="PageData"/>
+    </shares:BasePage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Back_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+                </Grid>
+                <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="로얄인증센터" FontSize="16" FontAttributes="Bold"/>
+            </StackLayout>
+
+            <ScrollView VerticalOptions="Fill" IsVisible="{Binding IsRoyal, Source={StaticResource Member}}">
+                <StackLayout VerticalOptions="Fill" Padding="0,0,0,20" Orientation="Vertical" Spacing="0">
+                    <Image HeightRequest="224.5" Source="img_royal_title" Aspect="AspectFill"/>
+
+                    <Label Margin="20">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="로얄" FontSize="16"/>
+                                <Span Text=" 1년 " FontSize="18" FontAttributes="Bold"/>
+                                <Span Text="무제한권" FontSize="16"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Grid HeightRequest="80" Margin="0,10,0,0" Padding="10,0"
+                          toolkit:TouchEffect.AnimationDuration="30"
+                          toolkit:TouchEffect.PressedTranslationY="2">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item04_Clicked"/>
+                        </Grid.GestureRecognizers>
+                        <Rectangle RadiusX="15" RadiusY="15" StrokeThickness="5" Fill="#FFFFFF">
+                            <Rectangle.Stroke>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#F6D071" Offset="0.0"/>
+                                    <GradientStop Color="#FEED99" Offset="0.5"/>
+                                    <GradientStop Color="#F6D071" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Stroke>
+                        </Rectangle>
+                        <StackLayout Padding="24,0" Orientation="Horizontal">
+                            <Image WidthRequest="30" Aspect="AspectFit" Source="icon_royal_item08"/>
+                            <Label VerticalOptions="Center" Text="무제한 좋아요" FontSize="16" FontAttributes="Bold"/>
+                            <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="299,000원" FontSize="16"/>
+                        </StackLayout>
+                    </Grid>
+                    <Grid HeightRequest="80" Margin="0,10,0,0" Padding="10,0"
+                          toolkit:TouchEffect.AnimationDuration="30"
+                          toolkit:TouchEffect.PressedTranslationY="2">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item05_Clicked"/>
+                        </Grid.GestureRecognizers>
+                        <Rectangle RadiusX="15" RadiusY="15" StrokeThickness="5" Fill="#FFFFFF">
+                            <Rectangle.Stroke>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#F6D071" Offset="0.0"/>
+                                    <GradientStop Color="#FEED99" Offset="0.5"/>
+                                    <GradientStop Color="#F6D071" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Stroke>
+                        </Rectangle>
+                        <StackLayout Padding="24,0" Orientation="Horizontal">
+                            <Image WidthRequest="30" Aspect="AspectFit" Source="icon_royal_item09"/>
+                            <Label VerticalOptions="Center" Text="무제한 스마트 딸기" FontSize="16" FontAttributes="Bold"/>
+                            <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="399,000원" FontSize="16"/>
+                        </StackLayout>
+                    </Grid>
+                    <Grid HeightRequest="80" Margin="0,10,0,0" Padding="10,0"
+                          toolkit:TouchEffect.AnimationDuration="30"
+                          toolkit:TouchEffect.PressedTranslationY="2">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item06_Clicked"/>
+                        </Grid.GestureRecognizers>
+                        <Rectangle RadiusX="15" RadiusY="15" StrokeThickness="5" Fill="#FFFFFF">
+                            <Rectangle.Stroke>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#F6D071" Offset="0.0"/>
+                                    <GradientStop Color="#FEED99" Offset="0.5"/>
+                                    <GradientStop Color="#F6D071" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Stroke>
+                        </Rectangle>
+                        <StackLayout Padding="24,0" Orientation="Horizontal">
+                            <Image WidthRequest="30" Aspect="AspectFit" Source="icon_royal_item10"/>
+                            <Label VerticalOptions="Center" Text="무제한 대화" FontSize="16" FontAttributes="Bold"/>
+                            <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="450,000원" FontSize="16"/>
+                        </StackLayout>
+                    </Grid>
+                    
+                </StackLayout>
+            </ScrollView>
+
+            <ScrollView VerticalOptions="Fill" IsVisible="{Binding !IsRoyal, Source={StaticResource Member}}">
+                <StackLayout VerticalOptions="Fill" Orientation="Vertical" Spacing="0">
+                    <Image HeightRequest="224.5" Source="img_royal_title" Aspect="AspectFill"/>
+
+                    <StackLayout Margin="0,30,0,0" Orientation="Vertical" Spacing="10" IsVisible="{Binding IsVisibleMaleContent}">
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="10">
+                            <Frame BackgroundColor="#FFF6C8" WidthRequest="100" HeightRequest="100" CornerRadius="10">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical">
+                                    <Image Source="icon_royal_item01" Aspect="AspectFit" HeightRequest="30"/>
+                                    <Label Margin="10,0" HorizontalTextAlignment="Center" Text="전문직"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame BackgroundColor="#FFF6C8" WidthRequest="100" HeightRequest="100" CornerRadius="10">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical">
+                                    <Image Source="icon_royal_item02" Aspect="AspectFit" HeightRequest="30"/>
+                                    <Label Margin="10,0" HorizontalTextAlignment="Center" Text="연봉 1억 이상"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="10">
+                            <Frame BackgroundColor="#FFF6C8" WidthRequest="100" HeightRequest="100" CornerRadius="10">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical">
+                                    <Image Source="icon_royal_item03" Aspect="AspectFit" HeightRequest="30"/>
+                                    <Label Margin="10,0" HorizontalTextAlignment="Center" Text="재산 5억 1년이상 보유"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame BackgroundColor="#FFF6C8" WidthRequest="100" HeightRequest="100" CornerRadius="10">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical">
+                                    <Image Source="icon_royal_item04" Aspect="AspectFit" HeightRequest="30"/>
+                                    <Label Margin="10,0" HorizontalTextAlignment="Center" Text="공무원 5급 이상"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                    
+                    <StackLayout Margin="0,30,0,0" Orientation="Vertical" Spacing="10" IsVisible="{Binding IsVisibleFemaleContent}">
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="10">
+                            <Frame BackgroundColor="#FFF6C8" WidthRequest="100" HeightRequest="100" CornerRadius="10">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical">
+                                    <Image Source="icon_royal_item01" Aspect="AspectFit" HeightRequest="30"/>
+                                    <Label Margin="10,0" HorizontalTextAlignment="Center" Text="전문직"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame BackgroundColor="#FFF6C8" WidthRequest="100" HeightRequest="100" CornerRadius="10">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical">
+                                    <Image Source="icon_royal_item01" Aspect="AspectFit" HeightRequest="30"/>
+                                    <Label Margin="10,0" HorizontalTextAlignment="Center" Text="연봉 5천만원 이상"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame BackgroundColor="#FFF6C8" WidthRequest="100" HeightRequest="100" CornerRadius="10">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical">
+                                    <Image Source="icon_royal_item05" Aspect="AspectFit" HeightRequest="30"/>
+                                    <Label Margin="10,0" HorizontalTextAlignment="Center" Text="공기업 대리 이상"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="10">
+                            <Frame BackgroundColor="#FFF6C8" WidthRequest="100" HeightRequest="100" CornerRadius="10">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical">
+                                    <Image Source="icon_royal_item04" Aspect="AspectFit" HeightRequest="30"/>
+                                    <Label Margin="10,0" HorizontalTextAlignment="Center" Text="공무원 7급 이상"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame BackgroundColor="#FFF6C8" WidthRequest="100" HeightRequest="100" CornerRadius="10">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical">
+                                    <Image Source="icon_royal_item06" Aspect="AspectFit" HeightRequest="30"/>
+                                    <Label Margin="10,0" HorizontalTextAlignment="Center" Text="미인대회 수상자"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame BackgroundColor="#FFF6C8" WidthRequest="100" HeightRequest="100" CornerRadius="10">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical">
+                                    <Image Source="icon_royal_item07" Aspect="AspectFit" HeightRequest="30"/>
+                                    <Label Margin="10,0" HorizontalTextAlignment="Center" Text="승무원"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                    
+                    <Label Padding="30,10" Text="위 자격사항이 충족 및 증명서류 확인 가능한 회원분에 한해서 신청가능합니다." TextColor="#7A7A7A" FontSize="12"/>
+
+                    <Grid HeightRequest="80" Padding="10,0" IsVisible="{Binding IsVisibleMaleContent}"
+                          toolkit:TouchEffect.AnimationDuration="30"
+                          toolkit:TouchEffect.PressedTranslationY="2">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item01_Clicked"/>
+                        </Grid.GestureRecognizers>
+                        <Rectangle RadiusX="15" RadiusY="15" StrokeThickness="5" Fill="#FFFFFF">
+                            <Rectangle.Stroke>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#F6D071" Offset="0.0"/>
+                                    <GradientStop Color="#FEED99" Offset="0.5"/>
+                                    <GradientStop Color="#F6D071" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Stroke>
+                        </Rectangle>
+                        <StackLayout Padding="24,0" Orientation="Horizontal">
+                            <StackLayout VerticalOptions="Center" Orientation="Vertical" Spacing="0">
+                                <Label Text="로얄 인증 신청" FontSize="16" FontAttributes="Bold"/>
+                                <Label Text="(영업일 기준 7일 ~ 15일 소요)" TextColor="#7A7A7A" FontSize="12"/>
+                            </StackLayout>
+                            <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="49,900원" FontSize="16"/>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid HeightRequest="80" Padding="10,0" IsVisible="{Binding IsVisibleFemaleContent}"
+                          toolkit:TouchEffect.AnimationDuration="30"
+                          toolkit:TouchEffect.PressedTranslationY="2">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item02_Clicked"/>
+                        </Grid.GestureRecognizers>
+                        <Rectangle RadiusX="15" RadiusY="15" StrokeThickness="5" Fill="#FFFFFF">
+                            <Rectangle.Stroke>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#F6D071" Offset="0.0"/>
+                                    <GradientStop Color="#FEED99" Offset="0.5"/>
+                                    <GradientStop Color="#F6D071" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Stroke>
+                        </Rectangle>
+                        <StackLayout Padding="24,0" Orientation="Horizontal">
+                            <StackLayout VerticalOptions="Center" Orientation="Vertical" Spacing="0">
+                                <Label Text="로얄 인증 신청" FontSize="16" FontAttributes="Bold"/>
+                                <Label Text="(영업일 기준 7일 ~ 15일 소요)" TextColor="#7A7A7A" FontSize="12"/>
+                            </StackLayout>
+                            <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="29,900원" FontSize="16"/>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid HeightRequest="80" Margin="0,10,0,0" Padding="10,0"
+                          toolkit:TouchEffect.AnimationDuration="30"
+                          toolkit:TouchEffect.PressedTranslationY="2">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item03_Clicked"/>
+                        </Grid.GestureRecognizers>
+                        <Rectangle RadiusX="15" RadiusY="15" StrokeThickness="5" Fill="#FFFFFF">
+                            <Rectangle.Stroke>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#F6D071" Offset="0.0"/>
+                                    <GradientStop Color="#FEED99" Offset="0.5"/>
+                                    <GradientStop Color="#F6D071" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Stroke>
+                        </Rectangle>
+                        <StackLayout Padding="24,0" Orientation="Horizontal">
+                            <StackLayout VerticalOptions="Center" Orientation="Vertical" Spacing="0">
+                                <Label Text="로얄 인증 긴급 1일 신청" FontSize="16" FontAttributes="Bold"/>
+                                <Label Text="(요구서류 제공시점 이후 1일 소요)" TextColor="#7A7A7A" FontSize="12"/>
+                            </StackLayout>
+                            <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="99,000원" FontSize="16"/>
+                        </StackLayout>
+                    </Grid>
+                    
+                    <Label Padding="30,10" Text="위 인증비용은 해당 유관기관에 진위확인을 위한 재반비용임을 참고바랍니다." TextColor="#7A7A7A" FontSize="12"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</shares:BasePage>

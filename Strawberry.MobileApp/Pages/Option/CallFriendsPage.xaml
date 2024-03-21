@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Strawberry.MobileApp.Pages.Option.CallFriendsPage">
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClosePage_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+                </Grid>
+                <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="친구 초대" FontSize="16" FontAttributes="Bold"/>
+            </StackLayout>
+
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout Padding="0,0,0,20" Orientation="Vertical" Spacing="0">
+                    <Image HeightRequest="335.5" Source="img_callfriends01" Aspect="AspectFit" SizeChanged="Image_SizeChanged"/>
+
+                    <Label HorizontalTextAlignment="Center" Margin="30,20" Text="횟수 상관없이 모든 친구를 초대하고 가입 승인이 완료되면 즉시 딸기를 지급해드립니다." FontSize="16" FontAttributes="Bold"/>
+
+                    <Button Margin="30,20" Text="친구 초대하기" FontSize="16" CornerRadius="10" TextColor="#FFFFFF" BackgroundColor="#4A9CFF" Clicked="Accept_Clicked"/>
+
+                    <Label Margin="20,5" Text="1. 초대받은 친구가 회원님이 전송한 고유 초대 링크를 통해 앱을 설치해야 합니다." TextColor="#7A7A7A"/>
+                    <Label Margin="20,5" Text="2. 가입승인이 완료되어 딸기 이용을 시작하면 회원님에게 보상 딸기가 즉시 지급됩니다." TextColor="#7A7A7A"/>
+                    <Label Margin="20,5" Text="3. 초대받은 친구는 기존에 딸기를 이용한 적 없는 신규 유저여야 합니다." TextColor="#7A7A7A"/>
+                    <Label Margin="20,5" Text="4. 회원님의 초대 링크는 회원님이 탈퇴 혹은 이용 정지 시 만료됩니다." TextColor="#7A7A7A"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</shares:BasePage>

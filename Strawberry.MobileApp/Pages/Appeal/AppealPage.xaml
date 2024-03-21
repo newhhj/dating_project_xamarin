@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:appeal="clr-namespace:Strawberry.MobileApp.Pages.Appeal"
+    xmlns:svg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    x:Class="Strawberry.MobileApp.Pages.Appeal.AppealPage"
+    x:DataType="appeal:AppealPage_Data">
+    <shares:BasePage.Resources>
+        <ResourceDictionary>
+            <appeal:AppealPage_TemplateSelector x:Key="templateSelector"/>
+        </ResourceDictionary>
+    </shares:BasePage.Resources>
+    <shares:BasePage.BindingContext>
+        <appeal:AppealPage_Data x:Name="pageData"/>
+    </shares:BasePage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView Margin="0,100,0,0" Scrolled="ScrollView_Scrolled">
+                <StackLayout Orientation="Vertical" Spacing="0">
+                    <StackLayout Margin="15,0" Orientation="Vertical" IsVisible="{Binding Top5Visible}">
+                        <Label Text="Today Winner" FontAttributes="Bold"/>
+                        <FlexLayout Padding="-5,0" BindableLayout.ItemsSource="{Binding Top5Items}">
+                            <BindableLayout.ItemTemplate>
+                                <appeal:AppealPage_Top5_Template/>
+                            </BindableLayout.ItemTemplate>
+                        </FlexLayout>
+                    </StackLayout>
+
+                    <FlexLayout VerticalOptions="Fill" Wrap="Wrap" JustifyContent="Start" AlignContent="Start" AlignItems="Start" BindableLayout.ItemsSource="{Binding Items}">
+                        <BindableLayout.ItemTemplateSelector>
+                            <appeal:AppealPage_TemplateSelector>
+                                <appeal:AppealPage_TemplateSelector.Type01>
+                                    <appeal:AppealPage_Menu01_Template/>
+                                </appeal:AppealPage_TemplateSelector.Type01>
+                                <appeal:AppealPage_TemplateSelector.Type02>
+                                    <appeal:AppealPage_Menu02_Template/>
+                                </appeal:AppealPage_TemplateSelector.Type02>
+                                <appeal:AppealPage_TemplateSelector.Type03>
+                                    <appeal:AppealPage_Menu03_Template/>
+                                </appeal:AppealPage_TemplateSelector.Type03>
+                                <appeal:AppealPage_TemplateSelector.Type04>
+                                    <appeal:AppealPage_Menu04_Template/>
+                                </appeal:AppealPage_TemplateSelector.Type04>
+                            </appeal:AppealPage_TemplateSelector>
+                        </BindableLayout.ItemTemplateSelector>
+                    </FlexLayout>
+                </StackLayout>
+            </ScrollView>
+
+            <svg:SvgCachedImage VerticalOptions="End" HorizontalOptions="End" WidthRequest="100" HeightRequest="100" Source="resource://Strawberry.MobileApp.Images.icon_write.svg" Aspect="AspectFit">
+                <svg:SvgCachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Write_Clicked"/>
+                </svg:SvgCachedImage.GestureRecognizers>
+            </svg:SvgCachedImage>
+
+            <StackLayout VerticalOptions="Start" Margin="15,50,15,0" HeightRequest="50" Orientation="Horizontal">
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Menu01_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0" Text="자랑" FontSize="16" FontAttributes="Bold" TextColor="{Binding Menu01TextColor}"/>
+                        <BoxView VerticalOptions="Center" HorizontalOptions="Fill" HeightRequest="14" CornerRadius="7" BackgroundColor="{Binding Menu01IndicatorColor}" TranslationY="5"/>
+                    </Grid>
+                </Grid>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Menu02_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0" Text="번개(쏜다)" FontSize="16" FontAttributes="Bold" TextColor="{Binding Menu02TextColor}"/>
+                        <BoxView VerticalOptions="Center" HorizontalOptions="Fill" HeightRequest="14" CornerRadius="7" BackgroundColor="{Binding Menu02IndicatorColor}" TranslationY="5"/>
+                    </Grid>
+                </Grid>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Menu03_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0" Text="기부" FontSize="16" FontAttributes="Bold" TextColor="{Binding Menu03TextColor}"/>
+                        <BoxView VerticalOptions="Center" HorizontalOptions="Fill" HeightRequest="14" CornerRadius="7" BackgroundColor="{Binding Menu03IndicatorColor}" TranslationY="5"/>
+                    </Grid>
+                </Grid>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Menu04_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0" Text="수다" FontSize="16" FontAttributes="Bold" TextColor="{Binding Menu04TextColor}"/>
+                        <BoxView VerticalOptions="Center" HorizontalOptions="Fill" HeightRequest="14" CornerRadius="7" BackgroundColor="{Binding Menu04IndicatorColor}" TranslationY="5"/>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="Start" HeightRequest="50" Orientation="Horizontal">
+                <Grid VerticalOptions="Center" WidthRequest="40" HeightRequest="40">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackButton_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <svg:SvgCachedImage VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="20" HeightRequest="20" Source="{Binding BackButtonImageSource}" Aspect="AspectFit"/>
+                </Grid>
+                <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="뿜뿜" FontSize="16"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</shares:BasePage>

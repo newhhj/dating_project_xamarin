@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:join="clr-namespace:Strawberry.MobileApp.Pages.Join"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffimagetrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    x:Class="Strawberry.MobileApp.Pages.Join.Page_Join_Profile">
+    <ContentPage.BindingContext>
+        <join:Data_Join_Profile x:Name="PageData"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BindingContext="{StaticResource Member}">
+            <ScrollView Margin="0,54,0,0">
+                <StackLayout Orientation="Vertical" Padding="10" Spacing="20">
+                    <Label Text="프로필사진을 등록해주세요." FontSize="16" Margin="0,0,0,16"/>
+
+                    <Grid RowSpacing="10" ColumnSpacing="10">
+                        <Grid.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Frame">
+                                    <Setter Property="VerticalOptions" Value="Center"/>
+                                    <Setter Property="HorizontalOptions" Value="Center"/>
+                                    <Setter Property="Padding" Value="15,0"/>
+                                    <Setter Property="HeightRequest" Value="30"/>
+                                    <Setter Property="CornerRadius" Value="15"/>
+                                    <Setter Property="BackgroundColor" Value="#99BFBFBF"/>
+                                </Style>
+                                <Style TargetType="Label">
+                                    <Setter Property="VerticalOptions" Value="Center"/>
+                                    <Setter Property="HorizontalOptions" Value="Center"/>
+                                    <Setter Property="TextColor" Value="#FFFFFF"/>
+                                    <Setter Property="FontAttributes" Value="Bold"/>
+                                </Style>
+                                <Style TargetType="ffimage:CachedImage">
+                                    <Setter Property="Aspect" Value="AspectFill"/>
+                                </Style>
+                            </ResourceDictionary>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.33*"/>
+                            <ColumnDefinition Width="0.33*"/>
+                            <ColumnDefinition Width="0.33*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Row="0" Grid.Column="0" HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Thumbnail01_Clicked"/>
+                            </Grid.GestureRecognizers>
+                            <ffimage:CachedImage Source="{Binding ProfileImages[0].ProfileImageSource, TargetNullValue='img_noimage'}">
+                                <ffimage:CachedImage.Transformations>
+                                    <ffimagetrans:RoundedTransformation Radius="20" />
+                                </ffimage:CachedImage.Transformations>
+                            </ffimage:CachedImage>
+                            <Frame>
+                                <Label Text="필수"/>
+                            </Frame>
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="1" HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Thumbnail02_Clicked"/>
+                            </Grid.GestureRecognizers>
+                            <ffimage:CachedImage Source="{Binding ProfileImages[1].ProfileImageSource, TargetNullValue='img_noimage'}">
+                                <ffimage:CachedImage.Transformations>
+                                    <ffimagetrans:RoundedTransformation Radius="20" />
+                                </ffimage:CachedImage.Transformations>
+                            </ffimage:CachedImage>
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="2" HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Thumbnail03_Clicked"/>
+                            </Grid.GestureRecognizers>
+                            <ffimage:CachedImage Source="{Binding ProfileImages[2].ProfileImageSource, TargetNullValue='img_noimage'}">
+                                <ffimage:CachedImage.Transformations>
+                                    <ffimagetrans:RoundedTransformation Radius="20" />
+                                </ffimage:CachedImage.Transformations>
+                            </ffimage:CachedImage>
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="0" HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Thumbnail04_Clicked"/>
+                            </Grid.GestureRecognizers>
+                            <ffimage:CachedImage Source="{Binding ProfileImages[3].ProfileImageSource, TargetNullValue='img_noimage'}">
+                                <ffimage:CachedImage.Transformations>
+                                    <ffimagetrans:RoundedTransformation Radius="20" />
+                                </ffimage:CachedImage.Transformations>
+                            </ffimage:CachedImage>
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="1" HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Thumbnail05_Clicked"/>
+                            </Grid.GestureRecognizers>
+                            <ffimage:CachedImage Source="{Binding ProfileImages[4].ProfileImageSource, TargetNullValue='img_noimage'}">
+                                <ffimage:CachedImage.Transformations>
+                                    <ffimagetrans:RoundedTransformation Radius="20" />
+                                </ffimage:CachedImage.Transformations>
+                            </ffimage:CachedImage>
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="2" HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Thumbnail06_Clicked"/>
+                            </Grid.GestureRecognizers>
+                            <ffimage:CachedImage Source="{Binding ProfileImages[5].ProfileImageSource, TargetNullValue='img_noimage'}">
+                                <ffimage:CachedImage.Transformations>
+                                    <ffimagetrans:RoundedTransformation Radius="20" />
+                                </ffimage:CachedImage.Transformations>
+                            </ffimage:CachedImage>
+                        </Grid>
+                    </Grid>
+
+                    <StackLayout BackgroundColor="#4A9CFF" Spacing="8" Margin="-10,0" Padding="15">
+                        <StackLayout.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Label">
+                                    <Setter Property="TextColor" Value="#FFFFFF"/>
+                                    <Setter Property="FontAttributes" Value="Bold"/>
+                                </Style>
+                            </ResourceDictionary>
+                        </StackLayout.Resources>
+                        <Label Text="Tip : 메인사진은 곧 매칭의 성공으로 이어집니다."/>
+                        <Label Text="메인 2장은 이목구비 나오게 해주세요."/>
+                        <Label Text="마스크 사진과 단체사진 등은 당사 규정에 따라 불허됩니다."/>
+                        <Label Text="단, 나머지 사진들은 취미, 직장 등의 활동성 자연스런 사진을 올리시면 당신의 이성 성공확률이 높아집니다."/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout.Resources>
+                            <Style x:Key="hContainer" TargetType="StackLayout">
+                                <Setter Property="Padding" Value="0,10"/>
+                            </Style>
+                        </StackLayout.Resources>
+                        
+                        <StackLayout Style="{StaticResource hContainer}" Orientation="Horizontal">
+                            <StackLayout.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="16"/>
+                                </Style>
+                            </StackLayout.Resources>
+                            <Label Text="성별"/>
+                            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" 
+                                   TextColor="{Binding Gender, Converter={x:Reference PageData}, ConverterParameter='HasValueColor'}" 
+                                   Text="{Binding Gender, Converter={x:Reference PageData}, ConverterParameter='GenderText', TargetNullValue='선택해주세요'}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Gender_Clicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        
+                        <StackLayout Style="{StaticResource hContainer}" Orientation="Horizontal">
+                            <StackLayout.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="16"/>
+                                </Style>
+                            </StackLayout.Resources>
+                            <Label Text="생일"/>
+                            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Birth_Clicked"/>
+                                </Label.GestureRecognizers>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding BirthDay, StringFormat='{0:yyyy}', TargetNullValue='0000'}" TextColor="{Binding BirthDay, Converter={Reference PageData}, ConverterParameter='BirthTextColor'}"/>
+                                        <Span Text="년 " TextColor="#4A9CFF"/>
+                                        <Span Text="{Binding BirthDay, StringFormat='{0:MM}', TargetNullValue='00'}" TextColor="{Binding BirthDay, Converter={Reference PageData}, ConverterParameter='BirthTextColor'}"/>
+                                        <Span Text="월 " TextColor="#4A9CFF"/>
+                                        <Span Text="{Binding BirthDay, StringFormat='{0:dd}', TargetNullValue='00'}" TextColor="{Binding BirthDay, Converter={Reference PageData}, ConverterParameter='BirthTextColor'}"/>
+                                        <Span Text="일" TextColor="#4A9CFF"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <Label Margin="0,-15,0,0" Text="남성은 만 25세 이상만 가입할 수 있습니다" FontSize="12" TextColor="Gray"/>
+
+                        <StackLayout Style="{StaticResource hContainer}" Orientation="Horizontal">
+                            <StackLayout.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="16"/>
+                                </Style>
+                            </StackLayout.Resources>
+                            <Label Text="닉네임"/>
+                            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" 
+                                   TextColor="{Binding Nickname, Converter={x:Reference PageData}, ConverterParameter='HasValueColor'}" 
+                                   Text="{Binding Nickname, TargetNullValue='닉네임'}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Nickname_Clicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        <Label Margin="0,-15,0,0" Text="예) 말랑젤리졸리, 인생5회차" FontSize="12" TextColor="Gray"/>
+
+                        <StackLayout Style="{StaticResource hContainer}" Orientation="Horizontal">
+                            <StackLayout.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="16"/>
+                                </Style>
+                            </StackLayout.Resources>
+                            <Label Text="키"/>
+                            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" 
+                                   TextColor="{Binding Tall, Converter={x:Reference PageData}, ConverterParameter='HasValueColor'}" 
+                                   Text="{Binding Tall, TargetNullValue='선택하세요', Converter={Reference PageData}, ConverterParameter='TallText'}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Tall_Clicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+
+                        <StackLayout Style="{StaticResource hContainer}" Orientation="Horizontal">
+                            <StackLayout.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="16"/>
+                                </Style>
+                            </StackLayout.Resources>
+                            <Label Text="체형"/>
+                            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" 
+                                   TextColor="{Binding BodyStyle, Converter={x:Reference PageData}, ConverterParameter='HasValueColor'}" 
+                                   Text="{Binding BodyStyle, TargetNullValue='선택하세요'}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="BodyStyle_Clicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+
+                        <StackLayout Style="{StaticResource hContainer}" Orientation="Horizontal">
+                            <StackLayout.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="16"/>
+                                </Style>
+                            </StackLayout.Resources>
+                            <Label Text="학력"/>
+                            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" 
+                                   TextColor="{Binding School, Converter={x:Reference PageData}, ConverterParameter='HasValueColor'}" 
+                                   Text="{Binding School, TargetNullValue='선택하세요'}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="School_Clicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+
+                        <StackLayout Style="{StaticResource hContainer}" Orientation="Horizontal">
+                            <StackLayout.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="16"/>
+                                </Style>
+                            </StackLayout.Resources>
+                            <Label Text="직업"/>
+                            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" 
+                                   TextColor="{Binding Job, Converter={x:Reference PageData}, ConverterParameter='HasValueColor'}" 
+                                   Text="{Binding Job, TargetNullValue='선택하세요'}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Job_Clicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+
+                        <StackLayout Style="{StaticResource hContainer}" Orientation="Horizontal">
+                            <StackLayout.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="16"/>
+                                </Style>
+                            </StackLayout.Resources>
+                            <Label Text="종교"/>
+                            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" 
+                                   TextColor="{Binding Religion, Converter={x:Reference PageData}, ConverterParameter='HasValueColor'}" 
+                                   Text="{Binding Religion, TargetNullValue='선택하세요'}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Religion_Clicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+
+                        <StackLayout Style="{StaticResource hContainer}" Orientation="Horizontal">
+                            <StackLayout.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="16"/>
+                                </Style>
+                            </StackLayout.Resources>
+                            <Label Text="음주 여부"/>
+                            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" 
+                                   TextColor="{Binding Alcohol, Converter={x:Reference PageData}, ConverterParameter='HasValueColor'}" 
+                                   Text="{Binding Alcohol, TargetNullValue='선택하세요'}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Alcohol_Clicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+
+                        <StackLayout Style="{StaticResource hContainer}" Orientation="Horizontal">
+                            <StackLayout.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="16"/>
+                                </Style>
+                            </StackLayout.Resources>
+                            <Label Text="흡연 여부"/>
+                            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" 
+                                   TextColor="{Binding Smoking, Converter={x:Reference PageData}, ConverterParameter='HasValueColor'}" 
+                                   Text="{Binding Smoking, TargetNullValue='선택하세요'}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Smoking_Clicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+
+                        
+                    </StackLayout>
+
+                    <Button VerticalOptions="EndAndExpand" Margin="0,20,0,0" Text="다음" FontSize="16" TextColor="#FFFFFF" Clicked="NextButton_Clicked">
+                        <Button.BackgroundColor>
+                            <MultiBinding Converter="{Reference PageData}" ConverterParameter="NextButtonColor">
+                                <Binding Path="ProfileImages[0].ProfileImageSource"/>
+                                <Binding Path="Gender"/>
+                                <Binding Path="BirthDay"/>
+                                <Binding Path="Nickname"/>
+                                <Binding Path="Tall"/>
+                                <Binding Path="BodyStyle"/>
+                                <Binding Path="School"/>
+                                <Binding Path="Job"/>
+                                <Binding Path="Religion"/>
+                                <Binding Path="Alcohol"/>
+                                <Binding Path="Smoking"/>
+                            </MultiBinding>
+                        </Button.BackgroundColor>
+                    </Button>
+                </StackLayout>
+            </ScrollView>
+
+            <Grid VerticalOptions="Start" HeightRequest="54">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseButton_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <ffimage:CachedImage VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="16" HeightRequest="16" Source="icon_close" Aspect="AspectFit"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</shares:BasePage>

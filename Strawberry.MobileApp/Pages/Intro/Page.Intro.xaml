@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="Strawberry.MobileApp.Pages.Intro.Page_Intro">
+    <ContentPage.Content>
+        <Grid>
+            <!--<Image Source="intro" IsAnimationPlaying="True" Aspect="AspectFit"/>-->
+            <skia:SKCanvasView x:Name="canvasView" PaintSurface="OnCanvasViewPaintSurface"/>
+            <StackLayout x:Name="ButtonsArea" VerticalOptions="End" Orientation="Vertical" Padding="10,0,10,30" Spacing="10" IsVisible="False">
+                <Button Text="전화번호로 계속" TextColor="#FFFFFF" BackgroundColor="#4A9CFF" FontSize="16" CornerRadius="5" Clicked="Phone_Clicked"/>
+                <Button Text="카카오톡으로 계속" TextColor="#333333" BackgroundColor="#FFE74A" FontSize="16" CornerRadius="5" Clicked="KakaoLogin_Clicked"/>
+                <Button Text="이메일 로그인" TextColor="#333333" BackgroundColor="Transparent" FontSize="14" Clicked="EmailLogin_Clicked"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</shares:BasePage>

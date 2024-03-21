@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rg:PopupPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:rg="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+    x:Class="Strawberry.MobileApp.Pages.Option.SelectInterestsDialog"
+    x:DataType="option:SelectInterestsDialogData">
+    <ContentPage.Content>
+        <Frame VerticalOptions="Center" HorizontalOptions="Center" Margin="10" WidthRequest="340" CornerRadius="10" BackgroundColor="#FFFFFF">
+            <StackLayout Padding="0,10" Orientation="Vertical" Spacing="0">
+                <Label HorizontalOptions="Center" Margin="0,10" Text="관심사" FontSize="16" FontAttributes="Bold"/>
+                <Label HorizontalOptions="Center" Text="최대 3개까지 선택이 가능합니다." TextColor="#7A7A7A"/>
+                <BoxView Margin="0,10" HeightRequest="1" Color="#20000000"/>
+                <ScrollView VerticalOptions="FillAndExpand">
+                    <FlexLayout VerticalOptions="FillAndExpand" Margin="10,0" Wrap="Wrap" BindableLayout.ItemsSource="{Binding Items}" JustifyContent="Start" AlignItems="Start">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="option:SelectInterestsItemData">
+                                <Frame Margin="3" Padding="15,10" CornerRadius="5" BackgroundColor="{Binding ItemBackgroundColor}">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Item_Clicked"/>
+                                    </Frame.GestureRecognizers>
+                                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Name}" TextColor="{Binding ItemTextColor}" Margin="0,0"/>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </ScrollView>
+                <BoxView Margin="0,10" HeightRequest="1" Color="#20000000"/>
+                <Button Margin="10,0" Text="확인" TextColor="#FFFFFF" BackgroundColor="#4A9CFF" Clicked="Accept_Clicked"/>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</rg:PopupPage>

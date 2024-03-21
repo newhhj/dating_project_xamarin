@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares" 
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="Strawberry.MobileApp.Pages.Join.Page_Join_Confirm"
+    x:Name="CurrentPage"
+    BindingContext="{StaticResource Member}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="0,30,0,10" BindingContext="{Binding Source={StaticResource Member}}">
+                <StackLayout.Resources>
+                    <ResourceDictionary>
+                        <Style x:Key="Header" TargetType="Label">
+                            <Setter Property="FontSize" Value="18"/>
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                            <Setter Property="Margin" Value="10,0"/>
+                        </Style>
+                        <Style x:Key="Comment" TargetType="Label">
+                            <Setter Property="TextColor" Value="Gray"/>
+                            <Setter Property="Margin" Value="10,0"/>
+                        </Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="10,0"/>
+                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="TextColor" Value="Black"/>
+                            <Setter Property="BorderColor" Value="#C5C5C5"/>
+                            <Setter Property="BorderWidth" Value="1"/>
+                            <Setter Property="BackgroundColor" Value="#FFFFFF"/>
+                        </Style>
+                    </ResourceDictionary>
+                </StackLayout.Resources>
+
+                <Label Style="{StaticResource Header}" Text="가입 승인 대기중" IsVisible="{Binding MemberState, Converter={Reference CurrentPage}, ConverterParameter='JoinWaitVisible'}"/>
+                <Label Style="{StaticResource Comment}" IsVisible="{Binding MemberState, Converter={Reference CurrentPage}, ConverterParameter='JoinWaitVisible'}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="프로필 승인은 빠르면 " TextColor="Gray"/>
+                            <Span Text="단 10분에서 늦어도 24시간 " TextColor="#4A9CFF"/>
+                            <Span Text="내 승인되며 아닐 경우 문의 주세요" TextColor="Gray"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Style="{StaticResource Header}" Text="가입승인 완료" IsVisible="{Binding MemberState, Converter={Reference CurrentPage}, ConverterParameter='JoinConfirmVisible'}"/>
+                <Label Style="{StaticResource Comment}" Text="매력적인 사람들을 소개해드려요" TextColor="Gray" IsVisible="{Binding MemberState, Converter={Reference CurrentPage}, ConverterParameter='JoinConfirmVisible'}"/>
+
+                <Label Style="{StaticResource Header}" Text="가입 승인이 거부되었습니다" IsVisible="{Binding MemberState, Converter={Reference CurrentPage}, ConverterParameter='JoinDenyVisible'}"/>
+                <Label Style="{StaticResource Comment}" Text="프로필을 수정하여 다시 도전해보세요" TextColor="Gray" IsVisible="{Binding MemberState, Converter={Reference CurrentPage}, ConverterParameter='JoinDenyVisible'}"/>
+
+                <Grid VerticalOptions="FillAndExpand" Margin="0,10,0,10" HeightRequest="300">
+                    <CarouselView x:Name="CarouselView01" ItemsSource="{Binding ProfileImages}">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <forms:CachedImage Source="{Binding ProfileImageSource}" Aspect="AspectFill" FadeAnimationDuration="0"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                    <StackLayout VerticalOptions="Start" HorizontalOptions="Center" Margin="0,14,0,0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding ItemsSource, Source={Reference CarouselView01}}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid HeightRequest="10">
+                                    <Grid.WidthRequest>
+                                        <MultiBinding Converter="{Reference CurrentPage}">
+                                            <Binding Source="{Reference CarouselView01}" Path="CurrentItem"/>
+                                            <Binding/>
+                                        </MultiBinding>
+                                    </Grid.WidthRequest>
+                                    <BoxView CornerRadius="5" BackgroundColor="LightGray"/>
+                                    <BoxView Margin="1" CornerRadius="4" BackgroundColor="White"/>
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+
+                    <StackLayout VerticalOptions="End" Padding="10,30,10,20" Orientation="Vertical" Spacing="2">
+                        <StackLayout.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Label">
+                                    <Setter Property="TextColor" Value="#FFFFFF"/>
+                                </Style>
+                            </ResourceDictionary>
+                        </StackLayout.Resources>
+                        <StackLayout.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#00000000" Offset="0.0"/>
+                                <GradientStop Color="#78000000" Offset="0.8"/>
+                                <GradientStop Color="#78000000" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </StackLayout.Background>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Nickname}" FontSize="16" FontAttributes="Bold"/>
+                                    <Span Text=" "/>
+                                    <Span Text="{Binding BirthDay, Converter={Reference CurrentPage}, ConverterParameter='Age'}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Job}"/>
+                                    <!--<Span Text="서울시 강남구"/>-->
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Tall, StringFormat='{0}cm,'}"/>
+                                    <Span Text=" "/>
+                                    <Span Text="{Binding School}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </Grid>
+                
+                <Button Text="프로필 수정" Clicked="UpdateProfile_Clicked"/>
+                <Button BorderWidth="0" BackgroundColor="{Binding MemberState, Converter={Reference CurrentPage}, ConverterParameter='NextButtonColor'}" TextColor="#FFFFFF" Text="시작하기" Clicked="NextButton_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</shares:BasePage>

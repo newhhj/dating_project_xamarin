@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage  
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:cardsview="clr-namespace:PanCardView;assembly=PanCardView"
+    xmlns:profile="clr-namespace:Strawberry.MobileApp.Pages.Profile" 
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:datamodels="clr-namespace:Strawberry.MobileApp.DataModels" 
+    xmlns:svg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
+    x:Class="Strawberry.MobileApp.Pages.Profile.ProfilePage_Partner"
+    x:Name="rootview"
+    x:DataType="profile:ProfilePage_Partner_Data">
+    <Grid>
+        
+        <ScrollView Scrolled="ScrollView_Scrolled">
+            <StackLayout Spacing="0">
+                <Grid HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}}">
+                    <cardsview:CarouselView x:Name="carouselView1" ItemsSource="{Binding ProfileImages}">
+                        <cardsview:CarouselView.ItemTemplate>
+                            <DataTemplate x:DataType="datamodels:Member_ProfileImage">
+                                <ffimageloading:CachedImage Source="{Binding ProfileImageSource}" Aspect="AspectFill">
+                                    <!--<ffimageloading:CachedImage.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ProfileImage_Clicked"/>
+                                    </ffimageloading:CachedImage.GestureRecognizers>-->
+                                </ffimageloading:CachedImage>
+                            </DataTemplate>
+                        </cardsview:CarouselView.ItemTemplate>
+                    </cardsview:CarouselView>
+                    <StackLayout VerticalOptions="Start" HorizontalOptions="Center" Margin="0,16,0,0" BindableLayout.ItemsSource="{Binding ProfileImages}" Orientation="Horizontal">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame VerticalOptions="Center" HeightRequest="10" BackgroundColor="#FFFFFF" CornerRadius="5">
+                                    <Frame.WidthRequest>
+                                        <MultiBinding Converter="{Reference rootview}" ConverterParameter="SelectedItemToWidth">
+                                            <Binding Source="{Reference carouselView1}" Path="SelectedItem"/>
+                                            <Binding Path="."/>
+                                        </MultiBinding>
+                                    </Frame.WidthRequest>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </Grid>
+                <Grid x:Name="specialcomment" BackgroundColor="#4A9CFF" IsVisible="{Binding IsVisible_SpecialComment}">
+                    <Label Padding="10,10" Text="{Binding SpecialComment}" TextColor="#FFFFFF"/>
+                </Grid>
+                <Grid Padding="14,14,14,0">
+                    <StackLayout Orientation="Vertical" Spacing="0">
+                        <StackLayout.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="VerticalOptions" Value="End"/>
+                            </Style>
+                            <Style TargetType="ffimageloading:CachedImage">
+                                <Setter Property="VerticalOptions" Value="End"/>
+                                <Setter Property="Aspect" Value="AspectFit"/>
+                            </Style>
+                        </StackLayout.Resources>
+                        <StackLayout Orientation="Horizontal" Spacing="0">
+                            <ffimageloading:CachedImage WidthRequest="32" HeightRequest="24" Source="icon_royal" IsVisible="{Binding IsRoyal}"/>
+                            <Label Margin="0,0,5,0" Text="{Binding Nickname}" FontSize="18" FontAttributes="Bold"/>
+                            <Label Margin="0,0,5,0" Text="{Binding Age}"/>
+                            <ffimageloading:CachedImage HeightRequest="16" Source="icon_vip" IsVisible="{Binding IsVip}"/>
+                            <ffimageloading:CachedImage HeightRequest="16" Source="icon_star_10" IsVisible="{Binding HasStarBadge}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="0">
+                            <Label Margin="0,0,5,0" Text="{Binding Job}" TextColor="Gray"/>
+                            <Label Margin="0,0,5,0" Text="{Binding Range, StringFormat='{0}km'}" TextColor="Gray"/>
+                            <ffimageloading:CachedImage Margin="5,0,0,0" HeightRequest="16" Source="icon_mic" IsVisible="{Binding HasVoice}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="0">
+                            <Label Margin="0,0,5,0" Text="{Binding Tall, StringFormat='{0}cm'}" TextColor="Gray"/>
+                            <Label Text="{Binding School}" TextColor="Gray"/>
+                        </StackLayout>
+                    </StackLayout>
+                    
+                    <Frame VerticalOptions="Start" HorizontalOptions="End" BackgroundColor="#4A9CFF" CornerRadius="10">
+                        <Frame.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="HorizontalOptions" Value="End"/>
+                                <Setter Property="TextColor" Value="#FFFFFF"/>
+                            </Style>
+                        </Frame.Resources>
+                        <Grid Padding="10" RowSpacing="0">
+                            <Label HorizontalOptions="End" Grid.Row="0" Grid.Column="0" Text="Total"/>
+                            <Label HorizontalOptions="End" Grid.Row="1" Grid.Column="0" Text="Today"/>
+                            <Label HorizontalOptions="End" Grid.Row="0" Grid.Column="1" Text="{Binding TotalViewCount, StringFormat='{0:#,##0}'}"/>
+                            <Label HorizontalOptions="End" Grid.Row="1" Grid.Column="1" Text="{Binding TodayViewCount, StringFormat='{0:#,##0}'}"/>
+                        </Grid>
+                    </Frame>
+                </Grid>
+                <!--<Grid Padding="14,28,14,0" ColumnSpacing="0">
+                    <Grid.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="VerticalOptions" Value="Center"/>
+                        </Style>
+                        <Style TargetType="ffimageloading:CachedImage">
+                            <Setter Property="VerticalOptions" Value="Center"/>
+                            <Setter Property="Aspect" Value="AspectFit"/>
+                            <Setter Property="WidthRequest" Value="18"/>
+                            <Setter Property="HeightRequest" Value="18"/>
+                        </Style>
+                    </Grid.Resources>
+                    <StackLayout Grid.Column="0" Orientation="Horizontal">
+                        <ffimageloading:CachedImage Source="icon_baloon_heart"/>
+                        <Label Text="{Binding RateCharming, StringFormat='대화 매력률 {0}%'}"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Orientation="Horizontal">
+                        <ffimageloading:CachedImage Source="icon_baloon_msg"/>
+                        <Label Text="{Binding RateResponse, StringFormat='대화 응답률 {0}%'}"/>
+                    </StackLayout>
+                </Grid>-->
+                <Grid Padding="30,30,30,30">
+                    <Grid Grid.Column="0" HeightRequest="50">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Menu0_Clicked"/>
+                        </Grid.GestureRecognizers>
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="14" WidthRequest="80" BackgroundColor="#3641E6E6" CornerRadius="10" TranslationY="5" IsVisible="{Binding MenuIndex, Converter={Reference rootview}, ConverterParameter='MenuIndex0ToVisible'}"/>
+                        <Label VerticalOptions="Center" HorizontalOptions="Center" Text="회원정보" FontSize="16" FontAttributes="Bold" TextColor="{Binding MenuIndex, Converter={Reference rootview}, ConverterParameter='MenuIndex0ToTextColor'}"/>
+                    </Grid>
+                    <Grid Grid.Column="1" HeightRequest="50">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Menu1_Clicked"/>
+                        </Grid.GestureRecognizers>
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="14" WidthRequest="105" BackgroundColor="#3641E6E6" CornerRadius="10" TranslationY="5" IsVisible="{Binding MenuIndex, Converter={Reference rootview}, ConverterParameter='MenuIndex1ToVisible'}"/>
+                        <Label VerticalOptions="Center" HorizontalOptions="Center" Text="뿜뿜(스토리)" FontSize="16" FontAttributes="Bold" TextColor="{Binding MenuIndex, Converter={Reference rootview}, ConverterParameter='MenuIndex1ToTextColor'}"/>
+                    </Grid>
+                </Grid>
+                <StackLayout Padding="0,0,0,14" Spacing="0" IsVisible="{Binding MenuIndex, Converter={Reference rootview}, ConverterParameter='MenuIndex0ToVisible'}">
+                    <Label Padding="14,0,14,30" Text="{Binding FirstMessage}"/>
+                    <StackLayout Padding="14,0,14,20" Orientation="Horizontal" Spacing="40">
+                        <Label Text="체형" TextColor="Gray"/>
+                        <Label Text="{Binding BodyStyle}"/>
+                    </StackLayout>
+                    <StackLayout Padding="14,0,14,20" Orientation="Horizontal" Spacing="40">
+                        <Label Text="종교" TextColor="Gray"/>
+                        <Label Text="{Binding Religion}"/>
+                    </StackLayout>
+                    <StackLayout Padding="14,0,14,20" Orientation="Horizontal" Spacing="40">
+                        <Label Text="음주" TextColor="Gray"/>
+                        <Label Text="{Binding Alcohol}"/>
+                    </StackLayout>
+                    <StackLayout Padding="14,0,14,40" Orientation="Horizontal" Spacing="40">
+                        <Label Text="흡연" TextColor="Gray"/>
+                        <Label Text="{Binding Smoking}"/>
+                    </StackLayout>
+
+                    <StackLayout x:Name="starpoints" Margin="0,0,0,40" Padding="0,14,0,14" Orientation="Vertical" BackgroundColor="#F9F9F9" IsVisible="{Binding StarPoint, Converter={Reference rootview}, ConverterParameter='0001'}">
+                        <Label HorizontalOptions="Center" Text="{Binding Nickname, StringFormat='{0}님의 매력을 평가해주세요.'}" TextColor="Gray"/>
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                            <ffimageloading:CachedImage WidthRequest="34" HeightRequest="32" Source="{Binding StarPoint, Converter={Reference rootview}, ConverterParameter='0003'}" Aspect="AspectFit">
+                                <ffimageloading:CachedImage.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="StarPoint02_Clicked"/>
+                                </ffimageloading:CachedImage.GestureRecognizers>
+                            </ffimageloading:CachedImage>
+                            <ffimageloading:CachedImage WidthRequest="34" HeightRequest="32" Source="{Binding StarPoint, Converter={Reference rootview}, ConverterParameter='0004'}" Aspect="AspectFit">
+                                <ffimageloading:CachedImage.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="StarPoint04_Clicked"/>
+                                </ffimageloading:CachedImage.GestureRecognizers>
+                            </ffimageloading:CachedImage>
+                            <ffimageloading:CachedImage WidthRequest="34" HeightRequest="32" Source="{Binding StarPoint, Converter={Reference rootview}, ConverterParameter='0005'}" Aspect="AspectFit">
+                                <ffimageloading:CachedImage.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="StarPoint06_Clicked"/>
+                                </ffimageloading:CachedImage.GestureRecognizers>
+                            </ffimageloading:CachedImage>
+                            <ffimageloading:CachedImage WidthRequest="34" HeightRequest="32" Source="{Binding StarPoint, Converter={Reference rootview}, ConverterParameter='0006'}" Aspect="AspectFit">
+                                <ffimageloading:CachedImage.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="StarPoint08_Clicked"/>
+                                </ffimageloading:CachedImage.GestureRecognizers>
+                            </ffimageloading:CachedImage>
+                            <ffimageloading:CachedImage WidthRequest="34" HeightRequest="32" Source="{Binding StarPoint, Converter={Reference rootview}, ConverterParameter='0007'}" Aspect="AspectFit">
+                                <ffimageloading:CachedImage.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="StarPoint10_Clicked"/>
+                                </ffimageloading:CachedImage.GestureRecognizers>
+                            </ffimageloading:CachedImage>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Margin="14,0,14,40" Orientation="Horizontal" IsVisible="{Binding StarPoint, Converter={Reference rootview}, ConverterParameter='0002'}">
+                        <Frame VerticalOptions="Center" BackgroundColor="#4A9CFF" Padding="10,3" CornerRadius="12">
+                            <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                <ffimageloading:CachedImage VerticalOptions="Center" WidthRequest="14" HeightRequest="14" Source="icon_star_white" Aspect="AspectFit"/>
+                                <Label VerticalOptions="Center" Text="{Binding StarPoint, StringFormat='{0:#0.0}'}" TextColor="#FFFFFF"/>
+                            </StackLayout>
+                        </Frame>
+                        <Label VerticalOptions="Center" Text="으로 측정했습니다"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="0,0,0,40" IsVisible="{Binding BirthdayMembers, Converter={Reference rootview}, ConverterParameter=BirthDayVisible}">
+                        <Label Margin="14,0,14,4" Text="이번주 생일인 메이트"/>
+                        <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                            <StackLayout Padding="10,0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding BirthdayMembers}" Spacing="20">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="profile:ProfilePage_Partner_Data_BirthDay">
+                                        <Grid WidthRequest="150">
+                                            <BoxView Margin="0,0,0,15" WidthRequest="{Binding Height, Source={RelativeSource Mode=Self}}" CornerRadius="15" Color="#F9F9F9"/>
+                                            <StackLayout Spacing="0">
+                                                <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center" Margin="0,15,0,5" WidthRequest="60" HeightRequest="60" Source="{Binding ProfileImage}" Aspect="AspectFill">
+                                                    <ffimageloading:CachedImage.Transformations>
+                                                        <transformations:CircleTransformation/>
+                                                    </ffimageloading:CachedImage.Transformations>
+                                                </ffimageloading:CachedImage>
+                                                <Label HorizontalOptions="Center" Text="{Binding Nickname}" FontSize="16" FontAttributes="Bold"/>
+                                                <Label HorizontalOptions="Center" Text="{Binding Age}"/>
+                                                <Grid Margin="20,10,20,0">
+                                                    <Grid.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="ViewProfile_Clicked"/>
+                                                    </Grid.GestureRecognizers>
+                                                    <BoxView Color="#4A9CFF" CornerRadius="10"/>
+                                                    <BoxView WidthRequest="10" HeightRequest="10" HorizontalOptions="Center" VerticalOptions="Start" Rotation="45" TranslationY="-3" Color="#4A9CF1"/>
+                                                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="+more" TextColor="#FFFFFF"/>
+                                                </Grid>
+                                            </StackLayout>
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+
+                    <Label Margin="14,0,14,4" Text="매력포인트"/>
+                    <FlexLayout Margin="11,3,11,3" JustifyContent="Start" AlignContent="Start" AlignItems="Start" BindableLayout.ItemsSource="{Binding CharmingPoints}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <Frame Padding="10" Margin="3" BackgroundColor="#87E9E9E9" CornerRadius="10">
+                                    <Label Text="{Binding}"/>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+
+                    <Label Margin="14,24,14,4" Text="관심사"/>
+                    <FlexLayout Margin="11,3,11,3" JustifyContent="Start" AlignContent="Start" AlignItems="Start" BindableLayout.ItemsSource="{Binding Interests}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <Frame Padding="10" Margin="3" BackgroundColor="#87E9E9E9" CornerRadius="10">
+                                    <Label Text="{Binding}"/>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </StackLayout>
+                
+                
+                
+                
+                
+                <StackLayout BindableLayout.ItemsSource="{Binding Appeals}"
+                             IsVisible="{Binding MenuIndex, Converter={Reference rootview}, ConverterParameter='MenuIndex1ToVisible'}">
+                    <BindableLayout.EmptyView>
+                        <Label HeightRequest="150" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="아직 등록한 뿜뿜 사진이 없어요!"/>
+                    </BindableLayout.EmptyView>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="profile:ProfilePage_Partner_Data_Appeal">
+                            <StackLayout Padding="0,15,0,0" Orientation="Vertical" Spacing="0" BackgroundColor="#FFFFFF">
+                                <StackLayout.Resources>
+                                    <ResourceDictionary>
+                                        <profile:ProfilePage_Partner_DataConverter x:Key="converter"/>
+                                    </ResourceDictionary>
+                                </StackLayout.Resources>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AppealItem_Clicked"/>
+                                </StackLayout.GestureRecognizers>
+                                <StackLayout Margin="15,0" Orientation="Horizontal">
+                                    <ffimageloading:CachedImage VerticalOptions="Start" WidthRequest="50" HeightRequest="50" Source="{Binding ProfileImage}">
+                                        <ffimageloading:CachedImage.Transformations>
+                                            <transformations:CircleTransformation/>
+                                        </ffimageloading:CachedImage.Transformations>
+                                    </ffimageloading:CachedImage>
+                                    <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Nickname}" FontSize="16" FontAttributes="Bold"/>
+                                                    <Span Text="{Binding Age, StringFormat=' {0}'}" TextColor="Gray"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Job}"/>
+                                                    <Span Text="{Binding Range, StringFormat=' {0}km'}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                    <Image VerticalOptions="Center" WidthRequest="26" HeightRequest="26" Source="icon_alert02" Aspect="AspectFit">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="AppealAlert_Clicked"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                                <Label Margin="15,10,15,0" Text="{Binding Content}" MaxLines="2" LineBreakMode="TailTruncation"/>
+                                <Grid Margin="0,10,0,0" HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}, Converter={StaticResource converter}, ConverterParameter='CarouselViewHeight'}">
+                                    <cardsview:CarouselView x:Name="carouselView01" ItemsSource="{Binding ContentImages}">
+                                        <cardsview:CarouselView.ItemTemplate>
+                                            <DataTemplate x:DataType="x:String">
+                                                <ffimageloading:CachedImage Source="{Binding}" Aspect="AspectFill"/>
+                                            </DataTemplate>
+                                        </cardsview:CarouselView.ItemTemplate>
+                                    </cardsview:CarouselView>
+                                    <StackLayout VerticalOptions="Start" HorizontalOptions="Center" Margin="0,15,0,0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding ContentImages}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate x:DataType="x:String">
+                                                <Frame HeightRequest="10" CornerRadius="5" BackgroundColor="White">
+                                                    <Frame.WidthRequest>
+                                                        <MultiBinding Converter="{StaticResource converter}" ConverterParameter="CarouselViewIndicatorWidth">
+                                                            <Binding/>
+                                                            <Binding Source="{Reference carouselView01}" Path="SelectedItem"/>
+                                                        </MultiBinding>
+                                                    </Frame.WidthRequest>
+                                                </Frame>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </Grid>
+                                <StackLayout Margin="15,10,15,0" Orientation="Horizontal">
+                                    <svg:SvgCachedImage HeightRequest="14" Source="{Binding IsLike, Converter={StaticResource converter}, ConverterParameter='IsLikeIcon'}" Aspect="AspectFit"/>
+                                    <Label Text="{Binding LikeCount}"/>
+                                    <svg:SvgCachedImage Margin="5,0,0,0" HeightRequest="14" Source="resource://Strawberry.MobileApp.Images.icon_comment01.svg" Aspect="AspectFit"/>
+                                    <Label Text="{Binding CommentCount}"/>
+                                    <Label HorizontalOptions="EndAndExpand" Text="{Binding CreateTime, Converter={StaticResource converter}, ConverterParameter='CreateTimeText'}"/>
+                                </StackLayout>
+                                <StackLayout Margin="15,10,15,0" Orientation="Horizontal" IsVisible="{Binding CommentVisible}">
+                                    <ffimageloading:CachedImage VerticalOptions="Start" WidthRequest="50" HeightRequest="50" Source="{Binding Comment.ProfileImage}">
+                                        <ffimageloading:CachedImage.Transformations>
+                                            <transformations:CircleTransformation/>
+                                        </ffimageloading:CachedImage.Transformations>
+                                    </ffimageloading:CachedImage>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Comment.Nickname}" FontAttributes="Bold" FontSize="16"/>
+                                                <Span Text="{Binding Comment.Comment, StringFormat=' {0}'}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                <BoxView Margin="0,15,0,0" HeightRequest="10" Color="#F3F3F3"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                
+                
+                
+                
+
+                <Grid x:Name="buttons" VerticalOptions="EndAndExpand" Margin="14,20,14,14">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame Grid.Column="0" BackgroundColor="{Binding Color_ChoiceButton}" HeightRequest="44" CornerRadius="10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Choice_Clicked"/>
+                        </Frame.GestureRecognizers>
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+                            <ffimageloading:CachedImage VerticalOptions="Center" WidthRequest="20" HeightRequest="20" Source="icon_profile_choice" Aspect="AspectFit"/>
+                            <Label Text="좋아요" TextColor="#FFFFFF"/>
+                            <ffimageloading:CachedImage Margin="-5,0,0,0" VerticalOptions="Center" WidthRequest="20" HeightRequest="15" Source="icon_strawberry" Aspect="AspectFit" IsVisible="{Binding FreeChoiceCount, Source={StaticResource Member}, Converter={Reference rootview}, ConverterParameter='FreeChoiceCountToVisible'}"/>
+                            <Label Margin="-8,0,0,0" VerticalOptions="Center" Text="5" TextColor="#FFFFFF" IsVisible="{Binding FreeChoiceCount, Source={StaticResource Member}, Converter={Reference rootview}, ConverterParameter='FreeChoiceCountToVisible'}"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" BackgroundColor="{Binding Color_ChoiceButton}" HeightRequest="44" CornerRadius="10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SmartChoice_Clicked"/>
+                        </Frame.GestureRecognizers>
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+                            <ffimageloading:CachedImage VerticalOptions="Center" WidthRequest="20" HeightRequest="20" Source="icon_profile_smartchoice" Aspect="AspectFit"/>
+                            <Label Text="스마트 딸기" TextColor="#FFFFFF"/>
+                            <ffimageloading:CachedImage Margin="-5,0,0,0" VerticalOptions="Center" WidthRequest="20" HeightRequest="15" Source="icon_strawberry" Aspect="AspectFit"/>
+                            <Label Margin="-8,0,0,0" VerticalOptions="Center" Text="10" TextColor="#FFFFFF"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+
+        <Grid x:Name="topbar01" VerticalOptions="Start" HeightRequest="50" BackgroundColor="#00000000">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <x:Double x:Key="oldScroll">0</x:Double>
+                </ResourceDictionary>
+            </Grid.Resources>
+            <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="24" HeightRequest="24" Margin="5,0,0,0" Padding="6">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackButton_Clicked"/>
+                </Grid.GestureRecognizers>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="12" HeightRequest="2" Color="#FFFFFF" Rotation="45" TranslationY="4"/>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="12" HeightRequest="2" Color="#FFFFFF" Rotation="-45" TranslationY="-4"/>
+            </Grid>
+            <Grid VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" HeightRequest="24" Margin="0,0,5,0" Padding="6">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Alert_Clicked"/>
+                </Grid.GestureRecognizers>
+                <ffimageloading:CachedImage VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="24" HeightRequest="24" Source="icon_alert" Aspect="AspectFit"/>
+            </Grid>
+        </Grid>
+    </Grid>
+    
+</shares:BasePage>

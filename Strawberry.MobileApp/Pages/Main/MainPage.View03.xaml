@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+              xmlns:main="clr-namespace:Strawberry.MobileApp.Pages.Main"
+              x:Class="Strawberry.MobileApp.Pages.Main.MainPage_View03"
+              x:DataType="main:MainPage_View03_Data">
+	<StackLayout FlexLayout.Basis="100%" Orientation="Vertical" Spacing="0">
+		<StackLayout.Resources>
+			<Style TargetType="Label">
+				<Setter Property="TextColor" Value="#FFFFFF"/>
+			</Style>
+		</StackLayout.Resources>
+		<Grid Margin="0,50,0,0" HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}, Converter={StaticResource RatioToHeightConverter}, ConverterParameter='0.6'}">
+			<forms:CachedImage Source="bg_view03" Aspect="AspectFill"/>
+			<forms:CachedImage VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100" Source="img_view03_roket" Aspect="AspectFill" IsVisible="{Binding IsVisibleType0}"/>
+			<Grid Padding="-1000" IsClippedToBounds="True" IsVisible="{Binding IsVisibleType1}">
+				<BoxView x:Name="roundView02" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100" CornerRadius="100" Opacity="0">
+					<BoxView.Background>
+						<RadialGradientBrush>
+							<GradientStop Color="#00000000" Offset="0"/>
+							<GradientStop Color="#00000000" Offset="49"/>
+							<GradientStop Color="#50FFFFFF" Offset="50"/>
+							<GradientStop Color="#90FFFFFF" Offset="200"/>
+						</RadialGradientBrush>
+					</BoxView.Background>
+				</BoxView>
+				<BoxView x:Name="roundView01" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100" CornerRadius="50" Opacity="0">
+					<BoxView.Background>
+						<RadialGradientBrush>
+							<GradientStop Color="#00000000" Offset="0"/>
+							<GradientStop Color="#00000000" Offset="49"/>
+							<GradientStop Color="#50FFFFFF" Offset="50"/>
+							<GradientStop Color="#90FFFFFF" Offset="200"/>
+						</RadialGradientBrush>
+					</BoxView.Background>
+				</BoxView>
+				<Frame VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100" CornerRadius="50" BackgroundColor="#FFF5F5">
+					<Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding RunningPercent, StringFormat='{0}%'}" TextColor="#FF8D8D" FontAttributes="Bold" FontSize="24"/>
+				</Frame>
+			</Grid>
+			<forms:CachedImage VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100" Source="img_view03_strawberry" Aspect="AspectFill" IsVisible="{Binding IsVisibleType2}"/>
+		</Grid>
+
+		<!-- 핫딸기 레이블 -->
+		<Label Margin="20,20,20,0" Text="빠르게 매칭을 도와드립니다." FontSize="18" FontAttributes="Bold" IsVisible="{Binding IsVisibleType0}"/>
+		<Label Margin="20,10,20,0" Text="선호하신 이성에 대해 집중 노출시켜 드려서 평소보다 3배 이상의 성공 매칭을 도와드립니다." FontSize="16" IsVisible="{Binding IsVisibleType0}"/>
+		<!-- 핫딸기 버튼 -->
+		<Grid Margin="20,20,20,50" HeightRequest="44" IsVisible="{Binding IsVisibleType0}">
+			<Grid.GestureRecognizers>
+				<TapGestureRecognizer Tapped="ExcuteHotStrawberry_Clicked"/>
+			</Grid.GestureRecognizers>
+			<BoxView CornerRadius="10" BackgroundColor="#4A9CFF"/>
+			<StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+				<Label VerticalOptions="Center" Text="핫딸기" FontSize="16"/>
+				<forms:CachedImage VerticalOptions="Center" WidthRequest="16" HeightRequest="16" Source="icon_strawberry" Aspect="AspectFit"/>
+				<Label VerticalOptions="Center" Text="15" FontSize="16"/>
+			</StackLayout>
+		</Grid>
+
+		<!-- 프로필 피버타임 레이블 -->
+		<Label Margin="20,20,20,0" Text="{Binding HotStrawberryStartTimeText, StringFormat='프로필 피버타임 중 {0}'}" FontSize="18" FontAttributes="Bold" IsVisible="{Binding IsVisibleType1}"/>
+		<Label Margin="20,10,20,0" Text="실시간으로 많은 사람들이 회원님의 프로필을 보고 있습니다." FontSize="16" IsVisible="{Binding IsVisibleType1}"/>
+		<!-- 결과보기 버튼 -->
+		<Grid Margin="20,20,20,50" HeightRequest="44" IsVisible="{Binding IsVisibleType1}">
+			<Grid.GestureRecognizers>
+				<TapGestureRecognizer Tapped="ShowResult_Clicked"/>
+			</Grid.GestureRecognizers>
+			<BoxView CornerRadius="10" BackgroundColor="#C5C5C5"/>
+			<StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+				<Label VerticalOptions="Center" Text="결과보기" FontSize="16"/>
+			</StackLayout>
+		</Grid>
+
+		<!-- 관심 받은 사람 수 레이블 -->
+		<Label Margin="20,20,20,0" Text="{Binding ViewCount, StringFormat='{0:#,##0}명에게 관심을 받았어요'}" FontSize="18" FontAttributes="Bold" IsVisible="{Binding IsVisibleType2}"/>
+		<Label Margin="20,10,20,0" Text="나에게 관심있는 사람에게 지금 좋아요를 보내면 연결 가능성이 매우 높습니다." FontSize="16" IsVisible="{Binding IsVisibleType2}"/>
+		<!-- 한 번 더 하기, 결과보기 버튼 -->
+		<Grid Margin="20,20,20,50" HeightRequest="44" IsVisible="{Binding IsVisibleType2}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.5*"/>
+				<ColumnDefinition Width="0.5*"/>
+			</Grid.ColumnDefinitions>
+
+			<!-- 한 번 더 하기 버튼 -->
+			<Grid Grid.Column="0">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="ExcuteHotStrawberry_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="10" BackgroundColor="#C5C5C5"/>
+				<BoxView Margin="1" CornerRadius="10" BackgroundColor="#000000"/>
+				<StackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+					<Label VerticalOptions="Center" Text="한 번 더 하기" FontSize="16"/>
+					<forms:CachedImage VerticalOptions="Center" WidthRequest="16" HeightRequest="16" Source="icon_strawberry" Aspect="AspectFit"/>
+					<Label VerticalOptions="Center" Text="15" FontSize="16"/>
+				</StackLayout>
+			</Grid>
+
+			<!-- 결과보기 버튼 -->
+			<Grid Grid.Column="1">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="ShowResult_Clicked"/>
+				</Grid.GestureRecognizers>
+				<BoxView CornerRadius="10" BackgroundColor="#4A9CFF"/>
+				<StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+					<Label VerticalOptions="Center" Text="결과보기" FontSize="16"/>
+				</StackLayout>
+			</Grid>
+		</Grid>
+	</StackLayout>
+</DataTemplate>

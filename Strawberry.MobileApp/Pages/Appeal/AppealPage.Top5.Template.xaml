@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              xmlns:appeal="clr-namespace:Strawberry.MobileApp.Pages.Appeal" 
+              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+              xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+              x:Class="Strawberry.MobileApp.Pages.Appeal.AppealPage_Top5_Template"
+              x:DataType="appeal:AppealPage_Top5_Data">
+    <Grid HorizontalOptions="Start" Padding="5" FlexLayout.Basis="25%">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <appeal:AppealPage_Top5_DataConverter x:Key="converter"/>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <StackLayout Orientation="Vertical">
+            <Image HorizontalOptions="Center" HeightRequest="10" Source="icon_hot01" Aspect="AspectFit" Opacity="{Binding Index, Converter={StaticResource converter}, ConverterParameter='TopIconOpacity'}"/>
+            <Frame HeightRequest="{Binding Width, Source={RelativeSource Self}}" CornerRadius="{Binding Height, Source={RelativeSource Mode=Self}, Converter={StaticResource converter}, ConverterParameter='HarfRadius'}">
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="#FF2458"/>
+                        <GradientStop Offset="1" Color="#4A9CFF"/>
+                    </LinearGradientBrush>
+                </Frame.Background>
+                <Grid>
+                    <Frame Margin="3" BackgroundColor="#FFFFFF" CornerRadius="{Binding Height, Source={RelativeSource Mode=Self}, Converter={StaticResource converter}, ConverterParameter='HarfRadius'}"/>
+                    <Frame Margin="{Binding Index, Converter={StaticResource converter}, ConverterParameter='TopFramePadding'}" BackgroundColor="#FFFFFF" CornerRadius="{Binding Height, Source={RelativeSource Mode=Self}, Converter={StaticResource converter}, ConverterParameter='HarfRadius'}" IsClippedToBounds="True">
+                        <ffimageloading:CachedImage Source="{Binding ProfileImage}" Aspect="AspectFill">
+                            <ffimageloading:CachedImage.Transformations>
+                                <transformations:CircleTransformation/>
+                            </ffimageloading:CachedImage.Transformations>
+                        </ffimageloading:CachedImage>
+                    </Frame>
+                </Grid>
+            </Frame>
+            <Frame HorizontalOptions="Center" BackgroundColor="#BFBFBF" Padding="15,2" CornerRadius="{Binding Height, Source={RelativeSource Mode=Self}, Converter={StaticResource converter}, ConverterParameter='HarfRadius'}">
+                <Label HorizontalOptions="Center" Text="{Binding Index, Converter={StaticResource converter}, ConverterParameter='Top5LabelText'}" TextColor="#FFFFFF"/>
+            </Frame>
+        </StackLayout>
+    </Grid>
+</DataTemplate>

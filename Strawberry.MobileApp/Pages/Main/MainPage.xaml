@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:main="clr-namespace:Strawberry.MobileApp.Pages.Main"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+    xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="Strawberry.MobileApp.Pages.Main.MainPage">
+
+	<!-- 리소스 섹션 -->
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<!-- 리소스 딕셔너리 항목 -->
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+	<!-- 바인딩 컨텍스트 -->
+	<ContentPage.BindingContext>
+		<main:MainPage_Data x:Name="PageData"/>
+	</ContentPage.BindingContext>
+
+	<!-- 콘텐츠 영역 -->
+	<ContentPage.Content>
+		<Grid>
+
+			<!-- RefreshView -->
+			<RefreshView Margin="0,54,0,54" Refreshing="RefreshView_Refreshing">
+				<!-- ScrollView -->
+				<ScrollView x:Name="scrollView01" BackgroundColor="#000000" Scrolled="scrollView01_Scrolled">
+					<!-- FlexLayout -->
+					<FlexLayout x:Name="flexLayout01" Wrap="Wrap" JustifyContent="Start" AlignItems="Start" AlignContent="Start" BindableLayout.ItemsSource="{Binding Items}">
+						<BindableLayout.ItemTemplateSelector>
+							<!-- MainPage_DataTemplateSelector -->
+							<main:MainPage_DataTemplateSelector>
+								<main:MainPage_DataTemplateSelector.ViewLabel>
+									<!-- MainPage_ViewLabel -->
+									<main:MainPage_ViewLabel/>
+								</main:MainPage_DataTemplateSelector.ViewLabel>
+								<main:MainPage_DataTemplateSelector.View01>
+									<!-- MainPage_View01 -->
+									<main:MainPage_View01/>
+								</main:MainPage_DataTemplateSelector.View01>
+								<main:MainPage_DataTemplateSelector.View02>
+									<!-- MainPage_View02 -->
+									<main:MainPage_View02/>
+								</main:MainPage_DataTemplateSelector.View02>
+								<main:MainPage_DataTemplateSelector.View03>
+									<!-- MainPage_View03 -->
+									<main:MainPage_View03/>
+								</main:MainPage_DataTemplateSelector.View03>
+								<main:MainPage_DataTemplateSelector.View04>
+									<!-- MainPage_View04 -->
+									<main:MainPage_View04/>
+								</main:MainPage_DataTemplateSelector.View04>
+								<main:MainPage_DataTemplateSelector.View05>
+									<!-- MainPage_View05 -->
+									<main:MainPage_View05/>
+								</main:MainPage_DataTemplateSelector.View05>
+								<main:MainPage_DataTemplateSelector.View06>
+									<!-- MainPage_View06 -->
+									<main:MainPage_View06/>
+								</main:MainPage_DataTemplateSelector.View06>
+								<main:MainPage_DataTemplateSelector.LoveFortune>
+									<!-- MainPage_View_LoveFortune -->
+									<main:MainPage_View_LoveFortune/>
+								</main:MainPage_DataTemplateSelector.LoveFortune>
+								<main:MainPage_DataTemplateSelector.View07>
+									<!-- MainPage_View07 -->
+									<main:MainPage_View07/>
+								</main:MainPage_DataTemplateSelector.View07>
+								<main:MainPage_DataTemplateSelector.View08>
+									<!-- MainPage_View08 -->
+									<main:MainPage_View08/>
+								</main:MainPage_DataTemplateSelector.View08>
+								<main:MainPage_DataTemplateSelector.View09>
+									<!-- MainPage_View09 -->
+									<main:MainPage_View09/>
+								</main:MainPage_DataTemplateSelector.View09>
+								<main:MainPage_DataTemplateSelector.View10>
+									<!-- MainPage_View10 -->
+									<main:MainPage_View10/>
+								</main:MainPage_DataTemplateSelector.View10>
+								<main:MainPage_DataTemplateSelector.View11>
+									<!-- MainPage_View11 -->
+									<main:MainPage_View11/>
+								</main:MainPage_DataTemplateSelector.View11>
+								<main:MainPage_DataTemplateSelector.View12>
+									<!-- MainPage_View12 -->
+									<main:MainPage_View12/>
+								</main:MainPage_DataTemplateSelector.View12>
+								<main:MainPage_DataTemplateSelector.View13>
+									<!-- MainPage_View13 -->
+									<main:MainPage_View13/>
+								</main:MainPage_DataTemplateSelector.View13>
+								<main:MainPage_DataTemplateSelector.View14>
+									<!-- MainPage_View14 -->
+									<main:MainPage_View14/>
+								</main:MainPage_DataTemplateSelector.View14>
+							</main:MainPage_DataTemplateSelector>
+						</BindableLayout.ItemTemplateSelector>
+					</FlexLayout>
+				</ScrollView>
+			</RefreshView>
+
+			<!-- 상단 StackLayout -->
+			<StackLayout VerticalOptions="Start" HeightRequest="54" Orientation="Horizontal">
+				<StackLayout.Resources>
+					<!-- 스타일 -->
+					<Style TargetType="Label">
+						<Setter Property="TextColor" Value="#A6333333"/>
+						<Setter Property="FontAttributes" Value="Bold"/>
+						<Setter Property="FontSize" Value="16"/>
+						<Setter Property="VerticalOptions" Value="Center"/>
+						<Setter Property="HorizontalOptions" Value="Center"/>
+					</Style>
+				</StackLayout.Resources>
+				<forms:CachedImage VerticalOptions="Center" HeightRequest="30" Margin="10,0" Source="logo_s" Aspect="AspectFit"/>
+				<Grid Padding="5,0">
+					<Grid.GestureRecognizers>
+						<!-- PoomPoom_Clicked 이벤트 핸들러 -->
+						<TapGestureRecognizer Tapped="PoomPoom_Clicked"/>
+					</Grid.GestureRecognizers>
+					<Label Text="뿜뿜" FontSize="16"/>
+				</Grid>
+				<Grid  Padding="5,0">
+					<Grid.GestureRecognizers>
+						<!-- Near_Clicked 이벤트 핸들러 -->
+						<TapGestureRecognizer Tapped="Near_Clicked"/>
+					</Grid.GestureRecognizers>
+					<Label Text="근처" FontSize="16"/>
+				</Grid>
+				<Grid VerticalOptions="Center" HorizontalOptions="EndAndExpand" WidthRequest="40" HeightRequest="40" Margin="0,0,5,0" IsVisible="{Binding IsVisibleNotiButton}">
+					<Grid.GestureRecognizers>
+						<!-- Noti_Clicked 이벤트 핸들러 -->
+						<TapGestureRecognizer Tapped="Noti_Clicked"/>
+					</Grid.GestureRecognizers>
+					<Image x:Name="icon_noti" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="30" HeightRequest="30" Source="icon_strawberry01" Aspect="AspectFit"/>
+				</Grid>
+				<Grid VerticalOptions="Center" HorizontalOptions="EndAndExpand" WidthRequest="40" HeightRequest="40" Margin="0,0,5,0" IsVisible="{Binding IsVisibleSettingButton}">
+					<Grid.GestureRecognizers>
+						<!-- Setting_Clicked 이벤트 핸들러 -->
+						<TapGestureRecognizer Tapped="Setting_Clicked"/>
+					</Grid.GestureRecognizers>
+					<Image VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="20" HeightRequest="20" Source="icon_option_setting" Aspect="AspectFit" toolkit:IconTintColorEffect.TintColor="#333333"/>
+				</Grid>
+			</StackLayout>
+
+			<!-- 하단 FlexLayout -->
+			<FlexLayout VerticalOptions="End" HeightRequest="54" Padding="10,0" BackgroundColor="#000000">
+				<FlexLayout.Resources>
+					<!-- 스타일 -->
+					<Style TargetType="forms:CachedImage">
+						<Setter Property="VerticalOptions" Value="Center"/>
+						<Setter Property="HorizontalOptions" Value="Center"/>
+						<Setter Property="WidthRequest" Value="24"/>
+						<Setter Property="HeightRequest" Value="24"/>
+						<Setter Property="Aspect" Value="AspectFit"/>
+					</Style>
+				</FlexLayout.Resources>
+				<Grid FlexLayout.Grow="0.2">
+					<Grid.GestureRecognizers>
+						<!-- Menu00_Clicked 이벤트 핸들러 -->
+						<TapGestureRecognizer Tapped="Menu00_Clicked"/>
+					</Grid.GestureRecognizers>
+					<Image Margin="14" Source="{Binding MenuIndex, Converter={StaticResource DataConverter}, ConverterParameter='Menu0IconSource'}"/>
+				</Grid>
+				<Grid FlexLayout.Grow="0.2">
+					<Grid.GestureRecognizers>
+						<!-- Menu01_Clicked 이벤트 핸들러 -->
+						<TapGestureRecognizer Tapped="Menu01_Clicked"/>
+					</Grid.GestureRecognizers>
+					<Image Margin="14" Source="{Binding MenuIndex, Converter={StaticResource DataConverter}, ConverterParameter='Menu1IconSource'}"/>
+				</Grid>
+				<Grid FlexLayout.Grow="0.2">
+					<Grid.GestureRecognizers>
+						<!-- Menu02_Clicked 이벤트 핸들러 -->
+						<TapGestureRecognizer Tapped="Menu02_Clicked"/>
+					</Grid.GestureRecognizers>
+					<Image Margin="14" Source="{Binding MenuIndex, Converter={StaticResource DataConverter}, ConverterParameter='Menu2IconSource'}"/>
+				</Grid>
+				<Grid FlexLayout.Grow="0.2">
+					<Grid.GestureRecognizers>
+						<!-- Menu03_Clicked 이벤트 핸들러 -->
+						<TapGestureRecognizer Tapped="Menu03_Clicked"/>
+					</Grid.GestureRecognizers>
+					<Image Margin="14" Source="{Binding MenuIndex, Converter={StaticResource DataConverter}, ConverterParameter='Menu3IconSource'}"/>
+				</Grid>
+				<Grid FlexLayout.Grow="0.2">
+					<Grid.GestureRecognizers>
+						<!-- Menu04_Clicked 이벤트 핸들러 -->
+						<TapGestureRecognizer Tapped="Menu04_Clicked"/>
+					</Grid.GestureRecognizers>
+					<Image Margin="14" Source="{Binding MenuIndex, Converter={StaticResource DataConverter}, ConverterParameter='Menu4IconSource'}"/>
+				</Grid>
+			</FlexLayout>
+		</Grid>
+	</ContentPage.Content>
+</shares:BasePage>

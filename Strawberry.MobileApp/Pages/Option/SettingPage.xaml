@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares" 
+    xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+    x:Class="Strawberry.MobileApp.Pages.Option.SettingPage"
+    x:DataType="option:SettingPageData">
+
+    <ContentPage.BindingContext>
+        <option:SettingPageData/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Orientation="Vertical" Spacing="0">
+        <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+            <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Back_Clicked"/>
+                </Grid.GestureRecognizers>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+            </Grid>
+            <Label VerticalOptions="Center" Text="설정" FontSize="16" FontAttributes="Bold"/>
+        </StackLayout>
+        <ScrollView VerticalOptions="Fill">
+            <StackLayout VerticalOptions="Fill" Padding="20" Orientation="Vertical" Spacing="5">
+                <Label Text="추천" FontSize="16" FontAttributes="Bold"/>
+                <StackLayout HeightRequest="40" Orientation="Horizontal">
+                    <Label VerticalOptions="Center" Text="추천 활성화" FontSize="16"/>
+                    <Switch VerticalOptions="Center" HorizontalOptions="EndAndExpand" IsToggled="{Binding UseNotiRecommand}" Toggled="UseNotiRecommand_Toggled"/>
+                </StackLayout>
+                <StackLayout Spacing="0">
+                    <StackLayout.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="FontSize" Value="12"/>
+                            <Setter Property="TextColor" Value="#7A7A7A"/>
+                        </Style>
+                    </StackLayout.Resources>
+                    <Label Text="비활성화 시 회원님은 추천에서 제외되며 새로운 사람들을 추천받지도 않습니다."/>
+                    <Label Text="작성한 어필 글과 연결 목록은 유지됩니다."/>
+                </StackLayout>
+
+                <Label Margin="0,30,0,0" Text="알림" FontSize="16" FontAttributes="Bold"/>
+                <StackLayout HeightRequest="40" Orientation="Horizontal">
+                    <Label VerticalOptions="Center" Text="좋아요 받음" FontSize="16"/>
+                    <Switch VerticalOptions="Center" HorizontalOptions="EndAndExpand" IsToggled="{Binding UseNotiReceiveChoice}" Toggled="UseNotiReceiveChoice_Toggled"/>
+                </StackLayout>
+                <StackLayout HeightRequest="40" Orientation="Horizontal">
+                    <Label VerticalOptions="Center" Text="보낸 좋아요 확인" FontSize="16"/>
+                    <Switch VerticalOptions="Center" HorizontalOptions="EndAndExpand" IsToggled="{Binding UseNotiSendChoiceConfirm}" Toggled="UseNotiSendChoiceConfirm_Toggled"/>
+                </StackLayout>
+                <StackLayout HeightRequest="40" Orientation="Horizontal">
+                    <Label VerticalOptions="Center" Text="받은 관심" FontSize="16"/>
+                    <Switch VerticalOptions="Center" HorizontalOptions="EndAndExpand" IsToggled="{Binding UseNotiReceiveFavorite}" Toggled="UseNotiReceiveFavorite_Toggled"/>
+                </StackLayout>
+                <StackLayout HeightRequest="40" Orientation="Horizontal">
+                    <Label VerticalOptions="Center" Text="연결됨" FontSize="16"/>
+                    <Switch VerticalOptions="Center" HorizontalOptions="EndAndExpand" IsToggled="{Binding UseNotiConnect}" Toggled="UseNotiConnect_Toggled"/>
+                </StackLayout>
+                <StackLayout HeightRequest="40" Orientation="Horizontal">
+                    <Label VerticalOptions="Center" Text="채팅 메세지" FontSize="16"/>
+                    <Switch VerticalOptions="Center" HorizontalOptions="EndAndExpand" IsToggled="{Binding UseNotiChattingMessage}" Toggled="UseNotiChattingMessage_Toggled"/>
+                </StackLayout>
+                <StackLayout HeightRequest="40" Orientation="Horizontal">
+                    <Label VerticalOptions="Center" Text="뿜뿜" FontSize="16"/>
+                    <Switch VerticalOptions="Center" HorizontalOptions="EndAndExpand" IsToggled="{Binding UseNotiAppeal}" Toggled="UseNotiAppeal_Toggled"/>
+                </StackLayout>
+                <StackLayout HeightRequest="40" Orientation="Horizontal">
+                    <Label VerticalOptions="Center" Text="마케팅 수신 동의" FontSize="16"/>
+                    <Switch VerticalOptions="Center" HorizontalOptions="EndAndExpand" IsToggled="{Binding UseNotiMarketing}" Toggled="UseNotiMarketing_Toggled"/>
+                </StackLayout>
+
+                <Label Margin="0,30,0,0" Text="계정" FontSize="16" FontAttributes="Bold"/>
+                <Label VerticalTextAlignment="Center" HorizontalOptions="Fill" HeightRequest="40" HorizontalTextAlignment="Start" Text="고객 센터" FontSize="16">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="MemberCenter_Clicked"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label VerticalTextAlignment="Center" HorizontalOptions="Fill" HeightRequest="40" HorizontalTextAlignment="Start" Text="계정 설정" FontSize="16">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SettingAccount_Clicked"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label VerticalTextAlignment="Center" HorizontalOptions="Fill" HeightRequest="40" HorizontalTextAlignment="Start" Text="로그아웃" FontSize="16">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Logout_Clicked"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+    
+</shares:BasePage>

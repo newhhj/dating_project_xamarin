@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:datamodels="clr-namespace:Strawberry.MobileApp.DataModels"
+             xmlns:dataconverters="clr-namespace:Strawberry.MobileApp.DataConverters"
+             x:Class="Strawberry.MobileApp.App"
+             android:Application.WindowSoftInputModeAdjust="Resize"
+             ios:Application.EnableAccessibilityScalingForNamedFontSizes="False">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <datamodels:Member x:Key="Member"/>
+
+            <dataconverters:RatioToHeightConverter x:Key="RatioToHeightConverter"/>
+            <dataconverters:DataConverter x:Key="DataConverter"/>
+
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="#000000"/>
+            </Style>
+            <Style TargetType="Frame">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="IsClippedToBounds" Value="True"/>
+                <Setter Property="HasShadow" Value="False"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="HeightRequest" Value="46"/>
+            </Style>
+            <Style TargetType="ffimage:CachedImage">
+                <Setter Property="DownsampleUseDipUnits" Value="True"/>
+                <Setter Property="DownsampleToViewSize" Value="True"/>
+                <Setter Property="FadeAnimationEnabled" Value="True"/>
+                <Setter Property="FadeAnimationForCachedImages" Value="True"/>
+                <Setter Property="FadeAnimationDuration" Value="200"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

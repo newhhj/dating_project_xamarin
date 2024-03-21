@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:mainpopupad="clr-namespace:Strawberry.MobileApp.Pages.MainPopupAD"
+    x:Class="Strawberry.MobileApp.Pages.MainPopupAD.MainPopupADPage"
+    x:DataType="mainpopupad:MainPopupADPageData">
+
+    <Frame VerticalOptions="Center" Margin="30" CornerRadius="5" IsClippedToBounds="True" Padding="0">
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.4*"/>
+            </Grid.ColumnDefinitions>
+            <ScrollView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand">
+                <Image x:Name="cachedImage" BackgroundColor="LightGray" HeightRequest="{Binding Height}" Source="{Binding ImageSource}" Aspect="AspectFill" SizeChanged="cachedImage_SizeChanged">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ADImage_Clicked"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </ScrollView>
+            <Button Grid.Row="1" Grid.Column="0" CornerRadius="0" Text="다시 보지 않기" Clicked="BlockAD_Clicked"/>
+            <Button Grid.Row="1" Grid.Column="1" CornerRadius="0" Text="닫기" Clicked="Close_Clicked"/>
+        </Grid>
+    </Frame>
+    
+
+</pages:PopupPage>

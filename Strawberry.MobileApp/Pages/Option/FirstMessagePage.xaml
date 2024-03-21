@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+    x:Class="Strawberry.MobileApp.Pages.Option.FirstMessagePage"
+    x:DataType="option:FirstMessagePageData">
+
+    <ContentPage.BindingContext>
+        <option:FirstMessagePageData x:Name="pageData"/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClosePage_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+                </Grid>
+                <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="첫인사 설정" FontSize="16" FontAttributes="Bold"/>
+                <Label HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" WidthRequest="50" Margin="0,0,5,0" Text="확인" TextColor="#4A9CFF" FontSize="16" FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Accept_Clicked"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+            <Grid VerticalOptions="FillAndExpand">
+                <ScrollView>
+                    <StackLayout Padding="20" Orientation="Vertical" Spacing="0">
+                        <Label Text="간단한 글인사나 음성인사로 나만의 매력을 보여주세요"/>
+                        <Grid HeightRequest="120" Margin="0,20,0,0">
+                            <Rectangle Stroke="#B8B7B7B7" RadiusX="5" RadiusY="5"/>
+                            <Editor Margin="5,0" Placeholder="회원님의 매력을 간단하게 소개해주세요." FontSize="14" Keyboard="Text" Text="{Binding FirstMessage}"/>
+                        </Grid>
+
+                        <Grid HorizontalOptions="Center" WidthRequest="150" Margin="0,50,0,0" IsVisible="{Binding IsVisiblePlay}">
+                            <Image Aspect="AspectFit" Source="icon_firstmessage01">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PlayVoice_Clicked"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image VerticalOptions="Start" HorizontalOptions="End" WidthRequest="40" TranslationX="-6" Aspect="AspectFit" Source="icon_firstmessage02">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="RemoveVoice_Clicked"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                        <Grid HorizontalOptions="Center" WidthRequest="150" Margin="0,50,0,0" IsVisible="{Binding IsVisibleNone}">
+                            <Image Aspect="AspectFit" Source="icon_firstmessage05">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="None_Clicked"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+
+                        <Label Margin="0,20,0,0" Text="음란, 욕설, 개인정보가 포함된 컨텐츠를 업로드시, 이용정지 또는 형사처벌을 받으실 수도 있습니다." TextColor="#FF0000"/>
+                    </StackLayout>
+                </ScrollView>
+
+                <StackLayout Orientation="Vertical" Spacing="0" BackgroundColor="#80000000" IsVisible="{Binding IsVisibleRec}">
+                    <Grid VerticalOptions="FillAndExpand">
+                        <StackLayout HorizontalOptions="Center" Padding="40,20" VerticalOptions="Center" BackgroundColor="#30000000">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CancelRec_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <Image WidthRequest="30" Source="icon_firstmessage03" Aspect="AspectFit"/>
+                            <Label HorizontalOptions="Center" Text="여기를 누르면 녹음이 취소됩니다." TextColor="#FFFFFF"/>
+                        </StackLayout>
+                    </Grid>
+                    <StackLayout Padding="0,30" VerticalOptions="End" BackgroundColor="#FFFFFF" Spacing="0">
+                        <Label HorizontalOptions="Center" Text="녹음이 시작되었습니다." TextColor="#333333" FontAttributes="Bold"/>
+                        <Label HorizontalOptions="Center" Text="한번 더 누르면 저장됩니다." TextColor="#333333" FontAttributes="Bold"/>
+                        <Label HorizontalOptions="Center" Text="(최대 10초)" TextColor="#333333" FontAttributes="Bold"/>
+
+                        <Image Margin="0,20,0,0" WidthRequest="100" Source="icon_firstmessage04" Aspect="AspectFit">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SaveVoice_Clicked"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Grid Margin="20,30,20,0" HeightRequest="2" BackgroundColor="#DFDFDF">
+                            <BoxView x:Name="timebar" HorizontalOptions="Start" WidthRequest="0" Color="#4A9CFF"/>
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</shares:BasePage>

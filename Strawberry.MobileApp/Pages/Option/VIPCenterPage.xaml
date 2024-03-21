@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares" 
+    xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option" 
+    xmlns:cv="clr-namespace:PanCardView;assembly=PanCardView"
+    xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="Strawberry.MobileApp.Pages.Option.VIPCenterPage"
+    x:DataType="option:VIPCenterPageData">
+
+    <shares:BasePage.BindingContext>
+        <option:VIPCenterPageData x:Name="pageData"/>
+    </shares:BasePage.BindingContext>
+
+    <StackLayout Orientation="Vertical" Spacing="0">
+        <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+            <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ClosePage_Clicked"/>
+                </Grid.GestureRecognizers>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+            </Grid>
+            <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="VIP 센터" FontSize="16" FontAttributes="Bold"/>
+        </StackLayout>
+
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Image Source="img_vip_title" Aspect="AspectFill" SizeChanged="TitleImage_SizeChanged"/>
+
+                <Label Margin="20" FontSize="16">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="결제 시"/>
+                            <Span Text=" VIP뱃지 " TextColor="#4A9CFF" FontSize="18" FontAttributes="Bold"/>
+                            <Span Text="자동 제공됩니다."/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Grid HeightRequest="80" Padding="10,0"
+                          toolkit:TouchEffect.AnimationDuration="30"
+                          toolkit:TouchEffect.PressedTranslationY="2">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item01_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <Rectangle RadiusX="15" RadiusY="15" StrokeThickness="5" Fill="#FFFFFF">
+                        <Rectangle.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#FEDCE3" Offset="0.0"/>
+                                <GradientStop Color="#BFD8FF" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Stroke>
+                    </Rectangle>
+                    <StackLayout Padding="24,0" Orientation="Horizontal">
+                        <Image WidthRequest="30" Aspect="AspectFit" Source="icon_vip_item01"/>
+                        <Label VerticalOptions="Center" Text="무제한 좋아요" FontSize="16" FontAttributes="Bold"/>
+                        <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="월 69,000원" FontSize="16"/>
+                    </StackLayout>
+                </Grid>
+
+                <Grid HeightRequest="80" Padding="10,0"
+                          toolkit:TouchEffect.AnimationDuration="30"
+                          toolkit:TouchEffect.PressedTranslationY="2">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item02_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <Rectangle RadiusX="15" RadiusY="15" StrokeThickness="5" Fill="#FFFFFF">
+                        <Rectangle.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#FEDCE3" Offset="0.0"/>
+                                <GradientStop Color="#BFD8FF" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Stroke>
+                    </Rectangle>
+                    <StackLayout Padding="24,0" Orientation="Horizontal">
+                        <Image WidthRequest="30" Aspect="AspectFit" Source="icon_vip_item02"/>
+                        <Label VerticalOptions="Center" Text="무제한 스마트 딸기" FontSize="16" FontAttributes="Bold"/>
+                        <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="월 99,000원" FontSize="16"/>
+                    </StackLayout>
+                </Grid>
+
+                <Grid HeightRequest="80" Margin="0,0,0,20" Padding="10,0"
+                          toolkit:TouchEffect.AnimationDuration="30"
+                          toolkit:TouchEffect.PressedTranslationY="2">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item03_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <Rectangle RadiusX="15" RadiusY="15" StrokeThickness="5" Fill="#FFFFFF">
+                        <Rectangle.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#FEDCE3" Offset="0.0"/>
+                                <GradientStop Color="#BFD8FF" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Stroke>
+                    </Rectangle>
+                    <StackLayout Padding="24,0" Orientation="Horizontal">
+                        <Image WidthRequest="30" Aspect="AspectFit" Source="icon_vip_item03"/>
+                        <StackLayout VerticalOptions="Center" Orientation="Vertical" Spacing="0">
+                            <Label VerticalOptions="Center" Text="1일 3명 대화" FontSize="16" FontAttributes="Bold"/>
+                            <Label VerticalOptions="Center" Text="(월 90명 대화)" TextColor="#7A7A7A"/>
+                        </StackLayout>
+                        <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="월 99,000원" FontSize="16"/>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+    
+</shares:BasePage>

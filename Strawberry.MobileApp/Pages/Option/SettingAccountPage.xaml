@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares" 
+    xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+    x:Class="Strawberry.MobileApp.Pages.Option.SettingAccountPage"
+    x:DataType="option:SettingAccountPageData">
+
+    <shares:BasePage.BindingContext>
+        <option:SettingAccountPageData/>
+    </shares:BasePage.BindingContext>
+
+    <StackLayout Orientation="Vertical" Spacing="0">
+        <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+            <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Back_Clicked"/>
+                </Grid.GestureRecognizers>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+            </Grid>
+            <Label VerticalOptions="Center" Text="계정설정" FontSize="16" FontAttributes="Bold"/>
+        </StackLayout>
+        <ScrollView VerticalOptions="Fill">
+            <StackLayout VerticalOptions="Fill" Orientation="Vertical" Padding="0,20" Spacing="5">
+                <StackLayout HeightRequest="40" Padding="20,0" Orientation="Horizontal">
+                    <Label VerticalOptions="Center" Text="이메일 계정" FontSize="16"/>
+                    <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="{Binding EmailText}" FontSize="16" TextColor="{Binding EmailTextColor}"/>
+                </StackLayout>
+                <StackLayout HeightRequest="40" Padding="20,0" Orientation="Horizontal">
+                    <Label VerticalOptions="Center" Text="비밀번호" FontSize="16"/>
+                    <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="{Binding HasPasswordText}" FontSize="16" TextColor="{Binding HasPasswordTextColor}"/>
+                </StackLayout>
+
+                <BoxView HeightRequest="10" Color="#F3F3F3"/>
+
+                <StackLayout HeightRequest="40" Padding="20,0" Orientation="Horizontal">
+                    <Label VerticalOptions="Center" Text="휴대전화번호" FontSize="16"/>
+                    <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="{Binding PhoneNumberText}" FontSize="16" TextColor="{Binding PhoneNumberTextColor}"/>
+                </StackLayout>
+
+                <BoxView HeightRequest="10" Color="#F3F3F3"/>
+
+                <StackLayout HeightRequest="40" Padding="20,0" Orientation="Horizontal">
+                    <Label VerticalOptions="Center" Text="계정삭제" FontSize="16" TextColor="#7A7A7A"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+
+</shares:BasePage>

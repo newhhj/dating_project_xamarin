@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              xmlns:main="clr-namespace:Strawberry.MobileApp.Pages.Main"
+              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+              xmlns:fft="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+              xmlns:tk="http://xamarin.com/schemas/2020/toolkit" xmlns:views="clr-namespace:Strawberry.MobileApp.Views"
+              x:Class="Strawberry.MobileApp.Pages.Main.MainPage_View14"
+              x:DataType="main:MainPage_View14_Data">
+
+	<!-- StackLayout 전체 레이아웃 설정 -->
+	<StackLayout FlexLayout.Basis="100%" Orientation="Vertical" Spacing="0" Padding="20">
+		<StackLayout.Resources>
+			<ResourceDictionary>
+				<!-- MainPage_View14_Data_Converter 리소스 선언 -->
+				<main:MainPage_View14_Data_Converter x:Key="converter"/>
+			</ResourceDictionary>
+		</StackLayout.Resources>
+
+		<!-- 상단 StackLayout -->
+		<StackLayout Orientation="Horizontal">
+			<!-- 프로필 이미지와 관련된 StackLayout -->
+			<StackLayout.GestureRecognizers>
+				<TapGestureRecognizer Tapped="Profile_Clicked"/>
+			</StackLayout.GestureRecognizers>
+			<ff:CachedImage HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="80" HeightRequest="80" MinimumWidthRequest="80" MinimumHeightRequest="80"
+                                           Source="{Binding ProfileImage}" Aspect="AspectFill">
+				<ff:CachedImage.Transformations>
+					<fft:CircleTransformation/>
+				</ff:CachedImage.Transformations>
+				<ff:CachedImage.GestureRecognizers>
+					<TapGestureRecognizer Tapped="ViewProfile_Clicked"/>
+				</ff:CachedImage.GestureRecognizers>
+			</ff:CachedImage>
+
+			<!-- 닉네임, 나이, 직업 등을 표시하는 StackLayout -->
+			<StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
+				<!-- 닉네임, 나이 등을 표시하는 StackLayout -->
+				<StackLayout Orientation="Horizontal" Spacing="0">
+					<Image VerticalOptions="End" Margin="0,0,5,0" WidthRequest="34" MinimumWidthRequest="34" Source="icon_royal" Aspect="AspectFit" IsVisible="{Binding IsRoyal}"/>
+					<Label VerticalOptions="End" Text="{Binding Nickname}" FontSize="18" FontAttributes="Bold"/>
+					<Label VerticalOptions="End" Margin="5,0,5,0" Text="{Binding Age}"/>
+					<Image VerticalOptions="End" Margin="0,0,5,0" WidthRequest="26" MinimumWidthRequest="26" Source="icon_vip" IsVisible="{Binding IsVIP}"/>
+					<Image VerticalOptions="End" WidthRequest="16" MinimumWidthRequest="16" Source="icon_star_10" IsVisible="{Binding Is10Star}"/>
+				</StackLayout>
+
+				<!-- 직업을 표시하는 StackLayout -->
+				<StackLayout Orientation="Horizontal">
+					<Label VerticalOptions="End" Text="{Binding Job}" FontSize="12" TextColor="#A5333333"/>
+				</StackLayout>
+
+				<!-- 완성도 프레임 -->
+				<Frame HeightRequest="14" Margin="0,5,0,0" Padding="1" CornerRadius="8">
+					<Frame.Background>
+						<LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+							<GradientStop Color="#4D9AFF" Offset="0"/>
+							<GradientStop Color="#C461FF" Offset="1"/>
+						</LinearGradientBrush>
+					</Frame.Background>
+					<Grid ColumnSpacing="0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+
+						<!-- 단계별 완성도 표시를 위한 Grid -->
+						<Grid Grid.Column="0" Padding="1">
+							<Grid.IsVisible>
+								<MultiBinding Converter="{StaticResource converter}" ConverterParameter="IsFillStep01">
+									<Binding Path="IsConfirmStep1"/>
+									<Binding Path="IsConfirmStep2"/>
+									<Binding Path="IsConfirmStep3"/>
+									<Binding Path="IsConfirmStep4"/>
+								</MultiBinding>
+							</Grid.IsVisible>
+							<Frame Margin="0,0,6,0" CornerRadius="6" BackgroundColor="#FFFFFF"/>
+							<BoxView HorizontalOptions="End" WidthRequest="10" Color="#FFFFFF"/>
+						</Grid>
+						<BoxView Grid.Column="1" HorizontalOptions="Start" Margin="0,1" WidthRequest="2" Color="#FFFFFF" TranslationX="-1">
+							<BoxView.IsVisible>
+								<MultiBinding Converter="{StaticResource converter}" ConverterParameter="IsVisibleSpliterStep02">
+									<Binding Path="IsConfirmStep1"/>
+									<Binding Path="IsConfirmStep2"/>
+									<Binding Path="IsConfirmStep3"/>
+									<Binding Path="IsConfirmStep4"/>
+								</MultiBinding>
+							</BoxView.IsVisible>
+						</BoxView>
+						<Grid Grid.Column="1" Padding="1">
+							<Grid.IsVisible>
+								<MultiBinding Converter="{StaticResource converter}" ConverterParameter="IsFillStep02">
+									<Binding Path="IsConfirmStep1"/>
+									<Binding Path="IsConfirmStep2"/>
+									<Binding Path="IsConfirmStep3"/>
+									<Binding Path="IsConfirmStep4"/>
+								</MultiBinding>
+							</Grid.IsVisible>
+							<BoxView Color="#FFFFFF"/>
+						</Grid>
+						<BoxView Grid.Column="2" HorizontalOptions="Start" Margin="0,1" WidthRequest="2" Color="#FFFFFF" TranslationX="-1">
+							<BoxView.IsVisible>
+								<MultiBinding Converter="{StaticResource converter}" ConverterParameter="IsVisibleSpliterStep03">
+									<Binding Path="IsConfirmStep1"/>
+									<Binding Path="IsConfirmStep2"/>
+									<Binding Path="IsConfirmStep3"/>
+									<Binding Path="IsConfirmStep4"/>
+								</MultiBinding>
+							</BoxView.IsVisible>
+						</BoxView>
+						<Grid Grid.Column="2" Padding="1">
+							<Grid.IsVisible>
+								<MultiBinding Converter="{StaticResource converter}" ConverterParameter="IsFillStep03">
+									<Binding Path="IsConfirmStep1"/>
+									<Binding Path="IsConfirmStep2"/>
+									<Binding Path="IsConfirmStep3"/>
+									<Binding Path="IsConfirmStep4"/>
+								</MultiBinding>
+							</Grid.IsVisible>
+							<BoxView Color="#FFFFFF"/>
+						</Grid>
+						<BoxView Grid.Column="3" HorizontalOptions="Start" Margin="0,1" WidthRequest="2" Color="#FFFFFF" TranslationX="-1">
+							<BoxView.IsVisible>
+								<MultiBinding Converter="{StaticResource converter}" ConverterParameter="IsVisibleSpliterStep04">
+									<Binding Path="IsConfirmStep1"/>
+									<Binding Path="IsConfirmStep2"/>
+									<Binding Path="IsConfirmStep3"/>
+									<Binding Path="IsConfirmStep4"/>
+								</MultiBinding>
+							</BoxView.IsVisible>
+						</BoxView>
+						<Grid Grid.Column="3" Padding="1">
+							<Grid.IsVisible>
+								<MultiBinding Converter="{StaticResource converter}" ConverterParameter="IsFillStep04">
+									<Binding Path="IsConfirmStep1"/>
+									<Binding Path="IsConfirmStep2"/>
+									<Binding Path="IsConfirmStep3"/>
+									<Binding Path="IsConfirmStep4"/>
+								</MultiBinding>
+							</Grid.IsVisible>
+							<Frame Margin="6,0,0,0" CornerRadius="6" BackgroundColor="#FFFFFF"/>
+							<BoxView HorizontalOptions="Start" WidthRequest="10" Color="#FFFFFF"/>
+						</Grid>
+					</Grid>
+				</Frame>
+
+				<!-- 단계별 완성도에 대한 설명을 표시하는 Grid -->
+				<Grid Margin="0,3,0,0" ColumnSpacing="0">
+					<Grid.Resources>
+						<Style TargetType="Label">
+							<Setter Property="FontSize" Value="10"/>
+							<Setter Property="VerticalOptions" Value="Center"/>
+						</Style>
+					</Grid.Resources>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+
+					<!-- 프로필 단계 완성도 -->
+					<Label HorizontalOptions="Start" Grid.Column="0" Grid.ColumnSpan="2" Text="프로필" TextColor="#4A9CFF"/>
+					<StackLayout Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="Center" Orientation="Horizontal" Spacing="2">
+						<Image HeightRequest="10" Source="icon_strawberry" Aspect="AspectFit">
+							<tk:IconTintColorEffect.TintColor>
+								<MultiBinding Converter="{StaticResource converter}" ConverterParameter="ColorStep01">
+									<Binding Path="IsConfirmStep1"/>
+									<Binding Path="IsConfirmStep2"/>
+									<Binding Path="IsConfirmStep3"/>
+									<Binding Path="IsConfirmStep4"/>
+								</MultiBinding>
+							</tk:IconTintColorEffect.TintColor>
+						</Image>
+						<Label Text="5">
+							<Label.TextColor>
+								<MultiBinding Converter="{StaticResource converter}" ConverterParameter="ColorStep01">
+									<Binding Path="IsConfirmStep1"/>
+									<Binding Path="IsConfirmStep2"/>
+									<Binding Path="IsConfirmStep3"/>
+									<Binding Path="IsConfirmStep4"/>
+								</MultiBinding>
+							</Label.TextColor>
+						</Label>
+					</StackLayout>
+					<StackLayout Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="Center" Orientation="Horizontal" Spacing="2">
+						<Image HeightRequest="10" Source="icon_strawberry" Aspect="AspectFit">
+							<tk:IconTintColorEffect.TintColor>
+								<MultiBinding Converter="{StaticResource converter}" ConverterParameter="ColorStep02">
+									<Binding Path="IsConfirmStep1"/>
+									<Binding Path="IsConfirmStep2"/>
+									<Binding Path="IsConfirmStep3"/>
+									<Binding Path="IsConfirmStep4"/>
+								</MultiBinding>
+							</tk:IconTintColorEffect.TintColor>
+						</Image>
+						<Label Text="10">
+							<Label.TextColor>
+								<MultiBinding Converter="{StaticResource converter}" ConverterParameter="ColorStep02">
+									<Binding Path="IsConfirmStep1"/>
+									<Binding Path="IsConfirmStep2"/>
+									<Binding Path="IsConfirmStep3"/>
+									<Binding Path="IsConfirmStep4"/>
+								</MultiBinding>
+							</Label.TextColor>
+						</Label>
+					</StackLayout>
+					<StackLayout Grid.Column="5" Grid.ColumnSpan="2" HorizontalOptions="Center" Orientation="Horizontal" Spacing="2">
+						<Image HeightRequest="10" Source="icon_strawberry" Aspect="AspectFit">
+							<tk:IconTintColorEffect.TintColor>
+								<MultiBinding Converter="{StaticResource converter}" ConverterParameter="ColorStep03">
+									<Binding Path="IsConfirmStep1"/>
+									<Binding Path="IsConfirmStep2"/>
+									<Binding Path="IsConfirmStep3"/>
+									<Binding Path="IsConfirmStep4"/>
+								</MultiBinding>
+							</tk:IconTintColorEffect.TintColor>
+						</Image>
+						<Label Text="15">
+							<Label.TextColor>
+								<MultiBinding Converter="{StaticResource converter}" ConverterParameter="ColorStep03">
+									<Binding Path="IsConfirmStep1"/>
+									<Binding Path="IsConfirmStep2"/>
+									<Binding Path="IsConfirmStep3"/>
+									<Binding Path="IsConfirmStep4"/>
+								</MultiBinding>
+							</Label.TextColor>
+						</Label>
+					</StackLayout>
+					<Label HorizontalOptions="End" Grid.Column="7" Text="완성">
+						<Label.TextColor>
+							<MultiBinding Converter="{StaticResource converter}" ConverterParameter="ColorStep04">
+								<Binding Path="IsConfirmStep1"/>
+								<Binding Path="IsConfirmStep2"/>
+								<Binding Path="IsConfirmStep3"/>
+								<Binding Path="IsConfirmStep4"/>
+							</MultiBinding>
+						</Label.TextColor>
+					</Label>
+				</Grid>
+
+				<!-- 프로필 완성도에 대한 설명 -->
+				<!--<Frame HeightRequest="14" Margin="0,5,0,0" BackgroundColor="#FFFFFF" CornerRadius="0" BorderColor="#4A9CFF">
+                    <Grid ColumnSpacing="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".25*"/>
+                            <ColumnDefinition Width=".1"/>
+                            <ColumnDefinition Width=".25*"/>
+                            <ColumnDefinition Width=".1"/>
+                            <ColumnDefinition Width=".25*"/>
+                            <ColumnDefinition Width=".1"/>
+                            <ColumnDefinition Width=".25*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <BoxView Grid.Column="0" BackgroundColor="#4A9CFF" IsVisible="{Binding IsVisibleProfileStep01}"/>
+                        <BoxView Grid.Column="2" BackgroundColor="#4A9CFF" IsVisible="{Binding IsVisibleProfileStep02}"/>
+                        <BoxView Grid.Column="4" BackgroundColor="#4A9CFF" IsVisible="{Binding IsVisibleProfileStep03}"/>
+                        <BoxView Grid.Column="6" BackgroundColor="#4A9CFF" IsVisible="{Binding IsVisibleProfileStep04}"/>
+                    </Grid>
+                </Frame>-->
+				<!--<StackLayout Orientation="Horizontal">
+                    <Label HorizontalOptions="StartAndExpand" Text="프로필 완성도" FontSize="12"/>
+                    <Label HorizontalOptions="End" Text="{Binding ProfileStepText}" TextColor="#4A9CFF" FontSize="12"/>
+                </StackLayout>-->
+
+			</StackLayout>
+			<Grid WidthRequest="30" MinimumWidthRequest="50">
+				<BoxView VerticalOptions="Center" HorizontalOptions="End" WidthRequest="10" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="-3"/>
+				<BoxView VerticalOptions="Center" HorizontalOptions="End" WidthRequest="10" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="3"/>
+			</Grid>
+		</StackLayout>
+		<Label Margin="0,10,0,0" Text="프로필 완성 및 로그인이 많을수록 원하는 이성과의 매칭 확률이 올라갑니다!" FontSize="12" TextColor="#7A7A7A"/>
+
+		<!-- 옵션 메뉴 -->
+		<StackLayout Margin="0,30,0,0" Orientation="Vertical" Spacing="0">
+			<StackLayout.Resources>
+				<Style TargetType="StackLayout">
+					<Setter Property="tk:TouchEffect.AnimationDuration" Value="50"/>
+					<Setter Property="tk:TouchEffect.PressedTranslationY" Value="2"/>
+				</Style>
+			</StackLayout.Resources>
+
+			<!-- 프로필 등급 메뉴 -->
+			<StackLayout Orientation="Horizontal" HeightRequest="50" Spacing="14">
+				<StackLayout.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Menu01_Clicked"/>
+				</StackLayout.GestureRecognizers>
+				<Image VerticalOptions="Center" WidthRequest="26" MinimumWidthRequest="26" HeightRequest="26" Source="icon_option_item01"/>
+				<Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="프로필 등급"/>
+				<Label VerticalOptions="Center" Text="{Binding LevelTypeText}" TextColor="#7A7A7A"/>
+			</StackLayout>
+
+			<!-- 딸기 스토어 메뉴 -->
+			<StackLayout Margin="0,0,0,0" Orientation="Horizontal" HeightRequest="50" Spacing="14">
+				<StackLayout.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Menu02_Clicked"/>
+				</StackLayout.GestureRecognizers>
+				<Image VerticalOptions="Center" WidthRequest="26" MinimumWidthRequest="26" HeightRequest="26" Source="icon_option_item02"/>
+				<Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="딸기 스토어"/>
+				<StackLayout Orientation="Horizontal">
+					<Image VerticalOptions="Center" WidthRequest="14" MinimumWidthRequest="14" Source="icon_option_item10"/>
+					<Label VerticalOptions="Center" Text="{Binding Point, StringFormat='{0:#,##0}'}" TextColor="#7A7A7A"/>
+				</StackLayout>
+			</StackLayout>
+
+			<!-- 로얄 인증센터 메뉴 -->
+			<StackLayout Margin="0,0,0,0" Orientation="Horizontal" HeightRequest="50" Spacing="14">
+				<StackLayout.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Menu03_Clicked"/>
+				</StackLayout.GestureRecognizers>
+				<Image VerticalOptions="Center" WidthRequest="26" MinimumWidthRequest="26" HeightRequest="26" Source="icon_option_item03"/>
+				<Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="로얄 인증센터"/>
+			</StackLayout>
+
+			<!-- VIP 센터 메뉴 -->
+			<StackLayout Margin="0,0,0,0" Orientation="Horizontal" HeightRequest="50" Spacing="14">
+				<StackLayout.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Menu04_Clicked"/>
+				</StackLayout.GestureRecognizers>
+				<Image VerticalOptions="Center" WidthRequest="26" MinimumWidthRequest="26" HeightRequest="26" Source="icon_option_item04"/>
+				<Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="VIP 센터"/>
+			</StackLayout>
+
+			<!-- 선호 설정 메뉴 -->
+			<StackLayout Margin="0,0,0,0" Orientation="Horizontal" HeightRequest="50" Spacing="14">
+				<StackLayout.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Menu05_Clicked"/>
+				</StackLayout.GestureRecognizers>
+				<Image VerticalOptions="Center" WidthRequest="26" MinimumWidthRequest="26" HeightRequest="26" Source="icon_option_item05"/>
+				<Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="선호 설정"/>
+			</StackLayout>
+
+			<!-- 첫인사 관리 메뉴 -->
+			<StackLayout Margin="0,0,0,0" Orientation="Horizontal" HeightRequest="50" Spacing="14">
+				<StackLayout.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Menu06_Clicked"/>
+				</StackLayout.GestureRecognizers>
+				<Image VerticalOptions="Center" WidthRequest="26" MinimumWidthRequest="26" HeightRequest="26" Source="icon_option_item06"/>
+				<Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="첫인사 관리"/>
+			</StackLayout>
+
+			<!-- 광고 배너 -->
+			<StackLayout Margin="-20,20,-20,20" Orientation="Vertical" IsVisible="{Binding IsVisibleAdBanner}">
+				<StackLayout.GestureRecognizers>
+					<TapGestureRecognizer Tapped="ADBanner_Clicked"/>
+				</StackLayout.GestureRecognizers>
+				<views:AutoSizeImageView ImageUrl="{Binding ADImageUrl}"/>
+			</StackLayout>
+
+
+			<!-- 친구 초대 메뉴 -->
+			<StackLayout Margin="0,0,0,0" Orientation="Horizontal" HeightRequest="50" Spacing="14">
+				<StackLayout.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Menu07_Clicked"/>
+				</StackLayout.GestureRecognizers>
+				<Image VerticalOptions="Center" WidthRequest="26" MinimumWidthRequest="26" HeightRequest="26" Source="icon_option_item07"/>
+				<Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="친구 초대"/>
+			</StackLayout>
+
+			<!--<StackLayout Margin="0,0,0,0" Orientation="Horizontal" HeightRequest="50" Spacing="14">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Menu08_Clicked"/>
+                </StackLayout.GestureRecognizers>
+                <Image VerticalOptions="Center" WidthRequest="26" MinimumWidthRequest="26" HeightRequest="26" Source="icon_option_item08"/>
+                <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="보낸 좋아요 목록"/>
+            </StackLayout>-->
+
+			<!--<StackLayout Margin="0,0,0,0" Orientation="Horizontal" HeightRequest="50" Spacing="14">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Menu09_Clicked"/>
+                </StackLayout.GestureRecognizers>
+                <Image VerticalOptions="Center" WidthRequest="26" MinimumWidthRequest="26" HeightRequest="26" Source="icon_option_item09"/>
+                <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="고객 센터"/>
+            </StackLayout>-->
+		</StackLayout>
+
+		<!-- 하단 내용 -->
+		<StackLayout Margin="0,20,0,0" Orientation="Vertical">
+			<StackLayout Orientation="Horizontal" HeightRequest="30">
+				<Image WidthRequest="30" Source="icon_option_item11" Aspect="AspectFit"/>
+				<Image WidthRequest="30" Source="icon_option_item12" Aspect="AspectFit"/>
+				<Image WidthRequest="30" Source="icon_option_item13" Aspect="AspectFit"/>
+				<Image WidthRequest="30" Source="icon_option_item14" Aspect="AspectFit"/>
+			</StackLayout>
+			<Label Text="※ 딸기는 유니세프, 이화여대 의료 호스피스, 국경없는의사회, 세브란스, 그린피스 유엔 WHO 등 헌신하는 봉사단체를 지지하며, 회원님들의 딸기 가입으로서 후원내지 봉사활동에 자연 동참 중이시니 더욱 응원 해주세요."/>
+			<Label Text="※ 당사 앱의 의료인 생체 인식 기술 포함 다수의 기능 및 디자인은 &lt;span style='color: red;' &gt;특허로 보호&lt;/span&gt; 받고 있어, 만약 도용하거나 내려받기하여 변형 모방 등의 방법으로 유출 또는 상업적 보유와 활용 등을 하고 있다고 모니터 되면 법인 자산의 지식재산권 침해 대해서 무관용원칙을 적용하여 당사 법무팀은 민형사상 즉시 착수함을 경고 합니다." TextType="Html"/>
+		</StackLayout>
+	</StackLayout>
+</DataTemplate>

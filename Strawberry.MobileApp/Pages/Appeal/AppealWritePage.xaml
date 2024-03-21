@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+                 xmlns:svg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
+                 xmlns:img="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                 xmlns:appeal="clr-namespace:Strawberry.MobileApp.Pages.Appeal"
+                 x:Class="Strawberry.MobileApp.Pages.Appeal.AppealWritePage"
+                 x:DataType="appeal:AppealWritePageData">
+    <shares:BasePage.BindingContext>
+        <appeal:AppealWritePageData x:Name="pageData"/>
+    </shares:BasePage.BindingContext>
+    <Grid>
+
+        <ScrollView Margin="0,50,0,0">
+            <StackLayout Orientation="Vertical">
+                <Grid Padding="15,10,15,0" IsVisible="{Binding ImageContainerVisible}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33.33*"/>
+                        <ColumnDefinition Width="33.33*"/>
+                        <ColumnDefinition Width="33.33*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <img:CachedImage Grid.Row="0" Grid.Column="0" HeightRequest="{Binding Width, Source={RelativeSource Self}}" Aspect="AspectFill"
+                                     Source="{Binding Images[0], Mode=TwoWay, TargetNullValue='img_noimage'}">
+                        <img:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Image_Clicked" BindingContext="{Binding Images[0]}"/>
+                        </img:CachedImage.GestureRecognizers>
+                    </img:CachedImage>
+                    <img:CachedImage Grid.Row="0" Grid.Column="1" HeightRequest="{Binding Width, Source={RelativeSource Self}}" Aspect="AspectFill"
+                                     Source="{Binding Images[1], Mode=TwoWay, TargetNullValue='img_noimage'}">
+                        <img:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Image_Clicked" BindingContext="{Binding Images[0]}"/>
+                        </img:CachedImage.GestureRecognizers>
+                    </img:CachedImage>
+                    <img:CachedImage Grid.Row="0" Grid.Column="2" HeightRequest="{Binding Width, Source={RelativeSource Self}}" Aspect="AspectFill"
+                                     Source="{Binding Images[2], Mode=TwoWay, TargetNullValue='img_noimage'}">
+                        <img:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Image_Clicked" BindingContext="{Binding Images[0]}"/>
+                        </img:CachedImage.GestureRecognizers>
+                    </img:CachedImage>
+                    <img:CachedImage Grid.Row="1" Grid.Column="0" HeightRequest="{Binding Width, Source={RelativeSource Self}}" Aspect="AspectFill"
+                                     Source="{Binding Images[3], Mode=TwoWay, TargetNullValue='img_noimage'}">
+                        <img:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Image_Clicked" BindingContext="{Binding Images[0]}"/>
+                        </img:CachedImage.GestureRecognizers>
+                    </img:CachedImage>
+                    <img:CachedImage Grid.Row="1" Grid.Column="1" HeightRequest="{Binding Width, Source={RelativeSource Self}}" Aspect="AspectFill"
+                                     Source="{Binding Images[4], Mode=TwoWay, TargetNullValue='img_noimage'}">
+                        <img:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Image_Clicked" BindingContext="{Binding Images[0]}"/>
+                        </img:CachedImage.GestureRecognizers>
+                    </img:CachedImage>
+                    <img:CachedImage Grid.Row="1" Grid.Column="2" HeightRequest="{Binding Width, Source={RelativeSource Self}}" Aspect="AspectFill"
+                                     Source="{Binding Images[5], Mode=TwoWay, TargetNullValue='img_noimage'}">
+                        <img:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Image_Clicked" BindingContext="{Binding Images[0]}"/>
+                        </img:CachedImage.GestureRecognizers>
+                    </img:CachedImage>
+                </Grid>
+
+                <Grid Margin="15,0,15,0" VerticalOptions="FillAndExpand">
+                    <BoxView VerticalOptions="Start" HeightRequest="150"/>
+                    <Grid Padding="5,10">
+                        <Label Text="타인 비방, 욕설 혹은 개인을 특정하여 언급하는 행위는 삼가주세요. 기준을 위반한 게시물을 작성할 경우 제재될 수 있습니다." TextColor="#B87A7A7A" IsVisible="{Binding PlaceHolderType01Visible}"/>
+                        <StackLayout Orientation="Vertical" Spacing="-3" IsVisible="{Binding PlaceHolderType02Visible}">
+                            <Label Text="번개 모임 위약시 영구제명 될수 있습니다." TextColor="Red"/>
+                            <Label Text="장소 및 예약사실 확인 후 관지라가 승인하고 있습니다." TextColor="#B87A7A7A"/>
+                            <Label Text="번개 약속은 최소 3시간 이후로 18시 이전에 올려야 승인 됩니다." TextColor="#B87A7A7A"/>
+                            <Label Text="본인 또는 가족 영업장 번개 모임은 불가합니다." TextColor="#B87A7A7A"/>
+                        </StackLayout>
+                    </Grid>
+                    <Editor AutoSize="TextChanges" FontSize="14" BackgroundColor="Transparent" Text="{Binding Content}"/>
+                </Grid>
+
+                <StackLayout Padding="15,0" HeightRequest="40" Orientation="Horizontal" IsVisible="{Binding SubViewType01Visible}">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Area_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Label VerticalOptions="Center" Text="지역"/>
+                    <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="{Binding Area, TargetNullValue='선택하세요'}"/>
+                    <svg:SvgCachedImage HeightRequest="12" Source="resource://Strawberry.MobileApp.Images.icon_arrow_right01.svg" Aspect="AspectFit"/>
+                </StackLayout>
+                <StackLayout Padding="15,0" HeightRequest="40" Orientation="Horizontal" IsVisible="{Binding SubViewType01Visible}">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Time_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Label VerticalOptions="Center" Text="시간"/>
+                    <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="{Binding Time, TargetNullValue='선택하세요'}"/>
+                    <svg:SvgCachedImage HeightRequest="12" Source="resource://Strawberry.MobileApp.Images.icon_arrow_right01.svg" Aspect="AspectFit"/>
+                </StackLayout>
+                <StackLayout Padding="15,0" HeightRequest="40" Orientation="Horizontal" IsVisible="{Binding SubViewType02Visible}">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Area_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Label VerticalOptions="Center" Text="장소"/>
+                    <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="{Binding Area, TargetNullValue='선택하세요'}"/>
+                    <svg:SvgCachedImage HeightRequest="12" Source="resource://Strawberry.MobileApp.Images.icon_arrow_right01.svg" Aspect="AspectFit"/>
+                </StackLayout>
+                <StackLayout Padding="15,0" HeightRequest="40" Orientation="Horizontal" BackgroundColor="#F9F9F9">
+                    <Label VerticalOptions="Center" Text="댓글 허용"/>
+                    <Switch VerticalOptions="Center" HorizontalOptions="EndAndExpand" IsToggled="{Binding UseComment}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+        
+        <StackLayout VerticalOptions="Start" HeightRequest="50" Orientation="Horizontal">
+            <Grid VerticalOptions="Center" WidthRequest="40" HeightRequest="40">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackButton_Clicked"/>
+                </Grid.GestureRecognizers>
+                <svg:SvgCachedImage VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="20" HeightRequest="20" Source="resource://Strawberry.MobileApp.Images.icon_back01.svg" Aspect="AspectFit"/>
+            </Grid>
+            <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="글쓰기" FontSize="18" FontAttributes="Bold"/>
+            <Grid Margin="0,0,5,0" Padding="10,0">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AcceptButton_Clicked"/>
+                </Grid.GestureRecognizers>
+                <Label VerticalOptions="Center" Text="게시" TextColor="#4A9CFF" FontSize="18" FontAttributes="Bold"/>
+            </Grid>
+        </StackLayout>
+    </Grid>
+    
+</shares:BasePage>

@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares" 
+    xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+    xmlns:cardsview="clr-namespace:PanCardView;assembly=PanCardView"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="Strawberry.MobileApp.Pages.Option.ProfileLevelPage"
+    x:DataType="option:ProfileLevelPageData"
+    x:Name="rootView">
+
+    <ContentPage.BindingContext>
+        <option:ProfileLevelPageData/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Orientation="Vertical" Spacing="0">
+        <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+            <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Back_Clicked"/>
+                </Grid.GestureRecognizers>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+            </Grid>
+            <Label VerticalOptions="Center" Text="프로필 등급" FontSize="16" FontAttributes="Bold"/>
+        </StackLayout>
+        <ScrollView VerticalOptions="Fill">
+            <StackLayout VerticalOptions="Fill" Orientation="Vertical" Spacing="0">
+                <Grid HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}}">
+                    <cardsview:CarouselView x:Name="carouselView1" ItemsSource="{Binding ProfileImages}">
+                        <cardsview:CarouselView.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <ffimageloading:CachedImage Source="{Binding}" Aspect="AspectFill"/>
+                            </DataTemplate>
+                        </cardsview:CarouselView.ItemTemplate>
+                    </cardsview:CarouselView>
+                    <StackLayout VerticalOptions="Start" HorizontalOptions="Center" Margin="0,16,0,0" BindableLayout.ItemsSource="{Binding ProfileImages}" Orientation="Horizontal">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame VerticalOptions="Center" HeightRequest="10" BackgroundColor="#FFFFFF" CornerRadius="5">
+                                    <Frame.WidthRequest>
+                                        <MultiBinding Converter="{Reference rootView}">
+                                            <Binding Source="{Reference carouselView1}" Path="SelectedItem"/>
+                                            <Binding />
+                                        </MultiBinding>
+                                    </Frame.WidthRequest>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </Grid>
+                
+                <Label Margin="20,10,20,0" FontSize="20" FontAttributes="Bold" Text="{Binding LevelText}"/>
+
+                <Label Margin="20,10,20,0" Text="현재티어" TextColor="#7A7A7A" FontAttributes="Bold"/>
+                <Grid Margin="20,10,20,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".25*"/>
+                        <ColumnDefinition Width=".25*"/>
+                        <ColumnDefinition Width=".25*"/>
+                        <ColumnDefinition Width=".25*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Center" HeightRequest="20" CornerRadius="10">
+                        <BoxView.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FFDA23" Offset="0"/>
+                                <GradientStop Color="#FF2458" Offset="1"/>
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+
+                    <BoxView Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="5" HeightRequest="30" Color="#333333" IsVisible="{Binding IsVisibleTierBar01}"/>
+                    <BoxView Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="5" HeightRequest="30" Color="#333333" IsVisible="{Binding IsVisibleTierBar02}"/>
+                    <BoxView Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="5" HeightRequest="30" Color="#333333" IsVisible="{Binding IsVisibleTierBar03}"/>
+                    <BoxView Grid.Row="0" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="5" HeightRequest="30" Color="#333333" IsVisible="{Binding IsVisibleTierBar04}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{Binding Tier01TextColor}" Text="실버"/>
+                    <Label Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{Binding Tier02TextColor}" Text="골드"/>
+                    <Label Grid.Row="1" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{Binding Tier03TextColor}" Text="플래티넘"/>
+                    <Label Grid.Row="1" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{Binding Tier04TextColor}" Text="다이아몬드"/>
+                </Grid>
+
+                <Label Margin="20,24,20,0" Text="추천 범위" TextColor="#7A7A7A"/>
+                <Label Margin="20,0,20,0" Text="매우 매력적인 사람들을 추천해드려요" TextColor="#333333" FontSize="16"/>
+
+                <Grid Margin="0,20,0,0" ColumnSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.125*"/>
+                        <ColumnDefinition Width="0.125*"/>
+                        <ColumnDefinition Width="0.125*"/>
+                        <ColumnDefinition Width="0.125*"/>
+                        <ColumnDefinition Width="0.125*"/>
+                        <ColumnDefinition Width="0.125*"/>
+                        <ColumnDefinition Width="0.125*"/>
+                        <ColumnDefinition Width="0.125*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="6" VerticalOptions="Center" HeightRequest="3" BackgroundColor="#DFDFDF"/>
+
+                    <Frame Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HeightRequest="3" BackgroundColor="#4A9CFF" CornerRadius="0" IsVisible="{Binding IsVisibleTier01AreaBar}"/>
+                    <Frame Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" VerticalOptions="Center" HeightRequest="3" BackgroundColor="#4A9CFF" CornerRadius="0" IsVisible="{Binding IsVisibleTier02AreaBar}"/>
+                    <Frame Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" VerticalOptions="Center" HeightRequest="3" BackgroundColor="#4A9CFF" CornerRadius="0" IsVisible="{Binding IsVisibleTier03AreaBar}"/>
+
+                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="20" HeightRequest="20">
+                        <Frame BackgroundColor="#4A9CFF" CornerRadius="10" IsVisible="{Binding IsVisibleTier01Pointer}"/>
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="8" HeightRequest="8" CornerRadius="4" BackgroundColor="#DFDFDF"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="20" HeightRequest="20">
+                        <Frame BackgroundColor="#4A9CFF" CornerRadius="10" IsVisible="{Binding IsVisibleTier02Pointer}"/>
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="8" HeightRequest="8" CornerRadius="4" BackgroundColor="#DFDFDF"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="20" HeightRequest="20">
+                        <Frame BackgroundColor="#4A9CFF" CornerRadius="10" IsVisible="{Binding IsVisibleTier03Pointer}"/>
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="8" HeightRequest="8" CornerRadius="4" BackgroundColor="#DFDFDF"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="20" HeightRequest="20">
+                        <Frame BackgroundColor="#4A9CFF" CornerRadius="10" IsVisible="{Binding IsVisibleTier04Pointer}"/>
+                        <Frame VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="8" HeightRequest="8" CornerRadius="4" BackgroundColor="#DFDFDF"/>
+                    </Grid>
+
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{Binding Tier01AreaTextColor}" Text="실버"/>
+                    <Label Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{Binding Tier02AreaTextColor}" Text="골드"/>
+                    <Label Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{Binding Tier03AreaTextColor}" Text="플래티넘"/>
+                    <Label Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{Binding Tier04AreaTextColor}" Text="다이아몬드"/>
+                </Grid>
+                
+                <Label HorizontalOptions="Center" Margin="0,30,0,0" Text="회원님의 매력을 측정해 더 높은 점수에 도전해보세요" TextColor="#7A7A7A"/>
+
+                <Button Margin="20,30,20,20" Text="새로 측정하기" TextColor="#FFFFFF" FontSize="16" BackgroundColor="#4A9CFF" Clicked="Rechecked_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+    
+</shares:BasePage>

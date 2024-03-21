@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                 xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+                 xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+                 xmlns:cv="clr-namespace:PanCardView;assembly=PanCardView"
+                 xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+                 x:Class="Strawberry.MobileApp.Pages.Option.PaymentStorePage">
+    <ContentPage.BindingContext>
+        <option:PaymentStoreData x:Name="PageData"/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Orientation="Vertical" Spacing="0">
+        <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+            <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Back_Clicked"/>
+                </Grid.GestureRecognizers>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+            </Grid>
+            <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="딸기 스토어" FontSize="16" FontAttributes="Bold"/>
+            <StackLayout HorizontalOptions="End" Orientation="Horizontal" Padding="10,0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="PointLog_Clicked"/>
+                </StackLayout.GestureRecognizers>
+                <Label VerticalOptions="Center" Text="{Binding Point, StringFormat='{0:#,##0}', Source={StaticResource Member}}"/>
+                <Image VerticalOptions="Center" HeightRequest="18" Source="icon_option_item10" Aspect="AspectFit"/>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView VerticalOptions="Fill">
+            <StackLayout VerticalOptions="Fill" Orientation="Vertical" Spacing="0">
+                <Grid>
+                    <cv:CarouselView x:Name="carouselView01" HeightRequest="230" SelectedIndex="{Binding SelectedIndex, Mode=OneWayToSource}">
+                        <cv:CarouselView.ItemsSource>
+                            <x:Array Type="{x:Type ContentView}">
+                                <ContentView>
+                                    <Grid HorizontalOptions="Fill" BackgroundColor="#FFE6E6">
+                                        <option:SliderBackground/>
+                                        <StackLayout VerticalOptions="Start" HorizontalOptions="Center" Margin="0,24,0,0" Orientation="Vertical">
+                                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                                <Image WidthRequest="18" HeightRequest="18" Source="icon_paymentstore01" Aspect="AspectFit"/>
+                                            </StackLayout>
+                                            <Image Margin="0,20,0,0" HeightRequest="40" Source="icon_paymentstore02" Aspect="AspectFit"/>
+                                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="딸기로 만남의 확률을 높여보세요" TextColor="#805C5C" FontSize="18" FontAttributes="Bold"/>
+                                            <Label Margin="0,-5,0,0" HorizontalOptions="Center" Text="원하는 상대를 발견하고 연결되어 보세요!" TextColor="#805C5C"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </ContentView>
+                                <ContentView>
+                                    <Grid HorizontalOptions="Fill" BackgroundColor="#FFE6E6">
+                                        <option:SliderBackground/>
+                                        <StackLayout VerticalOptions="Start" HorizontalOptions="Center" Margin="0,24,0,0" Orientation="Vertical">
+                                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                                <Image WidthRequest="18" HeightRequest="18" Source="icon_paymentstore01" Aspect="AspectFit"/>
+                                                <Image WidthRequest="18" HeightRequest="18" Source="icon_paymentstore01" Aspect="AspectFit"/>
+                                            </StackLayout>
+                                            <Image Margin="0,20,0,0" HeightRequest="40" Source="icon_paymentstore03" Aspect="AspectFit"/>
+                                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="스마트 딸기" TextColor="#805C5C" FontSize="18" FontAttributes="Bold"/>
+                                            <Label Margin="0,-5,0,0" HorizontalOptions="Center" Text="메시지와 함께 연결률이 최대 81% 올라가요!" TextColor="#805C5C"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </ContentView>
+                                <ContentView>
+                                    <Grid HorizontalOptions="Fill" BackgroundColor="#FFE6E6">
+                                        <option:SliderBackground/>
+                                        <StackLayout VerticalOptions="Start" HorizontalOptions="Center" Margin="0,24,0,0" Orientation="Vertical">
+                                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                                <Image WidthRequest="18" HeightRequest="18" Source="icon_paymentstore01" Aspect="AspectFit"/>
+                                                <Image WidthRequest="18" HeightRequest="18" Source="icon_paymentstore01" Aspect="AspectFit"/>
+                                                <Image WidthRequest="18" HeightRequest="18" Source="icon_paymentstore01" Aspect="AspectFit"/>
+                                            </StackLayout>
+                                            <Image Margin="0,20,0,0" HeightRequest="40" Source="icon_paymentstore04" Aspect="AspectFit"/>
+                                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="추천 더 받기" TextColor="#805C5C" FontSize="18" FontAttributes="Bold"/>
+                                            <Label Margin="0,-5,0,0" HorizontalOptions="Center" Text="회원님만을 위해 선별된 상대를 만나보세요!" TextColor="#805C5C"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </ContentView>
+                                <ContentView>
+                                    <Grid HorizontalOptions="Fill" BackgroundColor="#FFE6E6">
+                                        <option:SliderBackground/>
+                                        <StackLayout VerticalOptions="Start" HorizontalOptions="Center" Margin="0,24,0,0" Orientation="Vertical">
+                                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                                <Image WidthRequest="18" HeightRequest="18" Source="icon_paymentstore01" Aspect="AspectFit"/>
+                                                <Image WidthRequest="18" HeightRequest="18" Source="icon_paymentstore01" Aspect="AspectFit"/>
+                                                <Image WidthRequest="18" HeightRequest="18" Source="icon_paymentstore01" Aspect="AspectFit"/>
+                                                <Image WidthRequest="18" HeightRequest="18" Source="icon_paymentstore01" Aspect="AspectFit"/>
+                                            </StackLayout>
+                                            <Image Margin="0,20,0,0" HeightRequest="40" Source="icon_paymentstore05" Aspect="AspectFit"/>
+                                            <Label Margin="0,20,0,0" HorizontalOptions="Center" Text="내 매력 측정" TextColor="#805C5C" FontSize="18" FontAttributes="Bold"/>
+                                            <Label Margin="0,-5,0,0" HorizontalOptions="Center" Text="실시간으로 매력 측정해 더 높은 티어에 도전!" TextColor="#805C5C"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </ContentView>
+                            </x:Array>
+                        </cv:CarouselView.ItemsSource>
+                    </cv:CarouselView>
+                    <StackLayout VerticalOptions="End" HorizontalOptions="Center" Margin="0,0,0,20" Orientation="Horizontal">
+                        <Frame HeightRequest="10" WidthRequest="{Binding Indicator01Width}" CornerRadius="5" BackgroundColor="{Binding Indicator01Color}"/>
+                        <Frame HeightRequest="10" WidthRequest="{Binding Indicator02Width}" CornerRadius="5" BackgroundColor="{Binding Indicator02Color}"/>
+                        <Frame HeightRequest="10" WidthRequest="{Binding Indicator03Width}" CornerRadius="5" BackgroundColor="{Binding Indicator03Color}"/>
+                        <Frame HeightRequest="10" WidthRequest="{Binding Indicator04Width}" CornerRadius="5" BackgroundColor="{Binding Indicator04Color}"/>
+                    </StackLayout>
+                </Grid>
+
+                <Label Margin="20,20,20,10" Text="딸기이벤트(한시적)" FontSize="16" FontAttributes="Bold"/>
+                <Grid Margin="20,10,20,20" ColumnSpacing="14">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0"
+                          toolkit:TouchEffect.AnimationDuration="30"
+                          toolkit:TouchEffect.PressedTranslationY="2">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item06_Clicked"/>
+                        </Grid.GestureRecognizers>
+                        <Rectangle Stroke="#80FF6B89" StrokeThickness="1" RadiusX="10" RadiusY="10"/>
+                        <StackLayout Margin="10,20" VerticalOptions="Center" HorizontalOptions="Center" Spacing="0">
+                            <StackLayout.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="HorizontalOptions" Value="Center"/>
+                                </Style>
+                            </StackLayout.Resources>
+                            <Label Text="1일 좋아요" TextColor="#805C5C" FontSize="16" FontAttributes="Bold"/>
+                            <Label Text="5회 이용권" TextColor="#805C5C" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text="(일 무료 2회 포함)" TextColor="#805C5C"/>
+                            <Image HeightRequest="30" Margin="0,10" Source="icon_paymentstore09" Aspect="AspectFit"/>
+                            <Label Text="월 9,900원" TextColor="#FF6B89" FontSize="16" FontAttributes="Bold"/>
+                            <Label Text="(월 150명 대쉬)" TextColor="#7A7A7A"/>
+                        </StackLayout>
+                    </Grid>
+                    <Grid Grid.Column="1"
+                          toolkit:TouchEffect.AnimationDuration="30"
+                          toolkit:TouchEffect.PressedTranslationY="2">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Item07_Clicked"/>
+                        </Grid.GestureRecognizers>
+                        <Rectangle Stroke="#80FF6B89" StrokeThickness="1" RadiusX="10" RadiusY="10"/>
+                        <StackLayout Margin="10,20" VerticalOptions="Center" HorizontalOptions="Center" Spacing="0">
+                            <StackLayout.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="HorizontalOptions" Value="Center"/>
+                                </Style>
+                            </StackLayout.Resources>
+                            <Label Text="1일 대화" TextColor="#805C5C" FontSize="16" FontAttributes="Bold"/>
+                            <Label Text="1회 이용권" TextColor="#805C5C" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text=" " TextColor="#00805C5C"/>
+                            <Image HeightRequest="30" Margin="0,10" Source="icon_paymentstore10" Aspect="AspectFit"/>
+                            <Label Text="월 29,900원" TextColor="#FF6B89" FontSize="16" FontAttributes="Bold"/>
+                            <Label Text="(월 30명 대화)" TextColor="#7A7A7A"/>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+
+                <StackLayout Margin="20,20,20,20" Orientation="Vertical" Spacing="16">
+                    <Label Text="딸기 구매" FontSize="16"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Image VerticalOptions="Center" HeightRequest="20" Source="icon_paymentstore06" Aspect="AspectFit"/>
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="15" FontSize="20" FontAttributes="Bold"/>
+                                    <Span Text="개" TextColor="#7A7A7A"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button HorizontalOptions="EndAndExpand" HeightRequest="40" WidthRequest="120" Text="￦5,990원" BackgroundColor="#4A9CFF" TextColor="#FFFFFF" Clicked="Item01_Clicked"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image VerticalOptions="Center" HeightRequest="20" Source="icon_paymentstore06" Aspect="AspectFit"/>
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="50" FontSize="20" FontAttributes="Bold"/>
+                                    <Span Text="개" TextColor="#7A7A7A"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Image VerticalOptions="Center" WidthRequest="40" Source="icon_paymentstore07" Aspect="AspectFit" TranslationY="2"/>
+                        <Button HorizontalOptions="EndAndExpand" HeightRequest="40" WidthRequest="120" Text="￦15,990원" BackgroundColor="#4A9CFF" TextColor="#FFFFFF" Clicked="Item02_Clicked"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image VerticalOptions="Center" HeightRequest="20" Source="icon_paymentstore06" Aspect="AspectFit"/>
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="150" FontSize="20" FontAttributes="Bold"/>
+                                    <Span Text="개" TextColor="#7A7A7A"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button HorizontalOptions="EndAndExpand" HeightRequest="40" WidthRequest="120" Text="￦39,900원" BackgroundColor="#4A9CFF" TextColor="#FFFFFF" Clicked="Item03_Clicked"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image VerticalOptions="Center" HeightRequest="20" Source="icon_paymentstore06" Aspect="AspectFit"/>
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="400" FontSize="20" FontAttributes="Bold"/>
+                                    <Span Text="개" TextColor="#7A7A7A"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button HorizontalOptions="EndAndExpand" HeightRequest="40" WidthRequest="120" Text="￦99,000원" BackgroundColor="#4A9CFF" TextColor="#FFFFFF" Clicked="Item04_Clicked"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image VerticalOptions="Center" HeightRequest="20" Source="icon_paymentstore06" Aspect="AspectFit"/>
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="1,000" FontSize="20" FontAttributes="Bold"/>
+                                    <Span Text="개" TextColor="#7A7A7A"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button HorizontalOptions="EndAndExpand" HeightRequest="40" WidthRequest="120" Text="￦199,000원" BackgroundColor="#4A9CFF" TextColor="#FFFFFF" Clicked="Item05_Clicked"/>
+                    </StackLayout>
+                    
+                    
+                    <Label Margin="0,30,0,0" Text="무료 딸기 얻기" FontSize="16"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Image VerticalOptions="Center" HeightRequest="20" Source="icon_paymentstore06" Aspect="AspectFit"/>
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="15" FontSize="20" FontAttributes="Bold"/>
+                                    <Span Text="개" TextColor="#7A7A7A"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Image VerticalOptions="Center" WidthRequest="40" Source="icon_paymentstore08" Aspect="AspectFit" TranslationY="2"/>
+                        <Button HorizontalOptions="EndAndExpand" HeightRequest="40" WidthRequest="120" Text="친구초대" BackgroundColor="#FFFFFF" TextColor="#333333" BorderWidth="1" BorderColor="#7A7A7A" Clicked="Item08_Clicked"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+
+</shares:BasePage>

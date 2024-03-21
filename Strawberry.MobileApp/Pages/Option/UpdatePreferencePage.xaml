@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares" 
+    xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+    xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="Strawberry.MobileApp.Pages.Option.UpdatePreferencePage"
+    x:DataType="option:UpdatePreferencePageData">
+    <ContentPage.Resources>
+        <option:UpdatePreferencePageConverter x:Key="converter"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClosePage_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+                </Grid>
+                <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="선호 설정" FontSize="16" FontAttributes="Bold"/>
+            </StackLayout>
+
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" Spacing="0">
+                    <Label Margin="0,0,0,30" Padding="15,10" Text="선호에 가까운 사람들을 추천합니다. 지나치게 한정적으로 설정 시 원활한 추천이 되지 않습니다." TextColor="#7A7A7A" BackgroundColor="#F3F3F3"/>
+
+                    <StackLayout Margin="0,0,0,10" Padding="15,0" Orientation="Horizontal">
+                        <Label Text="나이" TextColor="#333333" FontSize="16" FontAttributes="Bold"/>
+                        <Label VerticalOptions="End" HorizontalOptions="EndAndExpand" Text="{Binding AgeRangeText}" TextColor="#4A9CFF" FontAttributes="Bold"/>
+                    </StackLayout>
+                    <Grid Margin="0,0,0,30" Padding="15,0" IsClippedToBounds="True">
+                        <toolkit:RangeSlider Margin="0,-19,0,0" MinimumValue="{Binding DefaultMinAge}" MaximumValue="49" StepValue="1" ValueLabelStringFormat="" ValueLabelSpacing="0" ThumbSize="20"
+                                  ThumbColor="#4A9CFF" ThumbBorderColor="#4A9CFF" TrackHighlightColor="#4A9CFF"
+                                  LowerValue="{Binding MinAge}" UpperValue="{Binding MaxAge}"/>
+                    </Grid>
+
+                    <StackLayout Margin="0,0,0,10" Padding="15,0" Orientation="Horizontal">
+                        <Label Text="거리" TextColor="#333333" FontSize="16" FontAttributes="Bold"/>
+                        <Label VerticalOptions="End" HorizontalOptions="EndAndExpand" Text="{Binding Range, StringFormat='{0}km 이내'}" TextColor="#4A9CFF" FontAttributes="Bold"/>
+                    </StackLayout>
+                    <Grid Margin="0,0,0,10" Padding="15,0" IsClippedToBounds="True">
+                        <toolkit:RangeSlider Margin="0,-19,0,0" MinimumValue="30" MaximumValue="200" StepValue="10" ValueLabelStringFormat="" ValueLabelSpacing="0" ThumbSize="20"
+                                  ThumbColor="#4A9CFF" ThumbBorderColor="#4A9CFF" TrackHighlightColor="#4A9CFF" LowerThumbSize="0"
+                                  LowerValue="30" UpperValue="{Binding Range}"/>
+                    </Grid>
+                    <Label Margin="0,0,0,30" Padding="15,0" Text="지역에 따라 거리가 차이 날 수 있습니다." TextColor="#7A7A7A"/>
+
+                    <StackLayout Margin="0,0,0,10" Padding="15,0" Orientation="Horizontal">
+                        <Label Text="키" TextColor="#333333" FontSize="16" FontAttributes="Bold"/>
+                        <Label VerticalOptions="End" HorizontalOptions="EndAndExpand" Text="{Binding TallRangeText}" TextColor="#4A9CFF" FontAttributes="Bold"/>
+                    </StackLayout>
+                    <Grid Margin="0,0,0,30" Padding="15,0" IsClippedToBounds="True">
+                        <toolkit:RangeSlider Margin="0,-19,0,0" MinimumValue="150" MaximumValue="191" StepValue="1" ValueLabelStringFormat="" ValueLabelSpacing="0" ThumbSize="20"
+                                  ThumbColor="#4A9CFF" ThumbBorderColor="#4A9CFF" TrackHighlightColor="#4A9CFF"
+                                  LowerValue="{Binding MinTall}" UpperValue="{Binding MaxTall}"/>
+                    </Grid>
+
+                    <StackLayout HeightRequest="40" Margin="0,0,0,10" Padding="15,0" Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BeautyOrWealth_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label VerticalOptions="Center" Text="{Binding BeautyOrWealthLabelText}" TextColor="#333333" FontSize="16" FontAttributes="Bold"/>
+                        <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="{Binding BeautyOrWealthValueText}" TextColor="#4A9CFF" FontSize="16" FontAttributes="Bold"/>
+                    </StackLayout>
+
+                    <StackLayout HeightRequest="40" Margin="0,0,0,10" Padding="15,0" Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Body_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label VerticalOptions="Center" Text="체형" TextColor="#333333" FontSize="16" FontAttributes="Bold"/>
+                        <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="{Binding Body, TargetNullValue='선택하세요'}" TextColor="{Binding Body, Converter={StaticResource converter}, ConverterParameter='ValueColor'}" FontSize="16" FontAttributes="Bold"/>
+                    </StackLayout>
+
+                    <StackLayout HeightRequest="40" Margin="0,0,0,10" Padding="15,0" Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Religion_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label VerticalOptions="Center" Text="종교" TextColor="#333333" FontSize="16" FontAttributes="Bold"/>
+                        <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="{Binding Religion, TargetNullValue='선택하세요'}" TextColor="{Binding Religion, Converter={StaticResource converter}, ConverterParameter='ValueColor'}" FontSize="16" FontAttributes="Bold"/>
+                    </StackLayout>
+
+                    <StackLayout HeightRequest="40" Margin="0,0,0,10" Padding="15,0" Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alcohol_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label VerticalOptions="Center" Text="음주" TextColor="#333333" FontSize="16" FontAttributes="Bold"/>
+                        <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="{Binding Alcohol, TargetNullValue='선택하세요'}" TextColor="{Binding Alcohol, Converter={StaticResource converter}, ConverterParameter='ValueColor'}" FontSize="16" FontAttributes="Bold"/>
+                    </StackLayout>
+
+                    <StackLayout HeightRequest="40" Margin="0,0,0,10" Padding="15,0" Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Smoking_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label VerticalOptions="Center" Text="흡연" TextColor="#333333" FontSize="16" FontAttributes="Bold"/>
+                        <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="{Binding Smoking, TargetNullValue='선택하세요'}" TextColor="{Binding Smoking, Converter={StaticResource converter}, ConverterParameter='ValueColor'}" FontSize="16" FontAttributes="Bold"/>
+                    </StackLayout>
+
+                    <StackLayout HeightRequest="40" Margin="0,0,0,0" Padding="15,0" Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Priority_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label VerticalOptions="Center" Text="우선조건" TextColor="#333333" FontSize="16" FontAttributes="Bold"/>
+                        <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Text="{Binding PriorityText}" TextColor="#4A9CFF" FontSize="16" FontAttributes="Bold"/>
+                    </StackLayout>
+                    <Label Margin="0,0,0,10" Padding="15,0" Text="특별히 중요시하는 조건이 있다면 선택해 주세요." TextColor="#7A7A7A"/>
+
+                    <Button VerticalOptions="EndAndExpand" Margin="15" Text="선호설정 수정" TextColor="#FFFFFF" FontSize="16" BackgroundColor="#4A9CFF" Clicked="Accept_Clicked"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</shares:BasePage>

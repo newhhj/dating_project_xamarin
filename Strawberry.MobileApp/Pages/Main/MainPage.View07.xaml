@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:main="clr-namespace:Strawberry.MobileApp.Pages.Main"
+              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+              x:Class="Strawberry.MobileApp.Pages.Main.MainPage_View07"
+              x:DataType="main:MainPage_View07_Data">
+	<!-- 메인 StackLayout -->
+	<StackLayout FlexLayout.Basis="100%" Orientation="Horizontal" Padding="10,10">
+		<!-- 프로필 Tap 제스처 인식기 -->
+		<StackLayout.GestureRecognizers>
+			<TapGestureRecognizer Tapped="Profile_Clicked"/>
+		</StackLayout.GestureRecognizers>
+		<!-- 프로필 이미지 프레임 -->
+		<Frame HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="80" HeightRequest="80" CornerRadius="40">
+			<Image Source="{Binding ProfileImage}" Aspect="AspectFill"/>
+		</Frame>
+		<!-- 데이터 StackLayout -->
+		<StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
+			<!-- 이름과 나이 StackLayout -->
+			<StackLayout Orientation="Horizontal">
+				<Label Text="{Binding Nickname}" FontSize="16" FontAttributes="Bold"/>
+				<Label Text="{Binding Age}" VerticalOptions="End" TextColor="#555555"/>
+			</StackLayout>
+			<!-- 직업과 거리 StackLayout -->
+			<StackLayout Orientation="Horizontal">
+				<Label Text="{Binding Job}" TextColor="#333333"/>
+				<Label Text="{Binding Range, StringFormat='{0:#,##0}km'}" TextColor="#333333"/>
+			</StackLayout>
+			<!-- 메시지 StackLayout -->
+			<StackLayout Orientation="Horizontal" IsVisible="{Binding IsVisibleMessage}">
+				<Grid>
+					<skia:SKCanvasView PaintSurface="SKCanvasView_PaintSurface"/>
+					<Label Margin="10" Text="{Binding Message}"/>
+				</Grid>
+			</StackLayout>
+			<!-- 버튼 StackLayout -->
+			<StackLayout Margin="0,10,0,0" HeightRequest="40" Orientation="Horizontal">
+				<Button Text="{Binding ConfirmButtonText}" BackgroundColor="#4A9CFF" TextColor="#FFFFFF" Clicked="Confirm_Clicked"/>
+				<Button Text="패스" BackgroundColor="#FFFFFF" BorderColor="#AFAFAF" BorderWidth="1" IsVisible="{Binding IsVisiblePassButton}" Clicked="Pass_Clicked"/>
+			</StackLayout>
+		</StackLayout>
+	</StackLayout>
+</DataTemplate>

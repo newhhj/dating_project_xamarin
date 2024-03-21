@@ -1,0 +1,23 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="166" height="166" viewBox="0 0 166 166">
+    <defs>
+        <filter id="타원_20" x="0" y="0" width="166" height="166" filterUnits="userSpaceOnUse">
+            <feOffset dy="8" input="SourceAlpha"/>
+            <feGaussianBlur stdDeviation="10" result="blur"/>
+            <feFlood flood-opacity="0.2"/>
+            <feComposite operator="in" in2="blur"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g id="그룹_497" data-name="그룹 497" transform="translate(-554 -965)">
+        <g transform="matrix(1, 0, 0, 1, 554, 965)" filter="url(#타원_20)">
+            <circle id="타원_20-2" data-name="타원 20" cx="53" cy="53" r="53" transform="translate(30 22)" fill="#4a9cff"/>
+        </g>
+        <g id="그룹_131" data-name="그룹 131" transform="translate(484.225 -333.667)">
+            <path id="패스_32" data-name="패스 32" d="M7440.2,7519.3a4.11,4.11,0,0,0,4.109,4.11h2.989a4.109,4.109,0,0,0,4.109-4.11v-13.2H7440.2Z" transform="translate(-7293.108 -6126.91)" fill="#fff" opacity="0.5"/>
+            <path id="패스_33" data-name="패스 33" d="M7451.4,7487.806a4.11,4.11,0,0,0-4.109-4.11h-2.989a4.11,4.11,0,0,0-4.109,4.11v13.2H7451.4Z" transform="translate(-7293.108 -6133.029)" fill="#fff" opacity="0.5"/>
+            <path id="패스_34" data-name="패스 34" d="M7462.2,7497.292H7449V7508.5h13.2a4.111,4.111,0,0,0,4.11-4.109V7501.4A4.111,4.111,0,0,0,7462.2,7497.292Z" transform="translate(-7290.704 -6129.315)" fill="#fff" opacity="0.5"/>
+            <path id="패스_35" data-name="패스 35" d="M7430.708,7497.292a4.11,4.11,0,0,0-4.11,4.11v2.991a4.111,4.111,0,0,0,4.11,4.109h13.2v-11.211Z" transform="translate(-7296.823 -6129.315)" fill="#fff" opacity="0.5"/>
+            <rect id="사각형_16" data-name="사각형 16" width="11.209" height="11.209" transform="translate(147.087 1367.979)" fill="#fff"/>
+        </g>
+    </g>
+</svg>

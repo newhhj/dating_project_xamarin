@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:chatting="clr-namespace:Strawberry.MobileApp.Pages.Chatting"
+    x:Class="Strawberry.MobileApp.Pages.Chatting.ChattingMannerPage">
+
+    <shares:BasePage.BindingContext>
+        <chatting:ChattingMannerPageData x:Name="pageData"/>
+    </shares:BasePage.BindingContext>
+
+    <StackLayout Orientation="Vertical" Spacing="0" BackgroundColor="#FFFFFF">
+        <Grid HeightRequest="50" MinimumHeightRequest="50">
+            <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" TranslationX="5">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Close_Clicked"/>
+                </Grid.GestureRecognizers>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="24" HeightRequest="2" Color="Black" Rotation="45"/>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="24" HeightRequest="2" Color="Black" Rotation="-45"/>
+            </Grid>
+            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="매너 평가 남기기" FontSize="16" FontAttributes="Bold"/>
+        </Grid>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout Padding="20" Orientation="Vertical" Spacing="0">
+                <Label Text="안녕하세요 :)"/>
+                <Label Text="딸기 내 대화는 사생활과 권리가 보장되기를 바랍니다."/>
+                <Label Text="대화기록 근거로만 파악 반영되고 있어 다른 방식의 개인간 대화로는 제재가 어렵습니다."/>
+                <Label Margin="0,0,0,15" Text="불법 피해 발생시 딸기는 최선을 다해 돕겠습니다."/>
+                <Label Margin="0,0,0,50" Text="아래는 회원 평가 반영 활용 자료로 사용됩니다."/>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item01_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item01Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="친절하고 매너가 좋아요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item02_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item02Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="응답이 빨라요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,50" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item03_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item03Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="커플이 되었어요."/>
+                </StackLayout>
+                <Grid VerticalOptions="EndAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" HorizontalOptions="FillAndExpand" Text="취소" BackgroundColor="#FFFFFF" BorderColor="#7A7A7A" BorderWidth="1" Clicked="Close_Clicked"/>
+                    <Button Grid.Column="1" HorizontalOptions="FillAndExpand" Text="완료하고 나가기" BackgroundColor="#4A9CFF" TextColor="#FFFFFF" Clicked="Accept_Clicked"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+
+</shares:BasePage>

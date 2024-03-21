@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              xmlns:main="clr-namespace:Strawberry.MobileApp.Pages.Main" 
+              xmlns:effects="clr-namespace:Strawberry.MobileApp.Effects"
+              x:Class="Strawberry.MobileApp.Pages.Main.MainPage_View_LoveFortune"
+              x:DataType="main:MainPage_View_LoveFortune_Data">
+	<Grid FlexLayout.Grow="1" HeightRequest="{Binding Height, Source={RelativeSource Mode=FindAncestor, AncestorType={x:Type ScrollView}}}">
+		<!-- 배경 이미지 -->
+		<Image Source="img_lovefortune_bg" Aspect="AspectFill"/>
+		<!-- 꽃 이미지 -->
+		<Image VerticalOptions="End" HorizontalOptions="Start" WidthRequest="200" TranslationX="-125" TranslationY="20" Source="img_lovefortune_flower01" Aspect="AspectFit"/>
+		<Image VerticalOptions="End" HorizontalOptions="Start" WidthRequest="200" TranslationX="-40" TranslationY="100" Source="img_lovefortune_flower02" Aspect="AspectFit"/>
+		<Image VerticalOptions="End" HorizontalOptions="End" WidthRequest="200" TranslationX="70" TranslationY="100" Source="img_lovefortune_flower03" Aspect="AspectFit"/>
+		<!-- 외곽선 이미지 -->
+		<Image Margin="20" Source="img_lovefortune_outline" Aspect="Fill"/>
+
+		<!-- View01 -->
+		<Grid IsVisible="{Binding View01Visible}">
+			<!-- 한의사 이미지 -->
+			<!--<Image VerticalOptions="Start" HorizontalOptions="Start" TranslationX="40" TranslationY="40" WidthRequest="90" Source="img_lovefortune_doctor" Aspect="AspectFit"/>-->
+			<!-- 한의사에 대한 설명 레이블 -->
+			<Label LineBreakMode="WordWrap" VerticalOptions="Start" HorizontalOptions="Center" HorizontalTextAlignment="Center" WidthRequest="300" TranslationX="0" TranslationY="40" TextColor="#8F697B">
+				<Label.FormattedText>
+					<FormattedString>
+						<Span Text="딸기 자문전담 한의사들" TextColor="#EE7398" FontSize="18" FontAttributes="Bold"/>
+						<Span Text=" 및 특별히 연구비 등을 지원 계약한 별도의 "/>
+						<Span Text="다수 전문 의료인들" TextColor="#EE7398" FontSize="18" FontAttributes="Bold"/>
+						<Span Text="의 공식적인 의학적 자문에 따라 딸기만이 기술 특허 중인 음양오행과 양방 한방 임상적 경험 데이터 토대를 기반하여 체질 및 당일 컨디션에 따른 첨단 AI 분석을 통해 당신의 오늘 연애 기운을 제시합니다."/>
+					</FormattedString>
+				</Label.FormattedText>
+			</Label>
+			<!-- 커플 이미지 -->
+			<Image VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="120" TranslationX="0" TranslationY="-40" Source="img_lovefortune_couple" Aspect="AspectFit"/>
+			<!-- 코멘트 이미지 -->
+			<Image VerticalOptions="End" HorizontalOptions="Center" WidthRequest="200" TranslationX="0" TranslationY="-50" Source="img_lovefortune_comment" Aspect="AspectFit"/>
+
+			<!-- 대화 상자 이미지 -->
+			<Image VerticalOptions="End" HorizontalOptions="Center" WidthRequest="70" TranslationX="70" TranslationY="-200" Source="img_lovefortune_talkbox" Aspect="AspectFit"/>
+
+			<!-- 추가 정보 레이블 -->
+			<Label VerticalOptions="End" HorizontalOptions="Center" Margin="20,30" FontSize="10"
+                   TextColor="#EE7398" Text="의료인들을 통한 의학적 특허 및 저작권 등록 된 세계최초 AI 메타민간기술로서 만약 도용 내지 배포 등의 경우 강력한 법률적인 조치합니다."/>
+
+			<!-- 생체인증 안내 그리드 (View02) -->
+			<Grid BackgroundColor="#BB000000" IsVisible="{Binding View02Visible}">
+				<StackLayout VerticalOptions="Center">
+					<Label HorizontalOptions="Center" Text="5~6초간 지문을 인증해주세요" TextColor="#FFFFFF" FontAttributes="Bold" FontSize="16"/>
+					<Label HorizontalOptions="Center" Text="인증이 완료되면 진동이 멈춥니다." TextColor="#FFFFFF" FontAttributes="Bold" FontSize="16"/>
+				</StackLayout>
+				<!-- 생체인증 레이블 -->
+				<Label VerticalOptions="End" HorizontalOptions="Center" TranslationY="-100" Text="생체인증" TextColor="#FFFFFF" FontSize="18" FontAttributes="Bold"/>
+				<!-- 취소 버튼 -->
+				<Button VerticalOptions="End" HorizontalOptions="Center" WidthRequest="200" BorderWidth="1" BorderColor="#FFFFFF" BackgroundColor="#929292" CornerRadius="5" Text="취소하기" TextColor="#FFFFFF" TranslationY="-30" Clicked="Cancel_Clicked"/>
+			</Grid>
+
+			<!-- 터치 이미지 -->
+			<Grid VerticalOptions="End" HorizontalOptions="Center" WidthRequest="160" HeightRequest="160" TranslationX="0" TranslationY="-90">
+				<Grid.Effects>
+					<effects:TouchEffect TouchAction="TouchEffect_TouchAction"/>
+				</Grid.Effects>
+				<Image VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="70" HeightRequest="70" Source="{Binding TouchImageSource}" Aspect="AspectFit"/>
+			</Grid>
+		</Grid>
+
+		<!-- View03 -->
+		<Grid IsVisible="{Binding View03Visible}">
+			<!-- 한의사 이미지 -->
+			<Image VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="300" HeightRequest="300" Source="img_lovefortune_doctor" Aspect="AspectFit" TranslationY="-40"/>
+			<!-- 결과 메시지 레이블 -->
+			<Label HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center" WidthRequest="260" LineBreakMode="WordWrap" TextColor="#8F697B" FontSize="18" FontAttributes="Bold" TranslationY="100">
+				<Label.FormattedText>
+					<FormattedString>
+						<Span Text="{Binding Nickname, Source={StaticResource Member}}"/>
+						<Span Text=" "/>
+						<Span>
+							<Span.Text>
+								님의
+오늘의 연애기운은
+							</Span.Text>
+						</Span>
+						<Span Text="{Binding Message, TargetNullValue='사랑이 싹트는 하루입니다. 과감해지세요.'}"/>
+					</FormattedString>
+				</Label.FormattedText>
+			</Label>
+			<!-- 하트 이미지 -->
+			<Image VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="50" HeightRequest="55.75" TranslationY="50" Source="img_lovefortune_heart" Aspect="AspectFit"/>
+			<!-- 본인 프로필 이미지 -->
+			<Frame VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="90" HeightRequest="90" CornerRadius="45" TranslationX="-80" TranslationY="50">
+				<Frame Margin="1" CornerRadius="44" IsClippedToBounds="True">
+					<Image Source="{Binding ProfileImages[0].ProfileImageSource, Source={StaticResource Member}}" Aspect="AspectFill"/>
+				</Frame>
+			</Frame>
+			<!-- 상대방 프로필 이미지 -->
+			<Frame VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="90" HeightRequest="90" CornerRadius="45" TranslationX="80" TranslationY="50">
+				<Frame.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Partner_Clicked"/>
+				</Frame.GestureRecognizers>
+				<Frame Margin="1" CornerRadius="44" IsClippedToBounds="True">
+					<Image Source="{Binding PartnerProfileImage}" Aspect="AspectFill"/>
+				</Frame>
+			</Frame>
+			<!-- 마지막 멘트 이미지 -->
+			<Image VerticalOptions="End" HorizontalOptions="Center" WidthRequest="260" TranslationY="-70" Source="img_lovefortune_lastment" Aspect="AspectFit"/>
+		</Grid>
+	</Grid>
+</DataTemplate>

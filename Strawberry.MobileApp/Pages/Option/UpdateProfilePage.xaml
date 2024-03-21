@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+    xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="Strawberry.MobileApp.Pages.Option.UpdateProfilePage"
+    x:DataType="option:UpdateProfilePageData">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClosePage_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+                </Grid>
+                <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="프로필 수정" FontSize="16" FontAttributes="Bold"/>
+            </StackLayout>
+
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" Spacing="0" Padding="0,10">
+                    <FlexLayout JustifyContent="Start" AlignItems="Start" AlignContent="Start" Wrap="Wrap" Margin="10,0" Padding="-2">
+                        <Grid FlexLayout.Basis="33.33%">
+                            <Frame BindingContext="{Binding ProfileImages[0]}" Margin="2" HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}}" CornerRadius="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ProfileImage_Clicked"/>
+                                </Frame.GestureRecognizers>
+                                <Grid x:DataType="option:UpdateProfileImageData">
+                                    <Image Source="{Binding ProfileImage, TargetNullValue=img_noimage}" Aspect="AspectFill"/>
+                                    <Frame VerticalOptions="Center" HorizontalOptions="Center" Padding="15,0" HeightRequest="30" CornerRadius="15" BackgroundColor="#99BFBFBF">
+                                        <Label VerticalOptions="Center" HorizontalOptions="Center" Text="필수" TextColor="#FFFFFF" FontAttributes="Bold"/>
+                                    </Frame>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                        <Grid FlexLayout.Basis="33.33%">
+                            <Frame BindingContext="{Binding ProfileImages[1]}" Margin="2" HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}}" CornerRadius="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ProfileImage_Clicked"/>
+                                </Frame.GestureRecognizers>
+                                <Grid x:DataType="option:UpdateProfileImageData">
+                                    <Image Source="{Binding ProfileImage, TargetNullValue=img_noimage}" Aspect="AspectFill"/>
+                                    <!--<Frame VerticalOptions="Center" HorizontalOptions="Center" Padding="15,0" HeightRequest="30" CornerRadius="15" BackgroundColor="#99BFBFBF">
+                                        <Label VerticalOptions="Center" HorizontalOptions="Center" Text="필수" TextColor="#FFFFFF" FontAttributes="Bold"/>
+                                    </Frame>-->
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                        <Grid FlexLayout.Basis="33.33%">
+                            <Frame BindingContext="{Binding ProfileImages[2]}" Margin="2" HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}}" CornerRadius="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ProfileImage_Clicked"/>
+                                </Frame.GestureRecognizers>
+                                <Grid x:DataType="option:UpdateProfileImageData">
+                                    <Image Source="{Binding ProfileImage, TargetNullValue=img_noimage}" Aspect="AspectFill"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                        <Grid FlexLayout.Basis="33.33%">
+                            <Frame BindingContext="{Binding ProfileImages[3]}" Margin="2" HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}}" CornerRadius="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ProfileImage_Clicked"/>
+                                </Frame.GestureRecognizers>
+                                <Grid x:DataType="option:UpdateProfileImageData">
+                                    <Image Source="{Binding ProfileImage, TargetNullValue=img_noimage}" Aspect="AspectFill"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                        <Grid FlexLayout.Basis="33.33%">
+                            <Frame BindingContext="{Binding ProfileImages[4]}" Margin="2" HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}}" CornerRadius="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ProfileImage_Clicked"/>
+                                </Frame.GestureRecognizers>
+                                <Grid x:DataType="option:UpdateProfileImageData">
+                                    <Image Source="{Binding ProfileImage, TargetNullValue=img_noimage}" Aspect="AspectFill"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                        <Grid FlexLayout.Basis="33.33%">
+                            <Frame BindingContext="{Binding ProfileImages[5]}" Margin="2" HeightRequest="{Binding Width, Source={RelativeSource Mode=Self}}" CornerRadius="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ProfileImage_Clicked"/>
+                                </Frame.GestureRecognizers>
+                                <Grid x:DataType="option:UpdateProfileImageData">
+                                    <Image Source="{Binding ProfileImage, TargetNullValue=img_noimage}" Aspect="AspectFill"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </FlexLayout>
+
+                    <StackLayout Margin="0,15,0,15" Padding="15" Spacing="0" BackgroundColor="#4A9CFF">
+                        <StackLayout.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="TextColor" Value="#FFFFFF"/>
+                                <Setter Property="FontSize" Value="12"/>
+                            </Style>
+                        </StackLayout.Resources>
+
+                        <Label Text="Tip : 메인사진은 곧 매칭의 성공으로 이어집니다."/>
+                        <Label Text="메인 2장은 이목구비 나오게 해주세요"/>
+                        <Label Text="마스크 사진과 단체사진 등은 당사 규정에 따라 불허됩니다."/>
+                        <Label Text="단, 나머지 사진들은 취미, 직장 등의 활동성 자연스런 사진을 올리시면 당신의 이성 성공확률이 높아집니다."/>
+                    </StackLayout>
+
+                    <StackLayout Padding="15,0" Spacing="10">
+                        <StackLayout.Resources>
+                            <Style Class="row" TargetType="StackLayout">
+                                <Setter Property="HeightRequest" Value="40"/>
+                                <Setter Property="Orientation" Value="Horizontal"/>
+                            </Style>
+                            <Style Class="header" TargetType="Label">
+                                <Setter Property="VerticalOptions" Value="Center"/>
+                                <Setter Property="WidthRequest" Value="70"/>
+                                <Setter Property="MinimumWidthRequest" Value="70"/>
+                                <Setter Property="TextColor" Value="#7A7A7A"/>
+                            </Style>
+                            <Style Class="content" TargetType="Label">
+                                <Setter Property="VerticalOptions" Value="Center"/>
+                                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="FontAttributes" Value="Bold"/>
+                            </Style>
+                        </StackLayout.Resources>
+                        
+                        <StackLayout StyleClass="row">
+                            <Label StyleClass="header" Text="닉네임"/>
+                            <Label StyleClass="content" Text="{Binding Nickname}"/>
+                        </StackLayout>
+
+                        <StackLayout StyleClass="row">
+                            <Label StyleClass="header" Text="성별"/>
+                            <Label StyleClass="content" Text="{Binding GenderText}"/>
+                        </StackLayout>
+
+                        <StackLayout StyleClass="row">
+                            <Label StyleClass="header" Text="생일"/>
+                            <Label StyleClass="content" Text="{Binding BirthDay, StringFormat='{0:yyyy-MM-dd}'}"/>
+                        </StackLayout>
+
+                        <StackLayout StyleClass="row">
+                            <Label StyleClass="header" Text="키"/>
+                            <Label StyleClass="content" Text="{Binding Tall, StringFormat='{0}cm'}"/>
+                        </StackLayout>
+
+                        <StackLayout StyleClass="row">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BodyStyle_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label StyleClass="header" Text="체형"/>
+                            <Label StyleClass="content" Text="{Binding BodyStyle}" TextColor="#4A9CFF"/>
+                        </StackLayout>
+
+                        <StackLayout StyleClass="row">
+                            <Label StyleClass="header" Text="직장"/>
+                            <Entry Text="{Binding JobName}" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" Margin="-5,0,0,0" TextColor="#4A9CFF" FontSize="16" FontAttributes="Bold" Placeholder="입력해주세요" PlaceholderColor="#857A7A7A"/>
+                        </StackLayout>
+
+                        <StackLayout StyleClass="row">
+                            <Label StyleClass="header" Text="직업"/>
+                            <Label StyleClass="content" Text="{Binding Job}"/>
+                            <Button Text="로얄인증하기" TextColor="#FFFFFF" BackgroundColor="#4A9CFF" IsVisible="{Binding IsVisibleRoyalButton}" Clicked="Royal_Clicked"/>
+                        </StackLayout>
+
+                        <StackLayout StyleClass="row">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="School_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label StyleClass="header" Text="학력"/>
+                            <Label StyleClass="content" Text="{Binding School}" TextColor="#4A9CFF"/>
+                        </StackLayout>
+
+                        <StackLayout StyleClass="row">
+                            <Label StyleClass="header" Text="학교"/>
+                            <Entry Text="{Binding SchoolName}" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" Margin="-5,0,0,0" TextColor="#4A9CFF" FontSize="16" FontAttributes="Bold" Placeholder="입력해주세요" PlaceholderColor="#857A7A7A"/>
+                        </StackLayout>
+
+                        <StackLayout StyleClass="row">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Personality_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label StyleClass="header" Text="성격"/>
+                            <Label StyleClass="content" Text="{Binding Personality}" TextColor="#4A9CFF" IsVisible="{Binding IsVisiblePersonality}"/>
+                            <Label StyleClass="content" Text="선택해주세요" TextColor="#857A7A7A" IsVisible="{Binding IsVisibleNullPersonality}"/>
+                        </StackLayout>
+
+                        <StackLayout StyleClass="row">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Religion_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label StyleClass="header" Text="종교"/>
+                            <Label StyleClass="content" Text="{Binding Religion}" TextColor="#4A9CFF"/>
+                        </StackLayout>
+
+                        <StackLayout StyleClass="row">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alcohol_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label StyleClass="header" Text="음주"/>
+                            <Label StyleClass="content" Text="{Binding Alcohol}" TextColor="#4A9CFF"/>
+                        </StackLayout>
+
+                        <StackLayout StyleClass="row">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Smoking_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label StyleClass="header" Text="흡연"/>
+                            <Label StyleClass="content" Text="{Binding Smoking}" TextColor="#4A9CFF"/>
+                        </StackLayout>
+
+                        <StackLayout StyleClass="row">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Blood_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label StyleClass="header" Text="혈액형"/>
+                            <Label StyleClass="content" Text="{Binding Blood}" TextColor="#4A9CFF" IsVisible="{Binding IsVisibleBlood}"/>
+                            <Label StyleClass="content" Text="선택해주세요" TextColor="#857A7A7A" IsVisible="{Binding IsVisibleNullBlood}"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Margin="0,20,0,0" Padding="15,0" HeightRequest="40" Orientation="Horizontal">
+                        <Image HeightRequest="20" Source="icon_updateprofile01" Aspect="AspectFit" IsVisible="{Binding IsVisiblePhoneDeny}"/>
+                        <Image HeightRequest="20" Source="icon_updateprofile02" Aspect="AspectFit" IsVisible="{Binding IsVisiblePhoneConfirm}"/>
+                        <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="휴대전화번호 인증되지 않음" TextColor="#7A7A7A" IsVisible="{Binding IsVisiblePhoneDeny}"/>
+                        <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="휴대전화번호 인증됨" TextColor="#7A7A7A" IsVisible="{Binding IsVisiblePhoneConfirm}"/>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ConfirmPhone_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <Image VerticalOptions="Center" HeightRequest="15" Source="icon_option_setting" Aspect="AspectFit" toolkit:IconTintColorEffect.TintColor="#4A9CFF"/>
+                            <Label VerticalOptions="Center" Text="설정" TextColor="#4A9CFF"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Margin="0,30,0,15" Padding="15" Spacing="0" BackgroundColor="#4A9CFF">
+                        <StackLayout.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="TextColor" Value="#FFFFFF"/>
+                                <Setter Property="FontSize" Value="12"/>
+                            </Style>
+                        </StackLayout.Resources>
+
+                        <Label Text="Tip2 : 프로필은 진지하게 작성 할수록 당신의 매칭 확률이 매우 높아집니다."/>
+                    </StackLayout>
+
+                    <Label Margin="0,10,0,15" Padding="15,0" Text="매력포인트" TextColor="#333333" FontSize="16" FontAttributes="Bold"/>
+
+                    <FlexLayout Margin="15,0" Padding="-3" Wrap="Wrap" JustifyContent="Start" AlignItems="Start" AlignContent="Start" BindableLayout.ItemsSource="{Binding CharmingPoints}">
+                        <FlexLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CharmingPoints_Clicked"/>
+                        </FlexLayout.GestureRecognizers>
+                        <BindableLayout.EmptyView>
+                            <Grid FlexLayout.Grow="1" HeightRequest="100">
+                                <Label VerticalOptions="Center" HorizontalOptions="Center" Text="아직 선택한 매력 포인트가 없어요"/>
+                            </Grid>
+                        </BindableLayout.EmptyView>
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="option:UpdateProfileItemData">
+                                <Frame BackgroundColor="#174A9CFF" CornerRadius="7" Margin="3">
+                                    <Label Padding="15,8" Text="{Binding Name}" TextColor="#4A9CFF"/>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+
+                    <Label Margin="0,30,0,15" Padding="15,0" Text="관심사" TextColor="#333333" FontSize="16" FontAttributes="Bold"/>
+
+                    <FlexLayout Margin="15,0" Padding="-3" Wrap="Wrap" JustifyContent="Start" AlignItems="Start" AlignContent="Start" BindableLayout.ItemsSource="{Binding Interests}">
+                        <FlexLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Interests_Clicked"/>
+                        </FlexLayout.GestureRecognizers>
+                        <BindableLayout.EmptyView>
+                            <Grid FlexLayout.Grow="1" HeightRequest="100">
+                                <Label VerticalOptions="Center" HorizontalOptions="Center" Text="아직 선택한 관심사가 없어요"/>
+                            </Grid>
+                        </BindableLayout.EmptyView>
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="option:UpdateProfileItemData">
+                                <Frame BackgroundColor="#174A9CFF" CornerRadius="7" Margin="3">
+                                    <Label Padding="15,8" Text="{Binding Name}" TextColor="#4A9CFF"/>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+
+                    <Button VerticalOptions="EndAndExpand" Margin="15,30,15,0" Text="프로필 수정" TextColor="#FFFFFF" BackgroundColor="#4A9CFF" Clicked="Accept_Clicked"/>
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</shares:BasePage>

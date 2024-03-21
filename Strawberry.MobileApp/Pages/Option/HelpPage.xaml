@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+    xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="Strawberry.MobileApp.Pages.Option.HelpPage">
+    <ContentPage.BindingContext>
+        <option:HelpPageData x:Name="pageData"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClosePage_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+                </Grid>
+                <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="도움말" FontSize="16" FontAttributes="Bold"/>
+            </StackLayout>
+
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" Spacing="10" Padding="0,20" BindableLayout.ItemsSource="{Binding Items}">
+                    <BindableLayout.EmptyView>
+                        <Grid VerticalOptions="FillAndExpand">
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="아직 등록된 도움말이 없습니다."/>
+                        </Grid>
+                    </BindableLayout.EmptyView>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="option:HelpPageItemData">
+                            <StackLayout Orientation="Horizontal" Padding="20,0"
+                                 toolkit:TouchEffect.AnimationDuration="30"
+                                 toolkit:TouchEffect.PressedTranslationY="2">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Item_Clicked"/>
+                                </StackLayout.GestureRecognizers>
+                                <Label VerticalOptions="Center" Text="{Binding Title}" MaxLines="2" LineBreakMode="TailTruncation" FontAttributes="Bold"/>
+                                <Grid HorizontalOptions="EndAndExpand" HeightRequest="40" MinimumWidthRequest="40">
+                                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="10" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="-3"/>
+                                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="10" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="3"/>
+                                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</shares:BasePage>

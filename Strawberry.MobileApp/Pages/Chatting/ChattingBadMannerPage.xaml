@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+    xmlns:chatting="clr-namespace:Strawberry.MobileApp.Pages.Chatting"
+    x:Class="Strawberry.MobileApp.Pages.Chatting.ChattingBadMannerPage">
+
+    <shares:BasePage.BindingContext>
+        <chatting:ChattingBadMannerPageData x:Name="pageData"/>
+    </shares:BasePage.BindingContext>
+
+    <StackLayout Orientation="Vertical" Spacing="0" BackgroundColor="#FFFFFF">
+        <Grid HeightRequest="50" MinimumHeightRequest="50">
+            <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" TranslationX="5">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Close_Clicked"/>
+                </Grid.GestureRecognizers>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="24" HeightRequest="2" Color="Black" Rotation="45"/>
+                <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="24" HeightRequest="2" Color="Black" Rotation="-45"/>
+            </Grid>
+            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="비매너 평가 남기기" FontSize="16" FontAttributes="Bold"/>
+        </Grid>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout Padding="20" Orientation="Vertical" Spacing="0">
+                <Label Text="안녕하세요 :)"/>
+                <Label Text="딸기 내 대화는 사생활과 권리가 보장되기를 바랍니다."/>
+                <Label Text="대화기록 근거로만 파악 반영되고 있어 다른 방식의 개인간 대화로는 제재가 어렵습니다."/>
+                <Label Margin="0,0,0,15" Text="불법 피해 발생시 딸기는 최선을 다해 돕겠습니다."/>
+                <Label Margin="0,0,0,50" Text="아래는 회원 평가 반영 활용 자료로 사용됩니다."/>
+                
+                
+                <Label Margin="0,0,0,20" Text="비매너 : 대화만 했다 (3개 선택 가능)" TextColor="#4A9CFF" FontAttributes="Bold"/>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item01_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item01Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="반말쓰거나 예의없어요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item02_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item02Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="대화가 불성실 했어요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item03_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item03Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="채팅에 답변이 없어요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item04_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item04Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="자랑만 해요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item05_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item05Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="취향이 아니예요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item06_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item06Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="영업이나 홍보를 해요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item07_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item07Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="사기유도하는 유령회원이예요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item08_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item08Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="성희롱이나 추행하는 대화를 해요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,50" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item09_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item09Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="다짜고짜 연락처 등 무리한 요구를 해요."/>
+                </StackLayout>
+
+
+                <Label Margin="0,0,0,5" Text="비매너 : 만났었다 (3개 선택 가능)" TextColor="#4A9CFF" FontAttributes="Bold"/>
+                <Label Margin="0,0,0,20" Text="누적시 회원 제재까지 반영되는 민감 평가이므로 이 평가의 허위 신고시 오히려 제재를 받을 수 있습니다." TextColor="#7A7A7A"/>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item10_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item10Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="음주 강요 또는 주정을 부려요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item11_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item11Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="이기적이고 강요적이예요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item12_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item12Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="성희롱, 추행을 해요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item13_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item13Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="프로필 사진과 차이가 크거나 본인이 아니예요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item14_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item14Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="직업, 나이 등 프로필 스팩과 달라요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item15_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24" MinimumWidthRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item15Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="약속시간 및 장소를 정한 뒤 취소 또는 연락이 안돼요."/>
+                </StackLayout>
+                <StackLayout Margin="0,0,0,20" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Item16_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <Grid VerticalOptions="Center" WidthRequest="24" HeightRequest="24">
+                        <Image Source="icon_cbox" Aspect="AspectFit"/>
+                        <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding Item16Selected}"/>
+                    </Grid>
+                    <Label VerticalOptions="Center" Text="약속장소에 아예 나오지 않았어요."/>
+                </StackLayout>
+                <Frame HeightRequest="150" Margin="0,0,0,50" Padding="8,0" BorderColor="#50333333">
+                    <Editor Placeholder="기타 이슈를 입력해주세요." FontSize="14" Text="{Binding Item17Text}"/>
+                </Frame>
+
+
+                <Grid VerticalOptions="EndAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" HorizontalOptions="FillAndExpand" Text="취소" BackgroundColor="#FFFFFF" BorderColor="#7A7A7A" BorderWidth="1" Clicked="Close_Clicked"/>
+                    <Button Grid.Column="1" HorizontalOptions="FillAndExpand" Text="완료하고 나가기" BackgroundColor="#4A9CFF" TextColor="#FFFFFF" Clicked="Accept_Clicked"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+
+</shares:BasePage>

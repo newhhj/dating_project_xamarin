@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares"
+             x:Class="Strawberry.MobileApp.Pages.Shares.ConfirmDialog"
+             BackgroundColor="#50000000"
+             x:DataType="shares:ConfirmDialogData">
+    <ContentPage.Content>
+        <Frame VerticalOptions="Center" BackgroundColor="#FFFFFF" CornerRadius="10" Margin="40">
+            <StackLayout Orientation="Vertical" Spacing="0">
+                <StackLayout Margin="20,30" Spacing="0">
+                    <Label HorizontalOptions="Center" Margin="0,0,0,5" Text="{Binding Title}" FontSize="18" FontAttributes="Bold" IsVisible="{Binding Title, Converter={StaticResource DataConverter}, ConverterParameter='IsVisible'}"/>
+                    <Label HorizontalOptions="Center" Text="{Binding Subject}" TextColor="Gray" IsVisible="{Binding Subject, Converter={StaticResource DataConverter}, ConverterParameter='IsVisible'}"/>
+                </StackLayout>
+                <Grid RowSpacing="0" ColumnSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="1"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Color="LightGray"/>
+                    <Label Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding Denny}" TextColor="#4A9CFF" FontSize="16" FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Denny_Clicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <BoxView Grid.Row="1" Grid.Column="1" Color="LightGray"/>
+                    <Label Grid.Row="1" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding Accept}" TextColor="#4A9CFF" FontSize="16" FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Accept_Clicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </Grid>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</popup:PopupPage>

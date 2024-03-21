@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:main="clr-namespace:Strawberry.MobileApp.Pages.Main"
+              x:Class="Strawberry.MobileApp.Pages.Main.MainPage_View08"
+              x:DataType="main:MainPage_View08_Data">
+	<!-- Main StackLayout -->
+	<StackLayout FlexLayout.Basis="100%" Orientation="Horizontal" Padding="10,10">
+		<!-- Profile Tap Gesture -->
+		<StackLayout.GestureRecognizers>
+			<TapGestureRecognizer Tapped="Profile_Clicked"/>
+		</StackLayout.GestureRecognizers>
+
+		<!-- Profile Image Frame -->
+		<Frame HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="80" HeightRequest="80" CornerRadius="40">
+			<Image Source="{Binding ProfileImage}" Aspect="AspectFill"/>
+		</Frame>
+
+		<!-- Content StackLayout -->
+		<StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
+			<!-- Nickname StackLayout -->
+			<StackLayout Orientation="Horizontal">
+				<Label Text="{Binding Nickname}" FontSize="16" FontAttributes="Bold"/>
+				<Label Text="{Binding Count, StringFormat='님 외 {0:#,##0}명'}" VerticalOptions="End" TextColor="#555555"/>
+			</StackLayout>
+
+			<!-- Profile Message Label -->
+			<Label Text="회원님의 프로필을 조회했습니다." TextColor="#333333"/>
+
+			<!-- Button StackLayout -->
+			<StackLayout Margin="0,10,0,0" HeightRequest="40" Orientation="Horizontal">
+				<!-- Show List Button -->
+				<Button Text="목록보기" BackgroundColor="#4A9CFF" TextColor="#FFFFFF" Clicked="ShowList_Clicked"/>
+			</StackLayout>
+		</StackLayout>
+	</StackLayout>
+</DataTemplate>

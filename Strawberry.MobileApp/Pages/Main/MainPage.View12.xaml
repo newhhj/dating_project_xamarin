@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              xmlns:main="clr-namespace:Strawberry.MobileApp.Pages.Main"
+              x:Class="Strawberry.MobileApp.Pages.Main.MainPage_View12"
+              x:DataType="main:MainPage_View12_Data">
+	<!-- 대화 목록 항목을 나타내는 DataTemplate입니다. -->
+	<StackLayout FlexLayout.Basis="100%" HeightRequest="90" Orientation="Vertical" Spacing="0" BackgroundColor="#FFFFFF" Padding="0,0,-80,0">
+		<StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal">
+			<!-- 항목을 탭했을 때 실행되는 이벤트 핸들러를 등록합니다. -->
+			<StackLayout.GestureRecognizers>
+				<TapGestureRecognizer Tapped="Item_Clicked"/>
+				<!-- 패닝 동작 감지를 위한 이벤트 핸들러를 등록합니다. -->
+				<PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"/>
+			</StackLayout.GestureRecognizers>
+			<!-- 프로필 이미지를 나타내는 프레임입니다. -->
+			<Frame VerticalOptions="Center" WidthRequest="70" HeightRequest="70" MinimumWidthRequest="70" Margin="10,0,0,0" CornerRadius="35" BackgroundColor="LightGray">
+				<Image Source="{Binding ProfileImageSource}" Aspect="AspectFill"/>
+			</Frame>
+			<StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
+				<!-- 닉네임을 표시하는 레이블입니다. -->
+				<Label Text="{Binding Nickname}" FontSize="16" FontAttributes="Bold"/>
+				<!-- 내용을 표시하는 레이블입니다. 최대 2줄까지 표시되고, 더 긴 경우는 생략 부호(...)가 붙습니다. -->
+				<Label Text="{Binding Content}" MaxLines="2" LineBreakMode="TailTruncation"/>
+			</StackLayout>
+			<StackLayout HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0" MinimumWidthRequest="50" Orientation="Vertical" Spacing="10">
+				<!-- 읽지 않은 메시지 개수를 표시하는 프레임입니다. -->
+				<Frame HorizontalOptions="End" HeightRequest="20" Padding="7,0" CornerRadius="10" BackgroundColor="#4A9CFF" Opacity="{Binding NotReadCountOpacity}">
+					<Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding NotReadCountText}" TextColor="#FFFFFF" FontSize="10"/>
+				</Frame>
+				<!-- 생성 시간을 표시하는 레이블입니다. -->
+				<Label HorizontalOptions="End" Text="{Binding CreateTimeText}" TextColor="#7A7A7A" FontSize="12"/>
+			</StackLayout>
+			<!-- 대화 목록을 삭제하는 버튼입니다. -->
+			<Grid HorizontalOptions="End" WidthRequest="80" MinimumWidthRequest="80" BackgroundColor="#4A9CFF">
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="RemoveChattingRoom_Clicked"/>
+				</Grid.GestureRecognizers>
+				<!-- 삭제 버튼의 모양을 나타내는 다각형입니다. -->
+				<Polygon Points="10,45 0,37 0,53" Fill="#FFFFFF"/>
+				<Image VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="26" HeightRequest="26" Source="icon_remove" Aspect="AspectFit"/>
+			</Grid>
+		</StackLayout>
+		<!-- 구분선을 나타내는 BoxView입니다. -->
+		<BoxView HeightRequest="1" Color="#F3F3F3"/>
+	</StackLayout>
+</DataTemplate>

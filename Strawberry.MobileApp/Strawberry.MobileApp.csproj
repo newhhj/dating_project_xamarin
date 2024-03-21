@@ -1,0 +1,346 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\icon_appeal_menu01.svg" />
+    <None Remove="Images\icon_appeal_menu02.svg" />
+    <None Remove="Images\icon_appeal_menu03.svg" />
+    <None Remove="Images\icon_appeal_menu04.svg" />
+    <None Remove="Images\icon_appeal_strawberry01.svg" />
+    <None Remove="Images\icon_arrow_right01.svg" />
+    <None Remove="Images\icon_back01.svg" />
+    <None Remove="Images\icon_comment01.svg" />
+    <None Remove="Images\icon_emptyimage.svg" />
+    <None Remove="Images\icon_like01_off.svg" />
+    <None Remove="Images\icon_like01_on.svg" />
+    <None Remove="Images\icon_write.svg" />
+    <None Remove="Images\img_balloon_member.png" />
+    <None Remove="Images\img_balloon_partner.png" />
+    <None Remove="Images\img_msgbox_sendsmartchoice.png" />
+    <None Remove="Images\intro.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\icon_arrow_right01.svg" />
+    <EmbeddedResource Include="Images\icon_emptyimage.svg" />
+    <EmbeddedResource Include="Images\icon_appeal_strawberry01.svg" />
+    <EmbeddedResource Include="Images\icon_appeal_menu04.svg" />
+    <EmbeddedResource Include="Images\icon_appeal_menu03.svg" />
+    <EmbeddedResource Include="Images\icon_appeal_menu02.svg" />
+    <EmbeddedResource Include="Images\icon_appeal_menu01.svg" />
+    <EmbeddedResource Include="Images\icon_back01.svg" />
+    <EmbeddedResource Include="Images\icon_like01_off.svg" />
+    <EmbeddedResource Include="Images\icon_comment01.svg" />
+    <EmbeddedResource Include="Images\icon_like01_on.svg" />
+    <EmbeddedResource Include="Images\icon_write.svg" />
+    <EmbeddedResource Include="Images\img_balloon_member.png" />
+    <EmbeddedResource Include="Images\img_balloon_partner.png" />
+    <EmbeddedResource Include="Images\img_msgbox_sendsmartchoice.png" />
+    <EmbeddedResource Include="Images\intro.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CardsView" Version="2.8.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Plugin.AudioRecorder" Version="1.1.0" />
+    <PackageReference Include="Plugin.InAppBilling" Version="6.7.0" />
+    <PackageReference Include="Plugin.MediaManager" Version="1.0.9" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.12" />
+    <PackageReference Include="SkiaSharp" Version="2.80.3" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.3" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2012" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Pages\Appeal\AppealDetailAlertCommentDialog.xaml.cs">
+      <DependentUpon>AppealDetailAlertCommentDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Appeal\AppealPage.Menu04.Template.xaml.cs">
+      <DependentUpon>AppealPage.Menu04.Template.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Appeal\AppealWriteDialog.xaml.cs">
+      <DependentUpon>AppealWriteDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Chatting\ChattingAlertDialog.xaml.cs">
+      <DependentUpon>ChattingAlertDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Chatting\ChattingBadMannerPage.xaml.cs">
+      <DependentUpon>ChattingBadMannerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Main\MainPage.View14.xaml.cs">
+      <DependentUpon>MainPage.View14.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Main\MainPage.View13.xaml.cs">
+      <DependentUpon>MainPage.View13.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Main\MainPage.View12.xaml.cs">
+      <DependentUpon>MainPage.View12.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Main\MainPage.View11.xaml.cs">
+      <DependentUpon>MainPage.View11.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Main\MainPage.View10.xaml.cs">
+      <DependentUpon>MainPage.View10.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Main\MainPage.View09.xaml.cs">
+      <DependentUpon>MainPage.View09.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Main\MainPage.View08.xaml.cs">
+      <DependentUpon>MainPage.View08.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Main\MainPage.Dialog.Payment2.xaml.cs">
+      <DependentUpon>MainPage.Dialog.Payment2.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Main\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Option\HelpItemPage.xaml.cs">
+      <DependentUpon>HelpItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Option\PaymentStorePage.xaml.cs">
+      <DependentUpon>PaymentStorePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Option\ProfileLevelPage.xaml.cs">
+      <DependentUpon>ProfileLevelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Option\RoyalCenterRequestPage.xaml.cs">
+      <DependentUpon>RoyalCenterRequestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Option\RoyalCenterTermsPage.xaml.cs">
+      <DependentUpon>RoyalCenterTermsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Option\SelectInterestsDialog.xaml.cs">
+      <DependentUpon>SelectInterestsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Option\SelectCharmingPointsDialog.xaml.cs">
+      <DependentUpon>SelectCharmingPointsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Profile\ProfilePage.Dialog.AlertSelector.xaml.cs">
+      <DependentUpon>ProfilePage.Dialog.AlertSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AutoSizeImageView.xaml.cs">
+      <DependentUpon>AutoSizeImageView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\Appeal\AppealDetailAlertDialog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Appeal\AppealDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Appeal\AppealPage.Menu01.Template.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Appeal\AppealPage.Menu02.Template.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Appeal\AppealPage.Menu03.Template.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Appeal\AppealPage.Top5.Template.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Appeal\AppealPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Appeal\AppealWriteDialog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Appeal\AppealWritePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Chatting\ChattingAlertDialog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Chatting\ChattingMannerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Chatting\ChattingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Intro\Page.Intro.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Join\Page.Join.CharmingPoint.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Join\Page.Join.Confirm.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Join\Page.Join.Email.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Join\Page.Join.Interest.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Join\Page.Join.Location.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Join\Page.Join.Password.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Join\Page.Join.Phone.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Join\Page.Join.PhoneCert.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Join\Page.Join.Preference.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Join\Page.Join.Profile.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Join\Page.Join.Terms.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Login\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\MainPopupAD\MainPopupADPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Main\MainPage.Dialog.Payment.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Main\MainPage.Dialog.RemovePartner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Main\MainPage.Dialog.SendSmartChoice.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Main\MainPage.View.LoveFortune.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Main\MainPage.View01.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Main\MainPage.View02.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Main\MainPage.View03.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Main\MainPage.View04.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Main\MainPage.View05.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Main\MainPage.View06.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Main\MainPage.View07.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Main\MainPage.ViewLabel.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Main\MainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Near\NearPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Near\NearPagePartnerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Notification\NotificationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\CallFriendsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\FirstMessagePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\HelpPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\PaymentStorePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\PointLogPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\ProfileRecheckDialog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\ProfileRecheckPaymentDialog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\RoyalCenterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\SelectPersonalityDialog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\SendChoicesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\ServiceCenterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\SettingAccountPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\SettingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\TermsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\UpdatePreferencePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\UpdateProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Option\VIPCenterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Profile\ProfilePage.DetailImage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Profile\ProfilePage.Dialog.Alert.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Profile\ProfilePage.Partner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\RecommandPartner\RecommendPartnersPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Shares\BasePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Shares\ConfirmDialog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="TestPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AutoSizeImageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

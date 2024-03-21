@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shares:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:shares="clr-namespace:Strawberry.MobileApp.Pages.Shares" 
+                 xmlns:option="clr-namespace:Strawberry.MobileApp.Pages.Option"
+                 xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+                 x:Class="Strawberry.MobileApp.Pages.Option.RoyalCenterTermsPage"
+                 x:DataType="option:RoyalCenterTermsPageData">
+
+    <shares:BasePage.BindingContext>
+        <option:RoyalCenterTermsPageData x:Name="PageData"/>
+    </shares:BasePage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <StackLayout Orientation="Horizontal" HeightRequest="50" MinimumHeightRequest="50">
+                <Grid VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="40" HeightRequest="40" Margin="5,0,0,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Back_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="45" TranslationY="4"/>
+                    <BoxView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="13" HeightRequest="2" Color="#333333" Rotation="-45" TranslationY="-4"/>
+                </Grid>
+                <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="로얄인증센터" FontSize="16" FontAttributes="Bold"/>
+            </StackLayout>
+
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="Fill" Padding="20" Orientation="Vertical" Spacing="24">
+                    <Label Margin="0,0,0,10" Text="로얄 인증 동의" FontSize="16" FontAttributes="Bold"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Confirm01_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Grid VerticalOptions="Start" WidthRequest="24" HeightRequest="24" MinimumWidthRequest="24">
+                            <Image Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsVisibleConfirm01}"/>
+                        </Grid>
+                        <Label VerticalOptions="Center" Padding="0,2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="가. 신분증 "/>
+                                    <Span Text="(주민 뒷번호만 가림, 진위 조회 위함)" FontSize="12" TextColor="#7A7A7A" />
+                                    <Span Text=" 사진 앞뒷면 제출 합니다."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Confirm02_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Grid VerticalOptions="Start" WidthRequest="24" HeightRequest="24" MinimumWidthRequest="24">
+                            <Image Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsVisibleConfirm02}"/>
+                        </Grid>
+                        <Label VerticalOptions="Center" Padding="0,2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="나. 이메일로 인증 심사는 착수하되 원본 서류를 등기로 송부하여야 합니다. &#10;"/>
+                                    <Span Text="(다수의 인증 유선 확인 연락 갈 수 있으므로 감안하여 주십시오.)" FontSize="12" TextColor="#7A7A7A" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Confirm03_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Grid VerticalOptions="Start" WidthRequest="24" HeightRequest="24" MinimumWidthRequest="24">
+                            <Image Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsVisibleConfirm03}"/>
+                        </Grid>
+                        <Label VerticalOptions="Center" Padding="0,2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="다. 면허증, 재직증명서, 명함 "/>
+                                    <Span Text="(직장전화 담긴 현 신청 시점 1개월 내)" FontSize="12" TextColor="#7A7A7A" />
+                                    <Span Text=" 필수 제출 해야 합니다.&#10;"/>
+                                    <Span Text="신청회원님의 경우에 따라 졸업증명서, 소득세납부 증명서, 잔고증명서, (주)나이스신용평가 신용등급 3급 이상 증명서 등을 제출해야하며, "/>
+                                    <Span Text="사실관계 확인을 위해 관계기관 인증을 위해 당사 양식 제출 및 승인 과정에 따른 조회 및 발급 위임장 제출 및 개인정보 조회 동의 및 "/>
+                                    <Span Text="사실조회 동의 제출 시 심사 가능합니다.&#10;&#10;"/>
+                                    <Span Text="※ 단 의료인, 법조인, 회계인, 연예인, 공인 등은 면허증 등 만으로 간편 승인 가능합니다." FontSize="12" TextColor="#7A7A7A" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Confirm04_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Grid VerticalOptions="Start" WidthRequest="24" HeightRequest="24" MinimumWidthRequest="24">
+                            <Image Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsVisibleConfirm04}"/>
+                        </Grid>
+                        <Label VerticalOptions="Center" Padding="0,2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="라. 신청 회원이 인증 위해 제출된 서류가 만약 허위 제출 및 위변조 서류 제출 시 당사에 민사 1천만 배상 동의서에 서명하고 자필 작성해 보내온 문서 심사 뒤 자격 부여 심사합니다."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Confirm05_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Grid VerticalOptions="Start" WidthRequest="24" HeightRequest="24" MinimumWidthRequest="24">
+                            <Image Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsVisibleConfirm05}"/>
+                        </Grid>
+                        <Label VerticalOptions="Center" Padding="0,2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="마. 심사기간 안내&#10;"/>
+                                    <Span Text="(영업일 기준 해당 유관기관 진위 문서 회신 소요로 시간 상 약 7일 ~ 15일)&#10;" FontSize="12" TextColor="#7A7A7A" />
+                                    <Span Text="(긴급 승인 신청의 경우 영업일 기준 약 1일 ~ 3일)" FontSize="12" TextColor="#7A7A7A" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Confirm06_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Grid VerticalOptions="Start" WidthRequest="24" HeightRequest="24" MinimumWidthRequest="24">
+                            <Image Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsVisibleConfirm06}"/>
+                        </Grid>
+                        <Label VerticalOptions="Center" Padding="0,2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="바. 위 로얄 자격 선정 정책 기준은 상황에 따라 변동 가능합니다."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Confirm07_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Grid VerticalOptions="Start" WidthRequest="24" HeightRequest="24" MinimumWidthRequest="24">
+                            <Image Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsVisibleConfirm07}"/>
+                        </Grid>
+                        <Label VerticalOptions="Center" Padding="0,2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="사. 로얄 인증된 회원 1년간 추가 인증 없이 연 회원으로 오프 파티 등 특별우대 합니다."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Confirm08_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Grid VerticalOptions="Start" WidthRequest="24" HeightRequest="24" MinimumWidthRequest="24">
+                            <Image Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsVisibleConfirm08}"/>
+                        </Grid>
+                        <Label VerticalOptions="Center" Padding="0,2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="아. 남성은 1년 뒤 추가 인증 없을 경우 뱃지를 VIP로 조정 됩니다.&#10;"/>
+                                    <Span Text="여성은 소액 유료 유지시 로얄 인증 유지&#10;"/>
+                                    <Span Text="(충전 소진 시 일반 등급으로 조정)" FontSize="12" TextColor="#7A7A7A" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Confirm09_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Grid VerticalOptions="Start" WidthRequest="24" HeightRequest="24" MinimumWidthRequest="24">
+                            <Image Source="icon_cbox" Aspect="AspectFit"/>
+                            <Image Source="icon_cbox_checked" Aspect="AspectFit" IsVisible="{Binding IsVisibleConfirm09}"/>
+                        </Grid>
+                        <Label VerticalOptions="Center" Padding="0,2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="자. 인증 신청비는 환불 불가 합니다."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <Button VerticalOptions="EndAndExpand" Text="다음" TextColor="#FFFFFF" BackgroundColor="#4A9CFF" Clicked="Next_Clicked"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</shares:BasePage>
